@@ -1,0 +1,204 @@
+<section class="container my-5">
+  <div class="row">
+    <!-- Imagen del Producto -->
+    <div class="col-lg-6 mb-4">
+      <div class="card border-0 shadow-sm">
+        <div class="position-relative">
+          <img
+            src="assets/juegos/catan.jpg"
+            class="card-img-top rounded"
+            alt="Catan"
+            style="width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa"
+          />
+          <span class="position-absolute top-0 end-0 badge bg-danger m-3 fs-6"> -15% </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información del Producto -->
+    <div class="col-lg-6">
+      <div class="mb-3">
+        <span class="badge bg-primary mb-2">Estrategia</span>
+        <h1 class="display-5 fw-bold mb-3">Catan</h1>
+      </div>
+
+      <!-- Precio -->
+      <div class="mb-4">
+        <div>
+          <span class="text-decoration-line-through text-muted fs-4 me-2"> $35.000 </span>
+          <span class="text-primary fw-bold" style="font-size: 2rem"> $29.990 </span>
+        </div>
+        <small class="text-muted">IVA incluido</small>
+      </div>
+
+      <!-- Descripción Corta -->
+      <div class="mb-4">
+        <p class="lead">
+          Coloniza la isla de Catan en este clásico juego de estrategia. Construye caminos, aldeas y
+          ciudades mientras comercias con tus rivales.
+        </p>
+      </div>
+
+      <!-- Stock -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          <span id="stock-status" class="text-success fw-semibold">En stock</span>
+        </div>
+      </div>
+
+      <!-- Cantidad -->
+      <div class="mb-4">
+        <label for="quantity" class="form-label fw-semibold">Cantidad:</label>
+        <div class="input-group" style="max-width: 150px">
+          <button class="btn btn-outline-secondary" type="button" id="decrease-qty">
+            <i class="bi bi-dash"></i>
+          </button>
+          <input
+            type="number"
+            class="form-control text-center"
+            id="quantity"
+            value="1"
+            min="1"
+            max="10"
+          />
+          <button class="btn btn-outline-secondary" type="button" id="increase-qty">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="d-grid gap-2 mb-4">
+        <button class="btn btn-primary btn-lg" id="add-to-cart">
+          <i class="bi bi-cart-plus me-2"></i>
+          Agregar al Carrito
+        </button>
+        <button class="btn btn-outline-secondary" id="add-to-wishlist">
+          <i class="bi bi-heart me-2"></i>
+          Agregar a Favoritos
+        </button>
+      </div>
+
+      <!-- Información Adicional -->
+      <div class="card border-0 bg-light p-3">
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2">
+            <i class="bi bi-truck text-primary me-2"></i>
+            <strong>Envío gratis</strong> en compras sobre $50.000
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-arrow-return-left text-primary me-2"></i>
+            <strong>Devolución gratis</strong> hasta 30 días
+          </li>
+          <li>
+            <i class="bi bi-shield-check text-primary me-2"></i>
+            <strong>Compra segura</strong> garantizada
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs de Información Detallada -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <ul class="nav nav-tabs" id="productTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="description-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#description"
+            type="button"
+            role="tab"
+          >
+            Descripción
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="specifications-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#specifications"
+            type="button"
+            role="tab"
+          >
+            Especificaciones
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content border border-top-0 p-4" id="productTabContent">
+        <!-- Descripción Detallada -->
+        <div class="tab-pane fade show active" id="description" role="tabpanel">
+          <h4 class="mb-3">Descripción Completa</h4>
+          <div>
+            <p>
+              Los Colonos de Catán es un juego de mesa de estrategia multipremiado creado por Klaus
+              Teuber. Desde su lanzamiento en 1995, ha cautivado a millones de jugadores alrededor
+              del mundo.
+            </p>
+            <p>
+              En Catán, los jugadores asumen el papel de colonos que intentan establecerse en la
+              isla de Catán. Cada jugador comienza con dos asentamientos y dos caminos, y a partir
+              de ahí debe expandir su territorio construyendo más caminos, asentamientos y ciudades.
+            </p>
+            <p>
+              <strong>Características principales:</strong>
+            </p>
+            <ul>
+              <li>Juego de estrategia que combina gestión de recursos y negociación</li>
+              <li>Tablero modular que hace que cada partida sea diferente</li>
+              <li>Sistema de comercio entre jugadores que fomenta la interacción</li>
+              <li>Múltiples estrategias para ganar</li>
+              <li>Fácil de aprender pero difícil de dominar</li>
+            </ul>
+            <p>
+              El objetivo es ser el primer jugador en alcanzar 10 puntos de victoria construyendo
+              asentamientos, ciudades, y obteniendo cartas especiales. La combinación de azar en los
+              dados y estrategia en las decisiones hace que cada partida sea única e emocionante.
+            </p>
+          </div>
+        </div>
+
+        <!-- Especificaciones -->
+        <div class="tab-pane fade" id="specifications" role="tabpanel">
+          <h4 class="mb-3">Especificaciones Técnicas</h4>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th scope="row" style="width: 30%">Jugadores</th>
+                <td>3-4 jugadores</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Edad recomendada</th>
+                <td>10+ años</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Duración</th>
+                <td>60-120 minutos</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Idioma</th>
+                <td>Español</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Editorial</th>
+                <td>Devir</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Año de publicación</th>
+                <td>1995</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 30%">Dimensiones</th>
+                <td>29.5 x 29.5 x 7.5 cm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
