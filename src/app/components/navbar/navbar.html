@@ -34,17 +34,19 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" [routerLink]="['/products']">Estrategia</a>
+                <a class="dropdown-item" [routerLink]="['/products']">Todas las Categorías</a>
               </li>
+              <li><hr class="dropdown-divider" /></li>
+              @for (category of categories; track category.id) {
               <li>
-                <a class="dropdown-item" [routerLink]="['/products']">Familiares</a>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/products']"
+                  [queryParams]="{ category: category.slug }"
+                  >{{ category.name }}</a
+                >
               </li>
-              <li>
-                <a class="dropdown-item" [routerLink]="['/products']">Cartas</a>
-              </li>
-              <li>
-                <a class="dropdown-item" [routerLink]="['/products']">Rol</a>
-              </li>
+              }
             </ul>
           </li>
         </ul>

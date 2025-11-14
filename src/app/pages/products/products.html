@@ -1,10 +1,16 @@
 <app-banner></app-banner>
 <section class="container my-5">
-  <div
-    class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center g-4 pb-4"
-  >
-    <article class="col">
-      <app-card-product></app-card-product>
-    </article>
+  <!-- Productos agrupados por categoría -->
+  @for (category of filteredCategories; track category.id) {
+  <div class="mb-5">
+    <h2 class="mb-4">{{ category.name }}</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      @for (product of getProductsByCategory(category.id); track product.id) {
+      <article class="col">
+        <app-card-product [product]="product"></app-card-product>
+      </article>
+      }
+    </div>
   </div>
+  }
 </section>

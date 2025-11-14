@@ -1,19 +1,19 @@
-<a routerLink="/product/1" class="text-decoration-none">
+<a [routerLink]="'/product/' + product.id" class="text-decoration-none">
   <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
     <img
-      src="assets/juegos/uno.jpg"
+      [src]="product.image"
       class="card-img-top"
-      alt="UNO"
+      [alt]="product.name"
       style="height: 300px; object-fit: cover"
     />
     <div class="card-body">
-      <h5 class="card-title fw-semibold text-dark">UNO</h5>
+      <h5 class="card-title fw-semibold text-dark">{{ product.name }}</h5>
       <p class="card-text text-muted">
-        El clásico juego de cartas que todos conocen y aman. ¡No olvides gritar UNO!
+        {{ product.description }}
       </p>
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <span class="h5 text-primary mb-0">$9.990</span>
+          <span class="h5 text-primary mb-0">${{ product.price.toLocaleString('es-CL') }}</span>
         </div>
       </div>
     </div>

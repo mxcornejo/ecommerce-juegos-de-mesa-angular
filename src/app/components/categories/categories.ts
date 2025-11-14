@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardCategory } from '../card-category/card-category';
+import { CATEGORIES } from '../../data/mock-data';
+import { Category } from '../../models/category.interface';
 
 @Component({
   selector: 'app-categories',
@@ -8,4 +10,6 @@ import { CardCategory } from '../card-category/card-category';
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
-export class Categories {}
+export class Categories {
+  categories: Category[] = CATEGORIES;
+}

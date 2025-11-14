@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Category } from '../../models/category.interface';
 
 @Component({
   selector: 'app-card-category',
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './card-category.html',
   styleUrl: './card-category.scss',
 })
-export class CardCategory {}
+export class CardCategory {
+  @Input() category!: Category;
+}
