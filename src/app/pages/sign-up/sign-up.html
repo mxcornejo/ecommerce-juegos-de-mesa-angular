@@ -1,0 +1,220 @@
+<main>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-header bg-primary text-white text-center py-4 rounded-top">
+            <i class="bi bi-person-circle fs-1 mb-2"></i>
+            <h2 class="mb-1">¡Únete a Wizard World!</h2>
+            <p class="mb-0 opacity-75">Crea tu cuenta y comienza la aventura</p>
+          </div>
+
+          <div class="card-body p-4 p-md-5">
+            <!-- Mensajes de error y éxito -->
+            @if (errorMessage) {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              {{ errorMessage }}
+              <button
+                type="button"
+                class="btn-close"
+                (click)="errorMessage = ''"
+                aria-label="Close"
+              ></button>
+            </div>
+            } @if (successMessage) {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              {{ successMessage }}
+              <button
+                type="button"
+                class="btn-close"
+                (click)="successMessage = ''"
+                aria-label="Close"
+              ></button>
+            </div>
+            }
+
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="mb-3">
+                <label for="nombre" class="form-label fw-semibold">
+                  <i class="bi bi-person-fill text-primary me-2"></i>Nombre completo
+                </label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('nombre')"
+                  id="nombre"
+                  formControlName="nombre"
+                  placeholder="Ingresa tu nombre completo"
+                />
+                @if (isFieldInvalid('nombre')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('nombre') }}</div>
+                }
+              </div>
+
+              <div class="mb-3">
+                <label for="usuario" class="form-label fw-semibold">
+                  <i class="bi bi-at text-primary me-2"></i>Usuario
+                </label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('usuario')"
+                  id="usuario"
+                  formControlName="usuario"
+                  placeholder="Elige un nombre de usuario"
+                />
+                @if (isFieldInvalid('usuario')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('usuario') }}</div>
+                }
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">
+                  <i class="bi bi-envelope-fill text-primary me-2"></i>Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('email')"
+                  id="email"
+                  formControlName="email"
+                  placeholder="tu@email.com"
+                />
+                @if (isFieldInvalid('email')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('email') }}</div>
+                }
+              </div>
+
+              <div class="mb-3">
+                <label for="fechaNacimiento" class="form-label fw-semibold">
+                  <i class="bi bi-calendar-event text-primary me-2"></i>Fecha de nacimiento
+                </label>
+                <input
+                  type="date"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('fechaNacimiento')"
+                  id="fechaNacimiento"
+                  formControlName="fechaNacimiento"
+                />
+                @if (isFieldInvalid('fechaNacimiento')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('fechaNacimiento') }}</div>
+                }
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label fw-semibold">
+                  <i class="bi bi-lock-fill text-primary me-2"></i>Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('password')"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Mínimo 8 caracteres"
+                />
+                @if (isFieldInvalid('password')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('password') }}</div>
+                }
+                <div class="form-text">
+                  <small>
+                    <strong>Requisitos de seguridad:</strong><br />
+                    • Entre 8 y 20 caracteres<br />
+                    • Al menos una mayúscula<br />
+                    • Al menos un número<br />
+                    • Al menos un carácter especial (!@#$%^&*)
+                  </small>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="confirmarPassword" class="form-label fw-semibold">
+                  <i class="bi bi-shield-lock-fill text-primary me-2"></i>Confirmar contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('confirmarPassword') || isPasswordMismatch()"
+                  id="confirmarPassword"
+                  formControlName="confirmarPassword"
+                  placeholder="Repite tu contraseña"
+                />
+                @if (isFieldInvalid('confirmarPassword')) {
+                <div class="invalid-feedback d-block">{{ getFieldError('confirmarPassword') }}</div>
+                } @if (isPasswordMismatch()) {
+                <div class="invalid-feedback d-block">Las contraseñas no coinciden</div>
+                }
+              </div>
+
+              <div class="mb-4">
+                <label for="comentarios" class="form-label fw-semibold">
+                  <i class="bi bi-chat-left-text text-primary me-2"></i>Comentarios (opcional)
+                </label>
+                <textarea
+                  class="form-control"
+                  id="comentarios"
+                  formControlName="comentarios"
+                  rows="3"
+                  placeholder="Cuéntanos sobre tus juegos favoritos..."
+                ></textarea>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                <button type="submit" class="btn btn-primary btn-lg px-5" [disabled]="isLoading">
+                  @if (isLoading) {
+                  <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Creando... } @else {
+                  <i class="bi bi-check-circle me-2"></i>Crear cuenta }
+                </button>
+                <button
+                  type="button"
+                  (click)="onReset()"
+                  class="btn btn-outline-secondary btn-lg px-4"
+                  [disabled]="isLoading"
+                >
+                  <i class="bi bi-arrow-clockwise me-2"></i>Limpiar
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer bg-light text-center py-3">
+            <small class="text-muted">
+              ¿Ya tienes una cuenta?
+              <a routerLink="/sign-in" class="text-primary text-decoration-none fw-semibold"
+                >Inicia sesión aquí</a
+              >
+            </small>
+          </div>
+        </div>
+
+        <div class="row mt-4 text-center">
+          <div class="col-md-4 mb-3">
+            <div class="p-3">
+              <i class="bi bi-lightning-charge-fill text-primary fs-2"></i>
+              <p class="small mb-0 mt-2">Acceso instantáneo</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="p-3">
+              <i class="bi bi-gift-fill text-primary fs-2"></i>
+              <p class="small mb-0 mt-2">Ofertas exclusivas</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="p-3">
+              <i class="bi bi-trophy-fill text-primary fs-2"></i>
+              <p class="small mb-0 mt-2">Recompensas especiales</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

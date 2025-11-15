@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard, guestGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -24,9 +25,30 @@ export const routes: Routes = [
   {
     path: 'checkout',
     loadComponent: () => import('./pages/checkout/checkout').then((m) => m.Checkout),
+    canActivate: [authGuard],
   },
   {
     path: 'confirmation',
     loadComponent: () => import('./pages/confirmation/confirmation').then((m) => m.Confirmation),
+  },
+  {
+    path: 'sign-in',
+    loadComponent: () => import('./pages/sign-in/sign-in').then((m) => m.SignIn),
+    canActivate: [guestGuard],
+  },
+  {
+    path: 'sign-up',
+    loadComponent: () => import('./pages/sign-up/sign-up').then((m) => m.SignUp),
+    canActivate: [guestGuard],
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile').then((m) => m.Profile),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'edit-profile',
+    loadComponent: () => import('./pages/edit-profile/edit-profile').then((m) => m.EditProfile),
+    canActivate: [authGuard],
   },
 ];

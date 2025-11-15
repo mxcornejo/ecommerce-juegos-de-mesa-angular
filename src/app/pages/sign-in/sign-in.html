@@ -1,0 +1,120 @@
+<main>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-header bg-primary text-white text-center py-4 rounded-top">
+            <i class="bi bi-box-arrow-in-right fs-1 mb-2"></i>
+            <h2 class="mb-1">Bienvenido de vuelta</h2>
+            <p class="mb-0 opacity-75">Inicia sesión en Wizard World</p>
+          </div>
+
+          <div class="card-body p-4 p-md-5">
+            <!-- Mensaje de error -->
+            @if (errorMessage) {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              {{ errorMessage }}
+              <button
+                type="button"
+                class="btn-close"
+                (click)="errorMessage = ''"
+                aria-label="Close"
+              ></button>
+            </div>
+            }
+
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="mb-3">
+                <label for="emailUsuario" class="form-label fw-semibold">
+                  <i class="bi bi-person-fill text-primary me-2"></i>Email o Usuario
+                </label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('emailUsuario')"
+                  id="emailUsuario"
+                  formControlName="emailUsuario"
+                  placeholder="Ingresa tu email o usuario"
+                />
+                @if (isFieldInvalid('emailUsuario')) {
+                <div class="invalid-feedback d-block">Este campo es obligatorio.</div>
+                }
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label fw-semibold">
+                  <i class="bi bi-lock-fill text-primary me-2"></i>Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="isFieldInvalid('password')"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Ingresa tu contraseña"
+                />
+                @if (isFieldInvalid('password')) {
+                <div class="invalid-feedback d-block">Contraseña requerida.</div>
+                }
+              </div>
+
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="recordarme"
+                  formControlName="recordarme"
+                />
+                <label class="form-check-label" for="recordarme"> Recordarme </label>
+              </div>
+
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="isLoading">
+                  @if (isLoading) {
+                  <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Iniciando sesión... } @else {
+                  <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión }
+                </button>
+              </div>
+
+              <div class="text-center">
+                <a href="recoverPassword.html" class="text-primary text-decoration-none">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer bg-light text-center py-3">
+            <small class="text-muted">
+              ¿No tienes una cuenta?
+              <a routerLink="/sign-up" class="text-primary text-decoration-none fw-semibold"
+                >Regístrate aquí</a
+              >
+            </small>
+          </div>
+        </div>
+
+        <div class="row mt-4 text-center">
+          <div class="col-md-6 mb-3">
+            <div class="p-3">
+              <i class="bi bi-shield-check text-primary fs-2"></i>
+              <p class="small mb-0 mt-2">Inicio de sesión seguro</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="p-3">
+              <i class="bi bi-cart-check-fill text-primary fs-2"></i>
+              <p class="small mb-0 mt-2">Compras rápidas y fáciles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
