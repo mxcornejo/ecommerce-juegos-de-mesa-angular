@@ -9,6 +9,8 @@ import { User, LoginCredentials, RegisterData } from '../models/user.interface';
 export class AuthService {
   private readonly USERS_KEY = 'ww_users';
   private readonly CURRENT_USER_KEY = 'ww_current_user';
+  private readonly ADMIN_KEY = 'ww_admin_session';
+  private readonly ADMIN_CREDENTIALS = { usuario: 'admin', password: '1234' };
 
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
@@ -16,6 +18,7 @@ export class AuthService {
 
   // Signals para reactividad
   private currentUserSignal = signal<User | null>(null);
+  private adminAuthenticatedSignal = signal<boolean>(false);
 
   // Computed para saber si está autenticado
   isAuthenticated = computed(() => this.currentUserSignal() !== null);
@@ -23,10 +26,14 @@ export class AuthService {
   // Getter público del usuario actual
   currentUser = this.currentUserSignal.asReadonly();
 
+  // Getter público del estado de admin
+  isAdminAuth = this.adminAuthenticatedSignal.asReadonly();
+
   constructor() {
     // Cargar usuario actual al iniciar (solo en el navegador)
     if (this.isBrowser) {
       this.loadCurrentUser();
+      this.loadAdminSession();
     }
   }
 
@@ -356,5 +363,110 @@ export class AuthService {
     }
 
     return { success: true, message: 'Contraseña restablecida exitosamente' };
+  }
+
+  // ============ MÉTODOS DE ADMINISTRADOR ============
+
+  /**
+   * Carga la sesión de admin desde localStorage
+   */
+  private loadAdminSession(): void {
+    if (!this.isBrowser) return;
+
+    const adminSession = localStorage.getItem(this.ADMIN_KEY);
+    if (adminSession === 'true') {
+      this.adminAuthenticatedSignal.set(true);
+    }
+  }
+
+  /**
+   * Inicia sesión como administrador
+   */
+  adminLogin(usuario: string, password: string): { success: boolean; message: string } {
+    if (
+      usuario === this.ADMIN_CREDENTIALS.usuario &&
+      password === this.ADMIN_CREDENTIALS.password
+    ) {
+      this.adminAuthenticatedSignal.set(true);
+      if (this.isBrowser) {
+        localStorage.setItem(this.ADMIN_KEY, 'true');
+      }
+      return { success: true, message: 'Acceso de administrador concedido' };
+    }
+    return { success: false, message: 'Credenciales de administrador incorrectas' };
+  }
+
+  /**
+   * Cierra sesión de administrador
+   */
+  adminLogout(): void {
+    this.adminAuthenticatedSignal.set(false);
+    if (this.isBrowser) {
+      localStorage.removeItem(this.ADMIN_KEY);
+    }
+    this.router.navigate(['/admin-login']);
+  }
+
+  /**
+   * Verifica si el admin está autenticado
+   */
+  isAdminAuthenticated(): boolean {
+    return this.adminAuthenticatedSignal();
+  }
+
+  /**
+   * Obtiene todos los usuarios registrados (solo para admin)
+   */
+  getRegisteredUsers(): User[] {
+    if (!this.isAdminAuthenticated()) {
+      return [];
+    }
+    return this.getAllUsers();
+  }
+
+  /**
+   * Elimina un usuario por ID (solo para admin)
+   */
+  deleteUser(userId: string): { success: boolean; message: string } {
+    if (!this.isAdminAuthenticated()) {
+      return { success: false, message: 'No tienes permisos para esta acción' };
+    }
+
+    const users = this.getAllUsers();
+    const userIndex = users.findIndex((u) => u.id === userId);
+
+    if (userIndex === -1) {
+      return { success: false, message: 'Usuario no encontrado' };
+    }
+
+    const deletedUser = users[userIndex];
+    users.splice(userIndex, 1);
+    this.saveAllUsers(users);
+
+    return { success: true, message: `Usuario ${deletedUser.nombre} eliminado exitosamente` };
+  }
+
+  /**
+   * Obtiene estadísticas de usuarios (solo para admin)
+   */
+  getUserStats(): { total: number; todayRegistrations: number } {
+    if (!this.isAdminAuthenticated()) {
+      return { total: 0, todayRegistrations: 0 };
+    }
+
+    const users = this.getAllUsers();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const todayRegistrations = users.filter((u) => {
+      const userDate = new Date(u.fechaRegistro);
+      userDate.setHours(0, 0, 0, 0);
+      return userDate.getTime() === today.getTime();
+    }).length;
+
+    return {
+      total: users.length,
+      todayRegistrations,
+    };
   }
 }

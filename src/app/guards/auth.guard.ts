@@ -39,3 +39,35 @@ export const guestGuard: CanActivateFn = (route, state) => {
   router.navigate(['/profile']);
   return false;
 };
+
+/**
+ * Guard para proteger rutas de administrador
+ */
+export const adminGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isAdminAuthenticated()) {
+    return true;
+  }
+
+  // Redirigir al login de admin
+  router.navigate(['/admin-login']);
+  return false;
+};
+
+/**
+ * Guard para evitar que admins autenticados accedan al login de admin
+ */
+export const adminGuestGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (!authService.isAdminAuthenticated()) {
+    return true;
+  }
+
+  // Si ya está autenticado como admin, redirigir al dashboard
+  router.navigate(['/admin-dashboard']);
+  return false;
+};

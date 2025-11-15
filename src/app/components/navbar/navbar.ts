@@ -25,6 +25,7 @@ export class Navbar {
   // Exponer signals directamente
   isAuthenticated = this.authService.isAuthenticated;
   currentUser = this.authService.currentUser;
+  isAdminAuth = this.authService.isAdminAuth;
 
   navigateToProducts() {
     this.router.navigate(['/products']);
@@ -33,6 +34,12 @@ export class Navbar {
   onLogout() {
     if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
       this.authService.logout();
+    }
+  }
+
+  onAdminLogout() {
+    if (confirm('¿Cerrar sesión del panel de administración?')) {
+      this.authService.adminLogout();
     }
   }
 }

@@ -1,0 +1,87 @@
+<main>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-xl-5">
+        <div class="card shadow-sm border-0 rounded-3">
+          <div class="card-header bg-primary text-white text-center py-4 rounded-top">
+            <i class="bi bi-shield-lock fs-1 mb-2"></i>
+            <h2 class="mb-1">Ingresar al Panel</h2>
+            <p class="mb-0 opacity-75">Área restringida</p>
+          </div>
+
+          <div class="card-body p-4 p-md-5">
+            <div class="alert alert-info border-0" role="alert">
+              <i class="bi bi-info-circle-fill me-2"></i>
+              <strong>Área restringida</strong> - Solo personal autorizado
+            </div>
+
+            @if (errorMessage()) {
+            <div class="alert alert-danger border-0" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              {{ errorMessage() }}
+            </div>
+            }
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="adminUsuario" class="form-label fw-semibold">
+                  <i class="bi bi-person-badge-fill text-primary me-2"></i>Usuario
+                </label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="adminUsuario"
+                  formControlName="usuario"
+                  placeholder="Usuario de administrador"
+                  [class.is-invalid]="usuario?.invalid && usuario?.touched"
+                />
+                @if (usuario?.invalid && usuario?.touched) {
+                <div class="invalid-feedback d-block">Este campo es obligatorio.</div>
+                }
+              </div>
+
+              <div class="mb-4">
+                <label for="adminPassword" class="form-label fw-semibold">
+                  <i class="bi bi-key-fill text-primary me-2"></i>Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  id="adminPassword"
+                  formControlName="password"
+                  placeholder="Contraseña de administrador"
+                  [class.is-invalid]="password?.invalid && password?.touched"
+                />
+                @if (password?.invalid && password?.touched) {
+                <div class="invalid-feedback d-block">Contraseña requerida.</div>
+                }
+              </div>
+
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="isLoading()">
+                  @if (isLoading()) {
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Verificando... } @else {
+                  <i class="bi bi-shield-lock me-2"></i>Acceder al Panel }
+                </button>
+              </div>
+
+              <div class="text-center">
+                <a routerLink="/" class="text-muted text-decoration-none small">
+                  <i class="bi bi-arrow-left me-1"></i>Volver a la tienda
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer bg-light text-center py-3">
+            <small class="text-muted">
+              <i class="bi bi-info-circle me-1"></i>
+              Este acceso está protegido y monitoreado
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

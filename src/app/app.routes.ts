@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard, guestGuard } from './guards/auth.guard';
+import { authGuard, guestGuard, adminGuard, adminGuestGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -56,5 +56,17 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/recover-password/recover-password').then((m) => m.RecoverPassword),
     canActivate: [guestGuard],
+  },
+  // Rutas de Administrador
+  {
+    path: 'admin-login',
+    loadComponent: () => import('./pages/admin-login/admin-login').then((m) => m.AdminLogin),
+    canActivate: [adminGuestGuard],
+  },
+  {
+    path: 'admin-dashboard',
+    loadComponent: () =>
+      import('./pages/admin-dashboard/admin-dashboard').then((m) => m.AdminDashboard),
+    canActivate: [adminGuard],
   },
 ];
