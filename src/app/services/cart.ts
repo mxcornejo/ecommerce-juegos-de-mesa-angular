@@ -69,6 +69,14 @@ export class Cart {
     this.saveCartToStorage();
   }
 
+  getShippingCost(): number {
+    return this.subtotal() >= 50000 ? 0 : 5000;
+  }
+
+  getFinalTotal(): number {
+    return this.subtotal() + this.getShippingCost();
+  }
+
   private saveCartToStorage(): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('cart', JSON.stringify(this.cartItems()));

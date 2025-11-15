@@ -1,0 +1,165 @@
+<main>
+  <section class="container my-5">
+    <!-- Progress Steps -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex align-items-center">
+            <div
+              class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
+              style="width: 40px; height: 40px"
+            >
+              <i class="bi bi-check-lg"></i>
+            </div>
+            <span class="ms-2 me-3 fw-semibold">Carrito</span>
+          </div>
+          <div class="border-top" style="width: 50px"></div>
+          <div class="d-flex align-items-center">
+            <div
+              class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+              style="width: 40px; height: 40px"
+            >
+              2
+            </div>
+            <span class="ms-2 me-3 fw-semibold">Pago</span>
+          </div>
+          <div class="border-top" style="width: 50px"></div>
+          <div class="d-flex align-items-center">
+            <div
+              class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center"
+              style="width: 40px; height: 40px"
+            >
+              3
+            </div>
+            <span class="ms-2 fw-semibold text-muted">Confirmación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-5 fw-bold mb-4">
+          <i class="bi bi-credit-card me-2"></i>Información de Pago
+        </h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Información de Pago -->
+      <div class="col-lg-7 mb-4">
+        <!-- Información de Envío -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">
+              <i class="bi bi-geo-alt me-2"></i>Información de Envío
+            </h5>
+            <div class="alert alert-info mb-0">
+              <i class="bi bi-info-circle me-2"></i>
+              <small>Se agregará en alguna implementación según pasarela de pago a usar</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Método de Pago -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">
+              <i class="bi bi-wallet2 me-2"></i>Método de Pago
+            </h5>
+            <div class="alert alert-info mb-0">
+              <i class="bi bi-info-circle me-2"></i>
+              <small>Se agregará en alguna implementación según pasarela de pago a usar</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notas del Pedido -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">
+              <i class="bi bi-chat-left-text me-2"></i>Notas del Pedido (Opcional)
+            </h5>
+            <div class="alert alert-info mb-0">
+              <i class="bi bi-info-circle me-2"></i>
+              <small>Se agregará en alguna implementación según pasarela de pago a usar</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen del Pedido -->
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm sticky-top" style="top: 100px">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-4">Resumen del Pedido</h5>
+
+            <!-- Productos -->
+            <div class="mb-3">
+              @for (item of cartItems; track item.product.id) {
+              <div class="d-flex mb-3">
+                <img
+                  [src]="item.product.image"
+                  [alt]="item.product.name"
+                  class="img-thumbnail me-3"
+                  style="width: 60px; height: 60px; object-fit: cover"
+                />
+                <div class="flex-grow-1">
+                  <h6 class="mb-0">{{ item.product.name }}</h6>
+                  <small class="text-muted">Cantidad: {{ item.quantity }}</small>
+                  <div class="fw-bold">
+                    ${{ (item.product.price * item.quantity).toLocaleString('es-CL') }}
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+
+            <hr />
+
+            <!-- Totales -->
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal ({{ totalItems }} producto{{ totalItems !== 1 ? 's' : '' }})</span>
+              <span>${{ subtotal.toLocaleString('es-CL') }}</span>
+            </div>
+            <small class="text-muted d-block mb-2">*IVA incluido</small>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Envío</span>
+              <span [class]="shippingFree ? 'text-success fw-semibold' : ''">
+                {{ shippingFree ? 'Gratis' : '$' + shipping.toLocaleString('es-CL') }}
+              </span>
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between mb-4">
+              <strong class="fs-5">Total</strong>
+              <strong class="text-primary fs-4">${{ total.toLocaleString('es-CL') }}</strong>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-grid gap-2">
+              <button (click)="confirmOrder()" class="btn btn-primary btn-lg">
+                <i class="bi bi-check-circle me-2"></i>
+                Confirmar Pedido
+              </button>
+              <a routerLink="/cart" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-2"></i>
+                Volver al Carrito
+              </a>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="mt-4 pt-3 border-top">
+              <div class="d-flex align-items-center justify-content-center text-muted small">
+                <i class="bi bi-shield-check me-2 fs-5"></i>
+                <span>Compra 100% segura y protegida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
