@@ -55,14 +55,16 @@
             <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" />
             <button class="btn btn-outline-primary" type="submit">Buscar</button>
           </form>
-          <a href="./pages/cart/cart.html" class="btn btn-outline-primary position-relative">
+          <a routerLink="/cart" class="btn btn-outline-primary position-relative">
             <i class="bi bi-cart3"></i>
+            @if (cartItemCount > 0) {
             <span
               id="cart-badge"
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
-              3
+              {{ cartItemCount }}
             </span>
+            }
           </a>
           <div id="user-menu"></div>
         </div>

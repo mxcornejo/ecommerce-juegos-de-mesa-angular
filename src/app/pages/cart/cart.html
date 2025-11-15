@@ -1,0 +1,154 @@
+<main>
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-4 fw-bold mb-4"><i class="bi bi-cart3 me-2"></i>Carrito de Compras</h1>
+      </div>
+    </div>
+
+    @if (cartItems.length === 0) {
+    <div class="row">
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-cart-x display-1 text-muted"></i>
+        <h3 class="mt-4">Tu carrito está vacío</h3>
+        <p class="text-muted">¡Agrega productos para comenzar a comprar!</p>
+        <a routerLink="/" class="btn btn-primary mt-3">
+          <i class="bi bi-arrow-left me-2"></i>
+          Ir a la tienda
+        </a>
+      </div>
+    </div>
+    } @else {
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col" class="text-center">Precio</th>
+                    <th scope="col" class="text-center">Cantidad</th>
+                    <th scope="col" class="text-center">Total</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of cartItems; track item.product.id) {
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                          [src]="item.product.image"
+                          [alt]="item.product.name"
+                          class="img-thumbnail me-3"
+                          style="width: 80px; height: 80px; object-fit: cover"
+                        />
+                        <div>
+                          <h6 class="mb-0">{{ item.product.name }}</h6>
+                          <small class="text-muted">{{ item.product.description }}</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center">${{ item.product.price.toLocaleString('es-CL') }}</td>
+                    <td class="text-center">
+                      <div
+                        class="input-group justify-content-center"
+                        style="width: 120px; margin: 0 auto"
+                      >
+                        <button
+                          class="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          (click)="decreaseQuantity(item.product.id, item.quantity)"
+                        >
+                          -
+                        </button>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm text-center"
+                          [value]="item.quantity"
+                          readonly
+                        />
+                        <button
+                          class="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          (click)="increaseQuantity(item.product.id, item.quantity)"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td class="text-center fw-bold">
+                      ${{ getItemTotal(item.product.price, item.quantity).toLocaleString('es-CL') }}
+                    </td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="removeItem(item.product.id)"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm sticky-top" style="top: 100px">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-4">Resumen del Pedido</h5>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal ({{ totalItems }} producto{{ totalItems !== 1 ? 's' : '' }})</span>
+              <span>${{ subtotal.toLocaleString('es-CL') }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Envío</span>
+              <span class="text-success fw-semibold">{{ shippingFree ? 'Gratis' : '$5.000' }}</span>
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between mb-4">
+              <strong>Total</strong>
+              <strong class="text-primary fs-4"
+                >${{ (shippingFree ? total : total + 5000).toLocaleString('es-CL') }}</strong
+              >
+            </div>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary btn-lg">
+                <i class="bi bi-credit-card me-2"></i>
+                Proceder al Pago
+              </button>
+              <a routerLink="/" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-2"></i>
+                Seguir Comprando
+              </a>
+            </div>
+
+            <div class="alert alert-info mt-4 mb-0" role="alert">
+              <i class="bi bi-truck me-2"></i>
+              <small
+                ><strong>Envío gratis</strong> en compras sobre $50.000
+                {{
+                  !shippingFree
+                    ? '(Te faltan $' + (50000 - subtotal).toLocaleString('es-CL') + ')'
+                    : ''
+                }}</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </section>
+</main>

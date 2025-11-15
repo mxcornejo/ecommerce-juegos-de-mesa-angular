@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../models/product.interface';
+import { Cart } from '../../services/cart';
 
 @Component({
   selector: 'app-card-product',
@@ -10,4 +11,11 @@ import { Product } from '../../models/product.interface';
 })
 export class CardProduct {
   @Input() product!: Product;
+  cartService = inject(Cart);
+
+  addToCart(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.cartService.addToCart(this.product, 1);
+  }
 }

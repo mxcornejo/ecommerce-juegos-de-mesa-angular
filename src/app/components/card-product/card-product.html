@@ -15,6 +15,10 @@
         <div>
           <span class="h5 text-primary mb-0">${{ product.price.toLocaleString('es-CL') }}</span>
         </div>
+        <button class="btn btn-primary btn-sm" (click)="addToCart($event)" type="button">
+          <i class="bi bi-cart-plus me-1"></i>
+          Agregar
+        </button>
       </div>
     </div>
   </div>
