@@ -240,4 +240,121 @@ export class AuthService {
       day: 'numeric',
     });
   }
+
+  /**
+   * Verifica si existe un usuario con el email proporcionado
+   */
+  checkEmailExists(email: string): { exists: boolean; message: string } {
+    const users = this.getAllUsers();
+    const user = users.find((u) => u.email.toLowerCase() === email.toLowerCase());
+
+    if (user) {
+      return { exists: true, message: 'Email encontrado' };
+    }
+    return { exists: false, message: 'No existe una cuenta con este email' };
+  }
+
+  /**
+   * Genera un código de verificación de 6 dígitos
+   */
+  generateVerificationCode(): string {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+
+  /**
+   * Simula el envío de un código de verificación (en producción enviaría un email real)
+   */
+  sendVerificationCode(email: string): { success: boolean; message: string; code?: string } {
+    const result = this.checkEmailExists(email);
+
+    if (!result.exists) {
+      return { success: false, message: result.message };
+    }
+
+    const code = this.generateVerificationCode();
+
+    // En producción, aquí se enviaría un email real
+    // Por ahora, guardamos el código temporalmente en localStorage
+    if (this.isBrowser) {
+      const recoveryData = {
+        email: email.toLowerCase(),
+        code,
+        timestamp: Date.now(),
+        expires: Date.now() + 10 * 60 * 1000, // Expira en 10 minutos
+      };
+      localStorage.setItem('ww_recovery_code', JSON.stringify(recoveryData));
+    }
+
+    return {
+      success: true,
+      message: 'Código de verificación enviado',
+      code, // En producción NO se devolvería el código
+    };
+  }
+
+  /**
+   * Verifica el código de recuperación
+   */
+  verifyRecoveryCode(email: string, code: string): { success: boolean; message: string } {
+    if (!this.isBrowser) {
+      return { success: false, message: 'Operación no disponible' };
+    }
+
+    const recoveryDataJson = localStorage.getItem('ww_recovery_code');
+    if (!recoveryDataJson) {
+      return { success: false, message: 'No hay código de recuperación activo' };
+    }
+
+    try {
+      const recoveryData = JSON.parse(recoveryDataJson);
+
+      // Verificar si el código expiró
+      if (Date.now() > recoveryData.expires) {
+        localStorage.removeItem('ww_recovery_code');
+        return { success: false, message: 'El código ha expirado. Solicita uno nuevo' };
+      }
+
+      // Verificar email y código
+      if (recoveryData.email.toLowerCase() === email.toLowerCase() && recoveryData.code === code) {
+        return { success: true, message: 'Código verificado correctamente' };
+      }
+
+      return { success: false, message: 'Código incorrecto' };
+    } catch {
+      return { success: false, message: 'Error al verificar el código' };
+    }
+  }
+
+  /**
+   * Restablece la contraseña del usuario
+   */
+  resetPassword(
+    email: string,
+    code: string,
+    newPassword: string
+  ): { success: boolean; message: string } {
+    // Verificar el código primero
+    const codeVerification = this.verifyRecoveryCode(email, code);
+    if (!codeVerification.success) {
+      return codeVerification;
+    }
+
+    const users = this.getAllUsers();
+    const userIndex = users.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
+
+    if (userIndex === -1) {
+      return { success: false, message: 'Usuario no encontrado' };
+    }
+
+    // Actualizar contraseña
+    users[userIndex].password = newPassword;
+    this.saveAllUsers(users);
+
+    // Limpiar código de recuperación
+    if (this.isBrowser) {
+      localStorage.removeItem('ww_recovery_code');
+    }
+
+    return { success: true, message: 'Contraseña restablecida exitosamente' };
+  }
 }

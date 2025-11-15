@@ -51,4 +51,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/edit-profile/edit-profile').then((m) => m.EditProfile),
     canActivate: [authGuard],
   },
+  {
+    path: 'recover-password',
+    loadComponent: () =>
+      import('./pages/recover-password/recover-password').then((m) => m.RecoverPassword),
+    canActivate: [guestGuard],
+  },
 ];
