@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router, ActivatedRoute, UrlTree } from '@angular/router';
+import { of } from 'rxjs';
 import { Product } from './product';
 
 describe('Product', () => {
@@ -7,10 +8,31 @@ describe('Product', () => {
   let fixture: ComponentFixture<Product>;
 
   beforeEach(async () => {
+    const routerSpy = jasmine.createSpyObj(
+      'Router',
+      ['navigate', 'createUrlTree', 'serializeUrl'],
+      { events: of({}) }
+    );
+    routerSpy.createUrlTree.and.returnValue({} as UrlTree);
+    routerSpy.serializeUrl.and.returnValue('');
+
+    const activatedRouteMock = {
+      params: of({}),
+      snapshot: {
+        params: {},
+        paramMap: {
+          get: (key: string) => (key === 'id' ? '1' : null),
+        },
+      },
+    };
+
     await TestBed.configureTestingModule({
-      imports: [Product]
-    })
-    .compileComponents();
+      imports: [Product],
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        { provide: ActivatedRoute, useValue: activatedRouteMock },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Product);
     component = fixture.componentInstance;

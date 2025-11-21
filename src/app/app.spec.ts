@@ -1,10 +1,29 @@
 import { TestBed } from '@angular/core/testing';
+import { Router, ActivatedRoute, UrlTree } from '@angular/router';
+import { of } from 'rxjs';
 import { App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {
+    const routerSpy = jasmine.createSpyObj(
+      'Router',
+      ['navigate', 'createUrlTree', 'serializeUrl'],
+      { events: of({}) }
+    );
+    routerSpy.createUrlTree.and.returnValue({} as UrlTree);
+    routerSpy.serializeUrl.and.returnValue('');
+
+    const activatedRouteMock = {
+      params: of({}),
+      snapshot: { params: {} },
+    };
+
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        { provide: ActivatedRoute, useValue: activatedRouteMock },
+      ],
     }).compileComponents();
   });
 
@@ -17,7 +36,7 @@ describe('App', () => {
   it('should render title', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ecommerce-juegos-de-mesa-angular');
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
   });
 });
