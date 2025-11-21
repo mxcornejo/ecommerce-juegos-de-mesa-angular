@@ -5,6 +5,7 @@ export interface User {
   email: string;
   password: string;
   fechaNacimiento: string;
+  direccionDespacho?: string;
   comentarios?: string;
   fechaRegistro: string;
 }
@@ -20,5 +21,6 @@ export interface RegisterData {
   email: string;
   password: string;
   fechaNacimiento: string;
+  direccionDespacho?: string;
   comentarios?: string;
 }

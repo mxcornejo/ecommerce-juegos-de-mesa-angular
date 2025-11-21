@@ -104,6 +104,20 @@
               </div>
 
               <div class="mb-3">
+                <label for="direccionDespacho" class="form-label fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-primary me-2"></i>Dirección de despacho
+                  (opcional)
+                </label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="direccionDespacho"
+                  formControlName="direccionDespacho"
+                  placeholder="Ej: Av. Principal 123, Depto 4B"
+                />
+              </div>
+
+              <div class="mb-3">
                 <label for="password" class="form-label fw-semibold">
                   <i class="bi bi-lock-fill text-primary me-2"></i>Contraseña
                 </label>
@@ -113,7 +127,7 @@
                   [class.is-invalid]="isFieldInvalid('password')"
                   id="password"
                   formControlName="password"
-                  placeholder="Mínimo 8 caracteres"
+                  placeholder="Mínimo 6 caracteres"
                 />
                 @if (isFieldInvalid('password')) {
                 <div class="invalid-feedback d-block">{{ getFieldError('password') }}</div>
@@ -121,10 +135,9 @@
                 <div class="form-text">
                   <small>
                     <strong>Requisitos de seguridad:</strong><br />
-                    • Entre 8 y 20 caracteres<br />
-                    • Al menos una mayúscula<br />
-                    • Al menos un número<br />
-                    • Al menos un carácter especial (!@#$%^&*)
+                    • Entre 6 y 18 caracteres<br />
+                    • Al menos una letra mayúscula<br />
+                    • Al menos un número
                   </small>
                 </div>
               </div>

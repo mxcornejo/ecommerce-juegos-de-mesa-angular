@@ -49,6 +49,7 @@ export class SignUp implements OnInit {
         fechaNacimiento: ['', [Validators.required, this.ageValidator]],
         password: ['', [Validators.required, this.passwordValidator]],
         confirmarPassword: ['', [Validators.required]],
+        direccionDespacho: [''], // Campo opcional
         comentarios: [''],
       },
       { validators: this.passwordMatchValidator }
@@ -62,10 +63,9 @@ export class SignUp implements OnInit {
 
     const hasUpperCase = /[A-Z]/.test(value);
     const hasNumber = /[0-9]/.test(value);
-    const hasSpecial = /[!@#$%^&*]/.test(value);
-    const isValidLength = value.length >= 8 && value.length <= 20;
+    const isValidLength = value.length >= 6 && value.length <= 18;
 
-    const passwordValid = hasUpperCase && hasNumber && hasSpecial && isValidLength;
+    const passwordValid = hasUpperCase && hasNumber && isValidLength;
 
     return passwordValid ? null : { passwordStrength: true };
   }
@@ -113,6 +113,7 @@ export class SignUp implements OnInit {
       email: formValue.email,
       fechaNacimiento: formValue.fechaNacimiento,
       password: formValue.password,
+      direccionDespacho: formValue.direccionDespacho,
       comentarios: formValue.comentarios,
     });
 
