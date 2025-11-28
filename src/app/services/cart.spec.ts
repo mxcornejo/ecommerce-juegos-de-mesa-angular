@@ -54,10 +54,6 @@ describe('Cart', () => {
     expect(service).toBeTruthy();
   });
 
-  // ===============================================
-  // PRUEBAS: Cálculo del total cuando cambia la cantidad
-  // ===============================================
-
   describe('Cálculo del total del carrito cuando cambia la cantidad de un producto', () => {
     describe('Subtotal de cada producto', () => {
       it('debería calcular correctamente el subtotal cuando se agrega un producto con cantidad 1', () => {
