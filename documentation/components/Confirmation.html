@@ -1,0 +1,866 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ecommerce-juegos-de-mesa-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ecommerce-juegos-de-mesa-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Confirmation</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/confirmation/confirmation.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-confirmation</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./confirmation.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./confirmation.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#order" >order</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#orderService" >orderService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#router" >router</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#printOrder" >printOrder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#orderDate" >orderDate</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="20"
+                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="printOrder"></a>
+                    <span class="name">
+                        <span ><b>printOrder</b></span>
+                        <a href="#printOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>printOrder()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="order"></a>
+                    <span class="name">
+                        <span ><b>order</b></span>
+                        <a href="#order"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Order.html" target="_self" >Order | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>orderService</b></span>
+                        <a href="#orderService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(OrderService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivatedRoute)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderDate"></a>
+                        <span class="name"><b>orderDate</b><a href="#orderDate"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>orderDate()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:36</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router, RouterLink } from &#x27;@angular/router&#x27;;
+import { OrderService } from &#x27;../../services/order&#x27;;
+import { Order } from &#x27;../../models/order.interface&#x27;;
+
+@Component({
+  selector: &#x27;app-confirmation&#x27;,
+  imports: [CommonModule, RouterLink],
+  templateUrl: &#x27;./confirmation.html&#x27;,
+  styleUrl: &#x27;./confirmation.scss&#x27;,
+})
+export class Confirmation implements OnInit {
+  private route &#x3D; inject(ActivatedRoute);
+  private router &#x3D; inject(Router);
+  private orderService &#x3D; inject(OrderService);
+
+  order: Order | null &#x3D; null;
+
+  ngOnInit(): void {
+    const orderNumber &#x3D; this.route.snapshot.queryParamMap.get(&#x27;orderNumber&#x27;);
+
+    if (orderNumber) {
+      this.order &#x3D; this.orderService.getOrderByNumber(orderNumber);
+    } else {
+      // Intentar obtener la última orden
+      this.order &#x3D; this.orderService.getLastOrder();
+    }
+
+    // Si no hay orden, redirigir al inicio
+    if (!this.order) {
+      this.router.navigate([&#x27;/&#x27;]);
+    }
+  }
+
+  get orderDate(): string {
+    if (!this.order) return &#x27;&#x27;;
+    return new Date(this.order.date).toLocaleDateString(&#x27;es-CL&#x27;, {
+      day: &#x27;2-digit&#x27;,
+      month: &#x27;long&#x27;,
+      year: &#x27;numeric&#x27;,
+      hour: &#x27;2-digit&#x27;,
+      minute: &#x27;2-digit&#x27;,
+    });
+  }
+
+  printOrder(): void {
+    window.print();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;main&gt;
+  &lt;section class&#x3D;&quot;container my-5&quot; *ngIf&#x3D;&quot;order&quot;&gt;
+    &lt;!-- Progress Steps --&gt;
+    &lt;div class&#x3D;&quot;row mb-5&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex justify-content-center align-items-center&quot;&gt;
+          &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+            &lt;div
+              class&#x3D;&quot;bg-success text-white rounded-circle d-flex align-items-center justify-content-center&quot;
+              style&#x3D;&quot;width: 40px; height: 40px&quot;
+            &gt;
+              &lt;i class&#x3D;&quot;bi bi-check-lg&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;ms-2 me-3 fw-semibold&quot;&gt;Carrito&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;border-top&quot; style&#x3D;&quot;width: 50px&quot;&gt;&lt;/div&gt;
+          &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+            &lt;div
+              class&#x3D;&quot;bg-success text-white rounded-circle d-flex align-items-center justify-content-center&quot;
+              style&#x3D;&quot;width: 40px; height: 40px&quot;
+            &gt;
+              &lt;i class&#x3D;&quot;bi bi-check-lg&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;ms-2 me-3 fw-semibold&quot;&gt;Pago&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;border-top&quot; style&#x3D;&quot;width: 50px&quot;&gt;&lt;/div&gt;
+          &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+            &lt;div
+              class&#x3D;&quot;bg-success text-white rounded-circle d-flex align-items-center justify-content-center&quot;
+              style&#x3D;&quot;width: 40px; height: 40px&quot;
+            &gt;
+              &lt;i class&#x3D;&quot;bi bi-check-lg&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;ms-2 fw-semibold text-success&quot;&gt;Confirmación&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Confirmación --&gt;
+    &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+        &lt;div class&#x3D;&quot;card border-0 shadow-lg&quot;&gt;
+          &lt;div class&#x3D;&quot;card-body text-center py-5&quot;&gt;
+            &lt;!-- Icono de éxito animado --&gt;
+            &lt;div class&#x3D;&quot;success-checkmark mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;check-icon&quot;&gt;
+                &lt;span class&#x3D;&quot;icon-line line-tip&quot;&gt;&lt;/span&gt;
+                &lt;span class&#x3D;&quot;icon-line line-long&quot;&gt;&lt;/span&gt;
+                &lt;div class&#x3D;&quot;icon-circle&quot;&gt;&lt;/div&gt;
+                &lt;div class&#x3D;&quot;icon-fix&quot;&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;h1 class&#x3D;&quot;display-4 fw-bold text-success mb-3&quot;&gt;¡Pedido Confirmado!&lt;/h1&gt;
+            &lt;p class&#x3D;&quot;lead text-muted mb-4&quot;&gt;Gracias por tu compra en Wizard World&lt;/p&gt;
+
+            &lt;!-- Número de Orden --&gt;
+            &lt;div class&#x3D;&quot;alert alert-success mb-4&quot; role&#x3D;&quot;alert&quot;&gt;
+              &lt;h5 class&#x3D;&quot;alert-heading mb-2&quot;&gt;&lt;i class&#x3D;&quot;bi bi-receipt me-2&quot;&gt;&lt;/i&gt;Número de Orden&lt;/h5&gt;
+              &lt;h3 class&#x3D;&quot;mb-0&quot;&gt;#{{ order.orderNumber }}&lt;/h3&gt;
+              &lt;small class&#x3D;&quot;text-muted&quot;&gt;{{ orderDate }}&lt;/small&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Resumen del Pedido --&gt;
+            &lt;div class&#x3D;&quot;card bg-light border-0 mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h6 class&#x3D;&quot;card-title fw-bold mb-3 text-start&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-box-seam me-2 text-primary&quot;&gt;&lt;/i&gt;
+                  Resumen del Pedido
+                &lt;/h6&gt;
+                &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+                  @for (item of order.items; track item.product.id) {
+                  &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center mb-2&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+                      &lt;img
+                        [src]&#x3D;&quot;item.product.image&quot;
+                        [alt]&#x3D;&quot;item.product.name&quot;
+                        class&#x3D;&quot;img-thumbnail me-2&quot;
+                        style&#x3D;&quot;width: 50px; height: 50px; object-fit: cover&quot;
+                      /&gt;
+                      &lt;div&gt;
+                        &lt;div class&#x3D;&quot;fw-semibold&quot;&gt;{{ item.product.name }}&lt;/div&gt;
+                        &lt;small class&#x3D;&quot;text-muted&quot;&gt;Cantidad: {{ item.quantity }}&lt;/small&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;span&gt;${{ (item.product.price * item.quantity).toLocaleString(&#x27;es-CL&#x27;) }}&lt;/span&gt;
+                  &lt;/div&gt;
+                  }
+                &lt;/div&gt;
+                &lt;hr /&gt;
+                &lt;div class&#x3D;&quot;d-flex justify-content-between mb-2&quot;&gt;
+                  &lt;span&gt;Subtotal:&lt;/span&gt;
+                  &lt;span&gt;${{ order.subtotal.toLocaleString(&#x27;es-CL&#x27;) }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;small class&#x3D;&quot;text-muted d-block mb-2&quot;&gt;*IVA incluido&lt;/small&gt;
+                &lt;div class&#x3D;&quot;d-flex justify-content-between mb-2&quot;&gt;
+                  &lt;span&gt;Envío:&lt;/span&gt;
+                  &lt;span [class]&#x3D;&quot;order.shipping &#x3D;&#x3D;&#x3D; 0 ? &#x27;text-success fw-semibold&#x27; : &#x27;&#x27;&quot;&gt;
+                    {{
+                      order.shipping &#x3D;&#x3D;&#x3D; 0 ? &#x27;Gratis&#x27; : &#x27;$&#x27; + order.shipping.toLocaleString(&#x27;es-CL&#x27;)
+                    }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;hr /&gt;
+                &lt;div class&#x3D;&quot;d-flex justify-content-between&quot;&gt;
+                  &lt;strong class&#x3D;&quot;fs-5&quot;&gt;Total:&lt;/strong&gt;
+                  &lt;strong class&#x3D;&quot;text-primary fs-4&quot;
+                    &gt;${{ order.total.toLocaleString(&#x27;es-CL&#x27;) }}&lt;/strong
+                  &gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Información adicional --&gt;
+            &lt;div class&#x3D;&quot;alert alert-info mb-4&quot; role&#x3D;&quot;alert&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-info-circle me-2&quot;&gt;&lt;/i&gt;
+              &lt;strong&gt;¡Importante!&lt;/strong&gt; Recibirás un email de confirmación con todos los
+              detalles de tu pedido y el número de seguimiento en las próximas 24 horas.
+            &lt;/div&gt;
+
+            &lt;!-- Tiempo estimado de entrega --&gt;
+            &lt;div class&#x3D;&quot;row mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;col-md-4 mb-2&quot;&gt;
+                &lt;div class&#x3D;&quot;p-3 bg-light rounded&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-truck fs-3 text-primary mb-2&quot;&gt;&lt;/i&gt;
+                  &lt;p class&#x3D;&quot;mb-0 small fw-bold&quot;&gt;
+                    {{ order.shipping &#x3D;&#x3D;&#x3D; 0 ? &#x27;Envío Gratis&#x27; : &#x27;Envío Standard&#x27; }}
+                  &lt;/p&gt;
+                  &lt;p class&#x3D;&quot;mb-0 text-muted&quot; style&#x3D;&quot;font-size: 0.8rem&quot;&gt;A todo Chile&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-md-4 mb-2&quot;&gt;
+                &lt;div class&#x3D;&quot;p-3 bg-light rounded&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-calendar-check fs-3 text-primary mb-2&quot;&gt;&lt;/i&gt;
+                  &lt;p class&#x3D;&quot;mb-0 small fw-bold&quot;&gt;Entrega Estimada&lt;/p&gt;
+                  &lt;p class&#x3D;&quot;mb-0 text-muted&quot; style&#x3D;&quot;font-size: 0.8rem&quot;&gt;3-5 días hábiles&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-md-4 mb-2&quot;&gt;
+                &lt;div class&#x3D;&quot;p-3 bg-light rounded&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-shield-check fs-3 text-primary mb-2&quot;&gt;&lt;/i&gt;
+                  &lt;p class&#x3D;&quot;mb-0 small fw-bold&quot;&gt;Compra Segura&lt;/p&gt;
+                  &lt;p class&#x3D;&quot;mb-0 text-muted&quot; style&#x3D;&quot;font-size: 0.8rem&quot;&gt;100% Protegida&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Botones de acción --&gt;
+            &lt;div class&#x3D;&quot;d-grid gap-2 d-md-flex justify-content-md-center&quot;&gt;
+              &lt;a routerLink&#x3D;&quot;/&quot; class&#x3D;&quot;btn btn-primary btn-lg px-5&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-house-door me-2&quot;&gt;&lt;/i&gt;
+                Volver al Inicio
+              &lt;/a&gt;
+              &lt;button (click)&#x3D;&quot;printOrder()&quot; class&#x3D;&quot;btn btn-outline-secondary btn-lg px-5&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-printer me-2&quot;&gt;&lt;/i&gt;
+                Imprimir
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><main>  <section class="container my-5" *ngIf="order">    <!-- Progress Steps -->    <div class="row mb-5">      <div class="col-12">        <div class="d-flex justify-content-center align-items-center">          <div class="d-flex align-items-center">            <div              class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center"              style="width: 40px; height: 40px"            >              <i class="bi bi-check-lg"></i>            </div>            <span class="ms-2 me-3 fw-semibold">Carrito</span>          </div>          <div class="border-top" style="width: 50px"></div>          <div class="d-flex align-items-center">            <div              class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center"              style="width: 40px; height: 40px"            >              <i class="bi bi-check-lg"></i>            </div>            <span class="ms-2 me-3 fw-semibold">Pago</span>          </div>          <div class="border-top" style="width: 50px"></div>          <div class="d-flex align-items-center">            <div              class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center"              style="width: 40px; height: 40px"            >              <i class="bi bi-check-lg"></i>            </div>            <span class="ms-2 fw-semibold text-success">Confirmación</span>          </div>        </div>      </div>    </div>    <!-- Confirmación -->    <div class="row justify-content-center">      <div class="col-lg-8">        <div class="card border-0 shadow-lg">          <div class="card-body text-center py-5">            <!-- Icono de éxito animado -->            <div class="success-checkmark mb-4">              <div class="check-icon">                <span class="icon-line line-tip"></span>                <span class="icon-line line-long"></span>                <div class="icon-circle"></div>                <div class="icon-fix"></div>              </div>            </div>            <h1 class="display-4 fw-bold text-success mb-3">¡Pedido Confirmado!</h1>            <p class="lead text-muted mb-4">Gracias por tu compra en Wizard World</p>            <!-- Número de Orden -->            <div class="alert alert-success mb-4" role="alert">              <h5 class="alert-heading mb-2"><i class="bi bi-receipt me-2"></i>Número de Orden</h5>              <h3 class="mb-0">#{{ order.orderNumber }}</h3>              <small class="text-muted">{{ orderDate }}</small>            </div>            <!-- Resumen del Pedido -->            <div class="card bg-light border-0 mb-4">              <div class="card-body">                <h6 class="card-title fw-bold mb-3 text-start">                  <i class="bi bi-box-seam me-2 text-primary"></i>                  Resumen del Pedido                </h6>                <div class="mb-3">                  @for (item of order.items; track item.product.id) {                  <div class="d-flex justify-content-between align-items-center mb-2">                    <div class="d-flex align-items-center">                      <img                        [src]="item.product.image"                        [alt]="item.product.name"                        class="img-thumbnail me-2"                        style="width: 50px; height: 50px; object-fit: cover"                      />                      <div>                        <div class="fw-semibold">{{ item.product.name }}</div>                        <small class="text-muted">Cantidad: {{ item.quantity }}</small>                      </div>                    </div>                    <span>${{ (item.product.price * item.quantity).toLocaleString(\'es-CL\') }}</span>                  </div>                  }                </div>                <hr />                <div class="d-flex justify-content-between mb-2">                  <span>Subtotal:</span>                  <span>${{ order.subtotal.toLocaleString(\'es-CL\') }}</span>                </div>                <small class="text-muted d-block mb-2">*IVA incluido</small>                <div class="d-flex justify-content-between mb-2">                  <span>Envío:</span>                  <span [class]="order.shipping === 0 ? \'text-success fw-semibold\' : \'\'">                    {{                      order.shipping === 0 ? \'Gratis\' : \'$\' + order.shipping.toLocaleString(\'es-CL\')                    }}                  </span>                </div>                <hr />                <div class="d-flex justify-content-between">                  <strong class="fs-5">Total:</strong>                  <strong class="text-primary fs-4"                    >${{ order.total.toLocaleString(\'es-CL\') }}</strong                  >                </div>              </div>            </div>            <!-- Información adicional -->            <div class="alert alert-info mb-4" role="alert">              <i class="bi bi-info-circle me-2"></i>              <strong>¡Importante!</strong> Recibirás un email de confirmación con todos los              detalles de tu pedido y el número de seguimiento en las próximas 24 horas.            </div>            <!-- Tiempo estimado de entrega -->            <div class="row mb-4">              <div class="col-md-4 mb-2">                <div class="p-3 bg-light rounded">                  <i class="bi bi-truck fs-3 text-primary mb-2"></i>                  <p class="mb-0 small fw-bold">                    {{ order.shipping === 0 ? \'Envío Gratis\' : \'Envío Standard\' }}                  </p>                  <p class="mb-0 text-muted" style="font-size: 0.8rem">A todo Chile</p>                </div>              </div>              <div class="col-md-4 mb-2">                <div class="p-3 bg-light rounded">                  <i class="bi bi-calendar-check fs-3 text-primary mb-2"></i>                  <p class="mb-0 small fw-bold">Entrega Estimada</p>                  <p class="mb-0 text-muted" style="font-size: 0.8rem">3-5 días hábiles</p>                </div>              </div>              <div class="col-md-4 mb-2">                <div class="p-3 bg-light rounded">                  <i class="bi bi-shield-check fs-3 text-primary mb-2"></i>                  <p class="mb-0 small fw-bold">Compra Segura</p>                  <p class="mb-0 text-muted" style="font-size: 0.8rem">100% Protegida</p>                </div>              </div>            </div>            <!-- Botones de acción -->            <div class="d-grid gap-2 d-md-flex justify-content-md-center">              <a routerLink="/" class="btn btn-primary btn-lg px-5">                <i class="bi bi-house-door me-2"></i>                Volver al Inicio              </a>              <button (click)="printOrder()" class="btn btn-outline-secondary btn-lg px-5">                <i class="bi bi-printer me-2"></i>                Imprimir              </button>            </div>          </div>        </div>      </div>    </div>  </section></main></div>'
+    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'AdminLogin', 'selector': 'app-admin-login'},{'name': 'App', 'selector': 'app-root'},{'name': 'Banner', 'selector': 'app-banner'},{'name': 'CardCategory', 'selector': 'app-card-category'},{'name': 'CardProduct', 'selector': 'app-card-product'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'Categories', 'selector': 'app-categories'},{'name': 'Checkout', 'selector': 'app-checkout'},{'name': 'Confirmation', 'selector': 'app-confirmation'},{'name': 'EditProfile', 'selector': 'app-edit-profile'},{'name': 'Footer', 'selector': 'app-footer'},{'name': 'Hero', 'selector': 'app-hero'},{'name': 'Home', 'selector': 'app-home'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Product', 'selector': 'app-product'},{'name': 'Products', 'selector': 'app-products'},{'name': 'Profile', 'selector': 'app-profile'},{'name': 'RecoverPassword', 'selector': 'app-recover-password'},{'name': 'SignIn', 'selector': 'app-sign-in'},{'name': 'SignUp', 'selector': 'app-sign-up'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Confirmation'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Confirmation.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

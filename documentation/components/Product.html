@@ -1,0 +1,1115 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ecommerce-juegos-de-mesa-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ecommerce-juegos-de-mesa-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Product</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/product/product.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-product</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./product.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./product.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cartService" >cartService</a>
+                            </li>
+                            <li>
+                                <a href="#category" >category</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#discountPercentage" >discountPercentage</a>
+                            </li>
+                            <li>
+                                <a href="#product" >product</a>
+                            </li>
+                            <li>
+                                <a href="#quantity" >quantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#router" >router</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addToCart" >addToCart</a>
+                            </li>
+                            <li>
+                                <a href="#decreaseQuantity" >decreaseQuantity</a>
+                            </li>
+                            <li>
+                                <a href="#increaseQuantity" >increaseQuantity</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#discount" >discount</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addToCart"></a>
+                    <span class="name">
+                        <span ><b>addToCart</b></span>
+                        <a href="#addToCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addToCart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/pages/product/product.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decreaseQuantity"></a>
+                    <span class="name">
+                        <span ><b>decreaseQuantity</b></span>
+                        <a href="#decreaseQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>decreaseQuantity()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/pages/product/product.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseQuantity"></a>
+                    <span class="name">
+                        <span ><b>increaseQuantity</b></span>
+                        <a href="#increaseQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>increaseQuantity()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/pages/product/product.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/pages/product/product.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cartService"></a>
+                    <span class="name">
+                        <span ><b>cartService</b></span>
+                        <a href="#cartService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Cart)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/product/product.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="category"></a>
+                    <span class="name">
+                        <span ><b>category</b></span>
+                        <a href="#category"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Category.html" target="_self" >Category | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/product/product.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="discountPercentage"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>discountPercentage</b></span>
+                        <a href="#discountPercentage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>15</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/product/product.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="product"></a>
+                    <span class="name">
+                        <span ><b>product</b></span>
+                        <a href="#product"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >ProductModel | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/product/product.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="quantity"></a>
+                    <span class="name">
+                        <span ><b>quantity</b></span>
+                        <a href="#quantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/product/product.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivatedRoute)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/product/product.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/product/product.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="discount"></a>
+                        <span class="name"><b>discount</b><a href="#discount"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>discount()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/product/product.ts:34</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, inject, signal } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, RouterLink, Router } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Product as ProductModel } from &#x27;../../models/product.interface&#x27;;
+import { Category } from &#x27;../../models/category.interface&#x27;;
+import { PRODUCTS, CATEGORIES } from &#x27;../../data/mock-data&#x27;;
+import { Cart } from &#x27;../../services/cart&#x27;;
+
+@Component({
+  selector: &#x27;app-product&#x27;,
+  imports: [CommonModule, RouterLink],
+  templateUrl: &#x27;./product.html&#x27;,
+  styleUrl: &#x27;./product.scss&#x27;,
+})
+export class Product implements OnInit {
+  private route &#x3D; inject(ActivatedRoute);
+  private router &#x3D; inject(Router);
+  cartService &#x3D; inject(Cart);
+
+  product: ProductModel | undefined;
+  category: Category | undefined;
+  readonly discountPercentage &#x3D; 15;
+  quantity &#x3D; signal(1);
+
+  ngOnInit(): void {
+    const productId &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;));
+    this.product &#x3D; PRODUCTS.find((p) &#x3D;&gt; p.id &#x3D;&#x3D;&#x3D; productId);
+
+    if (this.product) {
+      this.category &#x3D; CATEGORIES.find((c) &#x3D;&gt; c.id &#x3D;&#x3D;&#x3D; this.product!.categoryId);
+    }
+  }
+
+  get discount(): number {
+    // Calcula un descuento del 15% para mostrar el precio original
+    return this.product ? Math.round(this.product.price / 0.85) : 0;
+  }
+
+  increaseQuantity() {
+    if (this.quantity() &lt; 10) {
+      this.quantity.update((q) &#x3D;&gt; q + 1);
+    }
+  }
+
+  decreaseQuantity() {
+    if (this.quantity() &gt; 1) {
+      this.quantity.update((q) &#x3D;&gt; q - 1);
+    }
+  }
+
+  addToCart() {
+    if (this.product) {
+      this.cartService.addToCart(this.product, this.quantity());
+      this.router.navigate([&#x27;/cart&#x27;]);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;container my-5&quot; *ngIf&#x3D;&quot;product&quot;&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;!-- Imagen del Producto --&gt;
+    &lt;div class&#x3D;&quot;col-lg-6 mb-4&quot;&gt;
+      &lt;div class&#x3D;&quot;card border-0 shadow-sm&quot;&gt;
+        &lt;div class&#x3D;&quot;position-relative&quot;&gt;
+          &lt;img
+            [src]&#x3D;&quot;product.image&quot;
+            class&#x3D;&quot;card-img-top rounded&quot;
+            [alt]&#x3D;&quot;product.name&quot;
+            style&#x3D;&quot;width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa&quot;
+          /&gt;
+          &lt;span class&#x3D;&quot;position-absolute top-0 end-0 badge bg-danger m-3 fs-6&quot;&gt;
+            -{{ discountPercentage }}%
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Información del Producto --&gt;
+    &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;span class&#x3D;&quot;badge bg-primary mb-2&quot; *ngIf&#x3D;&quot;category&quot;&gt;{{ category.name }}&lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;display-5 fw-bold mb-3&quot;&gt;{{ product.name }}&lt;/h1&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Precio --&gt;
+      &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+        &lt;div&gt;
+          &lt;span class&#x3D;&quot;text-decoration-line-through text-muted fs-4 me-2&quot;&gt;
+            ${{ discount | number : &#x27;1.0-0&#x27; }}
+          &lt;/span&gt;
+          &lt;span class&#x3D;&quot;text-primary fw-bold&quot; style&#x3D;&quot;font-size: 2rem&quot;&gt;
+            ${{ product.price | number : &#x27;1.0-0&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;small class&#x3D;&quot;text-muted&quot;&gt;IVA incluido&lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Descripción Corta --&gt;
+      &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+        &lt;p class&#x3D;&quot;lead&quot;&gt;
+          {{ product.description }}
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Stock --&gt;
+      &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-check-circle-fill text-success me-2&quot;&gt;&lt;/i&gt;
+          &lt;span id&#x3D;&quot;stock-status&quot; class&#x3D;&quot;text-success fw-semibold&quot;&gt;En stock&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Cantidad --&gt;
+      &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+        &lt;label for&#x3D;&quot;quantity&quot; class&#x3D;&quot;form-label fw-semibold&quot;&gt;Cantidad:&lt;/label&gt;
+        &lt;div class&#x3D;&quot;input-group&quot; style&#x3D;&quot;max-width: 150px&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;btn btn-outline-secondary&quot;
+            type&#x3D;&quot;button&quot;
+            (click)&#x3D;&quot;decreaseQuantity()&quot;
+            [disabled]&#x3D;&quot;quantity() &lt;&#x3D; 1&quot;
+          &gt;
+            &lt;i class&#x3D;&quot;bi bi-dash&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;input
+            type&#x3D;&quot;number&quot;
+            class&#x3D;&quot;form-control text-center&quot;
+            id&#x3D;&quot;quantity&quot;
+            [value]&#x3D;&quot;quantity()&quot;
+            readonly
+          /&gt;
+          &lt;button
+            class&#x3D;&quot;btn btn-outline-secondary&quot;
+            type&#x3D;&quot;button&quot;
+            (click)&#x3D;&quot;increaseQuantity()&quot;
+            [disabled]&#x3D;&quot;quantity() &gt;&#x3D; 10&quot;
+          &gt;
+            &lt;i class&#x3D;&quot;bi bi-plus&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Botones de Acción --&gt;
+      &lt;div class&#x3D;&quot;d-grid gap-2 mb-4&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-primary btn-lg&quot; (click)&#x3D;&quot;addToCart()&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-cart-plus me-2&quot;&gt;&lt;/i&gt;
+          Agregar al Carrito
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-heart me-2&quot;&gt;&lt;/i&gt;
+          Agregar a Favoritos
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Información Adicional --&gt;
+      &lt;div class&#x3D;&quot;card border-0 bg-light p-3&quot;&gt;
+        &lt;ul class&#x3D;&quot;list-unstyled mb-0&quot;&gt;
+          &lt;li class&#x3D;&quot;mb-2&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-truck text-primary me-2&quot;&gt;&lt;/i&gt;
+            &lt;strong&gt;Envío gratis&lt;/strong&gt; en compras sobre $50.000
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;mb-2&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-arrow-return-left text-primary me-2&quot;&gt;&lt;/i&gt;
+            &lt;strong&gt;Devolución gratis&lt;/strong&gt; hasta 30 días
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;i class&#x3D;&quot;bi bi-shield-check text-primary me-2&quot;&gt;&lt;/i&gt;
+            &lt;strong&gt;Compra segura&lt;/strong&gt; garantizada
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Tabs de Información Detallada --&gt;
+  &lt;div class&#x3D;&quot;row mt-5&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12&quot;&gt;
+      &lt;ul class&#x3D;&quot;nav nav-tabs&quot; id&#x3D;&quot;productTab&quot; role&#x3D;&quot;tablist&quot;&gt;
+        &lt;li class&#x3D;&quot;nav-item&quot; role&#x3D;&quot;presentation&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;nav-link active&quot;
+            id&#x3D;&quot;description-tab&quot;
+            data-bs-toggle&#x3D;&quot;tab&quot;
+            data-bs-target&#x3D;&quot;#description&quot;
+            type&#x3D;&quot;button&quot;
+            role&#x3D;&quot;tab&quot;
+          &gt;
+            Descripción
+          &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class&#x3D;&quot;nav-item&quot; role&#x3D;&quot;presentation&quot;&gt;
+          &lt;button
+            class&#x3D;&quot;nav-link&quot;
+            id&#x3D;&quot;specifications-tab&quot;
+            data-bs-toggle&#x3D;&quot;tab&quot;
+            data-bs-target&#x3D;&quot;#specifications&quot;
+            type&#x3D;&quot;button&quot;
+            role&#x3D;&quot;tab&quot;
+          &gt;
+            Especificaciones
+          &lt;/button&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class&#x3D;&quot;tab-content border border-top-0 p-4&quot; id&#x3D;&quot;productTabContent&quot;&gt;
+        &lt;!-- Descripción Detallada --&gt;
+        &lt;div class&#x3D;&quot;tab-pane fade show active&quot; id&#x3D;&quot;description&quot; role&#x3D;&quot;tabpanel&quot;&gt;
+          &lt;h4 class&#x3D;&quot;mb-3&quot;&gt;Descripción Completa&lt;/h4&gt;
+          &lt;div&gt;
+            &lt;p&gt;{{ product.description }}&lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;product.id &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+              Los Colonos de Catán es un juego de mesa de estrategia multipremiado creado por Klaus
+              Teuber. Desde su lanzamiento en 1995, ha cautivado a millones de jugadores alrededor
+              del mundo.
+            &lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;product.id &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+              En Catán, los jugadores asumen el papel de colonos que intentan establecerse en la
+              isla de Catán. Cada jugador comienza con dos asentamientos y dos caminos, y a partir
+              de ahí debe expandir su territorio construyendo más caminos, asentamientos y ciudades.
+            &lt;/p&gt;
+            &lt;div *ngIf&#x3D;&quot;product.id &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+              &lt;p&gt;&lt;strong&gt;Características principales:&lt;/strong&gt;&lt;/p&gt;
+              &lt;ul&gt;
+                &lt;li&gt;Juego de estrategia que combina gestión de recursos y negociación&lt;/li&gt;
+                &lt;li&gt;Tablero modular que hace que cada partida sea diferente&lt;/li&gt;
+                &lt;li&gt;Sistema de comercio entre jugadores que fomenta la interacción&lt;/li&gt;
+                &lt;li&gt;Múltiples estrategias para ganar&lt;/li&gt;
+                &lt;li&gt;Fácil de aprender pero difícil de dominar&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;p&gt;
+                El objetivo es ser el primer jugador en alcanzar 10 puntos de victoria construyendo
+                asentamientos, ciudades, y obteniendo cartas especiales. La combinación de azar en
+                los dados y estrategia en las decisiones hace que cada partida sea única e
+                emocionante.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Especificaciones --&gt;
+        &lt;div class&#x3D;&quot;tab-pane fade&quot; id&#x3D;&quot;specifications&quot; role&#x3D;&quot;tabpanel&quot;&gt;
+          &lt;h4 class&#x3D;&quot;mb-3&quot;&gt;Especificaciones Técnicas&lt;/h4&gt;
+          &lt;table class&#x3D;&quot;table table-striped&quot;&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Jugadores&lt;/th&gt;
+                &lt;td&gt;3-4 jugadores&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Edad recomendada&lt;/th&gt;
+                &lt;td&gt;10+ años&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Duración&lt;/th&gt;
+                &lt;td&gt;60-120 minutos&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Idioma&lt;/th&gt;
+                &lt;td&gt;Español&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Editorial&lt;/th&gt;
+                &lt;td&gt;Devir&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Año de publicación&lt;/th&gt;
+                &lt;td&gt;1995&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;row&quot; style&#x3D;&quot;width: 30%&quot;&gt;Dimensiones&lt;/th&gt;
+                &lt;td&gt;29.5 x 29.5 x 7.5 cm&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Mensaje cuando no se encuentra el producto --&gt;
+&lt;section class&#x3D;&quot;container my-5&quot; *ngIf&#x3D;&quot;!product&quot;&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 text-center py-5&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-exclamation-triangle text-warning&quot; style&#x3D;&quot;font-size: 4rem&quot;&gt;&lt;/i&gt;
+      &lt;h2 class&#x3D;&quot;mt-3&quot;&gt;Producto no encontrado&lt;/h2&gt;
+      &lt;p class&#x3D;&quot;text-muted&quot;&gt;Lo sentimos, el producto que buscas no existe.&lt;/p&gt;
+      &lt;a routerLink&#x3D;&quot;/products&quot; class&#x3D;&quot;btn btn-primary mt-3&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-arrow-left me-2&quot;&gt;&lt;/i&gt;
+        Volver a productos
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="container my-5" *ngIf="product">  <div class="row">    <!-- Imagen del Producto -->    <div class="col-lg-6 mb-4">      <div class="card border-0 shadow-sm">        <div class="position-relative">          <img            [src]="product.image"            class="card-img-top rounded"            [alt]="product.name"            style="width: 100%; height: 500px; object-fit: contain; background-color: #f8f9fa"          />          <span class="position-absolute top-0 end-0 badge bg-danger m-3 fs-6">            -{{ discountPercentage }}%          </span>        </div>      </div>    </div>    <!-- Información del Producto -->    <div class="col-lg-6">      <div class="mb-3">        <span class="badge bg-primary mb-2" *ngIf="category">{{ category.name }}</span>        <h1 class="display-5 fw-bold mb-3">{{ product.name }}</h1>      </div>      <!-- Precio -->      <div class="mb-4">        <div>          <span class="text-decoration-line-through text-muted fs-4 me-2">            ${{ discount | number : \'1.0-0\' }}          </span>          <span class="text-primary fw-bold" style="font-size: 2rem">            ${{ product.price | number : \'1.0-0\' }}          </span>        </div>        <small class="text-muted">IVA incluido</small>      </div>      <!-- Descripción Corta -->      <div class="mb-4">        <p class="lead">          {{ product.description }}        </p>      </div>      <!-- Stock -->      <div class="mb-4">        <div class="d-flex align-items-center">          <i class="bi bi-check-circle-fill text-success me-2"></i>          <span id="stock-status" class="text-success fw-semibold">En stock</span>        </div>      </div>      <!-- Cantidad -->      <div class="mb-4">        <label for="quantity" class="form-label fw-semibold">Cantidad:</label>        <div class="input-group" style="max-width: 150px">          <button            class="btn btn-outline-secondary"            type="button"            (click)="decreaseQuantity()"            [disabled]="quantity() <= 1"          >            <i class="bi bi-dash"></i>          </button>          <input            type="number"            class="form-control text-center"            id="quantity"            [value]="quantity()"            readonly          />          <button            class="btn btn-outline-secondary"            type="button"            (click)="increaseQuantity()"            [disabled]="quantity() >= 10"          >            <i class="bi bi-plus"></i>          </button>        </div>      </div>      <!-- Botones de Acción -->      <div class="d-grid gap-2 mb-4">        <button class="btn btn-primary btn-lg" (click)="addToCart()">          <i class="bi bi-cart-plus me-2"></i>          Agregar al Carrito        </button>        <button class="btn btn-outline-secondary">          <i class="bi bi-heart me-2"></i>          Agregar a Favoritos        </button>      </div>      <!-- Información Adicional -->      <div class="card border-0 bg-light p-3">        <ul class="list-unstyled mb-0">          <li class="mb-2">            <i class="bi bi-truck text-primary me-2"></i>            <strong>Envío gratis</strong> en compras sobre $50.000          </li>          <li class="mb-2">            <i class="bi bi-arrow-return-left text-primary me-2"></i>            <strong>Devolución gratis</strong> hasta 30 días          </li>          <li>            <i class="bi bi-shield-check text-primary me-2"></i>            <strong>Compra segura</strong> garantizada          </li>        </ul>      </div>    </div>  </div>  <!-- Tabs de Información Detallada -->  <div class="row mt-5">    <div class="col-12">      <ul class="nav nav-tabs" id="productTab" role="tablist">        <li class="nav-item" role="presentation">          <button            class="nav-link active"            id="description-tab"            data-bs-toggle="tab"            data-bs-target="#description"            type="button"            role="tab"          >            Descripción          </button>        </li>        <li class="nav-item" role="presentation">          <button            class="nav-link"            id="specifications-tab"            data-bs-toggle="tab"            data-bs-target="#specifications"            type="button"            role="tab"          >            Especificaciones          </button>        </li>      </ul>      <div class="tab-content border border-top-0 p-4" id="productTabContent">        <!-- Descripción Detallada -->        <div class="tab-pane fade show active" id="description" role="tabpanel">          <h4 class="mb-3">Descripción Completa</h4>          <div>            <p>{{ product.description }}</p>            <p *ngIf="product.id === 1">              Los Colonos de Catán es un juego de mesa de estrategia multipremiado creado por Klaus              Teuber. Desde su lanzamiento en 1995, ha cautivado a millones de jugadores alrededor              del mundo.            </p>            <p *ngIf="product.id === 1">              En Catán, los jugadores asumen el papel de colonos que intentan establecerse en la              isla de Catán. Cada jugador comienza con dos asentamientos y dos caminos, y a partir              de ahí debe expandir su territorio construyendo más caminos, asentamientos y ciudades.            </p>            <div *ngIf="product.id === 1">              <p><strong>Características principales:</strong></p>              <ul>                <li>Juego de estrategia que combina gestión de recursos y negociación</li>                <li>Tablero modular que hace que cada partida sea diferente</li>                <li>Sistema de comercio entre jugadores que fomenta la interacción</li>                <li>Múltiples estrategias para ganar</li>                <li>Fácil de aprender pero difícil de dominar</li>              </ul>              <p>                El objetivo es ser el primer jugador en alcanzar 10 puntos de victoria construyendo                asentamientos, ciudades, y obteniendo cartas especiales. La combinación de azar en                los dados y estrategia en las decisiones hace que cada partida sea única e                emocionante.              </p>            </div>          </div>        </div>        <!-- Especificaciones -->        <div class="tab-pane fade" id="specifications" role="tabpanel">          <h4 class="mb-3">Especificaciones Técnicas</h4>          <table class="table table-striped">            <tbody>              <tr>                <th scope="row" style="width: 30%">Jugadores</th>                <td>3-4 jugadores</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Edad recomendada</th>                <td>10+ años</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Duración</th>                <td>60-120 minutos</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Idioma</th>                <td>Español</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Editorial</th>                <td>Devir</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Año de publicación</th>                <td>1995</td>              </tr>              <tr>                <th scope="row" style="width: 30%">Dimensiones</th>                <td>29.5 x 29.5 x 7.5 cm</td>              </tr>            </tbody>          </table>        </div>      </div>    </div>  </div></section><!-- Mensaje cuando no se encuentra el producto --><section class="container my-5" *ngIf="!product">  <div class="row">    <div class="col-12 text-center py-5">      <i class="bi bi-exclamation-triangle text-warning" style="font-size: 4rem"></i>      <h2 class="mt-3">Producto no encontrado</h2>      <p class="text-muted">Lo sentimos, el producto que buscas no existe.</p>      <a routerLink="/products" class="btn btn-primary mt-3">        <i class="bi bi-arrow-left me-2"></i>        Volver a productos      </a>    </div>  </div></section></div>'
+    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'AdminLogin', 'selector': 'app-admin-login'},{'name': 'App', 'selector': 'app-root'},{'name': 'Banner', 'selector': 'app-banner'},{'name': 'CardCategory', 'selector': 'app-card-category'},{'name': 'CardProduct', 'selector': 'app-card-product'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'Categories', 'selector': 'app-categories'},{'name': 'Checkout', 'selector': 'app-checkout'},{'name': 'Confirmation', 'selector': 'app-confirmation'},{'name': 'EditProfile', 'selector': 'app-edit-profile'},{'name': 'Footer', 'selector': 'app-footer'},{'name': 'Hero', 'selector': 'app-hero'},{'name': 'Home', 'selector': 'app-home'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Product', 'selector': 'app-product'},{'name': 'Products', 'selector': 'app-products'},{'name': 'Profile', 'selector': 'app-profile'},{'name': 'RecoverPassword', 'selector': 'app-recover-password'},{'name': 'SignIn', 'selector': 'app-sign-in'},{'name': 'SignUp', 'selector': 'app-sign-up'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Product'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Product.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
