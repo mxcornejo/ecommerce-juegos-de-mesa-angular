@@ -137,6 +137,23 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Servicio de gestión de órdenes de compra.
+Crea, guarda y recupera órdenes desde localStorage.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Inyectar el servicio
+private orderService = inject(OrderService);</code></pre></div><p>// Crear orden
+const order = this.orderService.createOrder(items, 45000, 0, 5000, 50000);</p>
+<ul>
+<li>Genera números de orden únicos formato WW-YYYY-NNNNNN</li>
+<li>Persiste órdenes individuales en localStorage</li>
+<li>Guarda referencia a última orden para recuperación fácil</li>
+<li>Compatible con SSR (verifica plataforma browser)</li>
+</ul>
+
+            </p>
 
 
 
@@ -230,14 +247,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/app/services/order.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/services/order.ts:69</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Crea una nueva orden de compra.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">const order = this.orderService.createOrder(
+  cartItems,  // items del carrito
+  45000,      // subtotal
+  0,          // impuesto
+  5000,       // envío
+  50000       // total
+);</code></pre></div><ul>
+<li>Genera ID único con crypto.randomUUID()</li>
+<li>Guarda en localStorage automáticamente</li>
+<li>Estado inicial: &#39;confirmed&#39;</li>
+</ul>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -248,6 +278,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -262,6 +293,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Array de items del carrito</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>subtotal</td>
@@ -274,6 +311,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Subtotal de productos</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>tax</td>
@@ -286,6 +329,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Impuesto aplicado</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>shipping</td>
@@ -298,6 +347,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Costo de envío</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>total</td>
@@ -310,6 +365,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Total final</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -319,7 +380,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Orden creada con número único</p>
+
                             </div>
                 </td>
             </tr>
@@ -347,19 +409,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/services/order.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/services/order.ts:121</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Genera un número de orden único.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Retorna: &quot;WW-2025-847293&quot;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Número de orden formato WW-YYYY-NNNNNN</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -384,19 +452,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/app/services/order.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/services/order.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la orden actual en memoria.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">const order = this.orderService.getCurrentOrder();</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Orden actual o null si no hay</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -421,19 +495,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/services/order.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/services/order.ts:154</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la última orden realizada.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">const lastOrder = this.orderService.getLastOrder();</code></pre></div><p>Útil para página de confirmación cuando no se tiene el orderNumber</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Order.html" target="_self" >Order | null</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Última orden o null si no hay</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -458,14 +539,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/services/order.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/services/order.ts:103</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene una orden por su número.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">const order = this.orderService.getOrderByNumber(&#39;WW-2025-123456&#39;);</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -476,6 +559,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -490,6 +574,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Número de orden a buscar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -499,7 +589,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Orden encontrada o null si no existe</p>
+
                             </div>
                 </td>
             </tr>
@@ -527,14 +618,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/services/order.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/services/order.ts:136</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Guarda la orden en localStorage.</p>
+<ul>
+<li>Guarda con clave order_{orderNumber}</li>
+<li>Actualiza lastOrder para recuperación fácil</li>
+</ul>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -545,6 +642,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -559,6 +657,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Orden a guardar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -605,10 +709,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/order.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/services/order.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal de la orden actual en proceso</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -637,10 +747,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/services/order.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/services/order.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ID de plataforma para detección SSR</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -655,17 +771,69 @@ import { isPlatformBrowser } from &#x27;@angular/common&#x27;;
 import { Order } from &#x27;../models/order.interface&#x27;;
 import { CartItem } from &#x27;../models/cart-item.interface&#x27;;
 
+/**
+ * Servicio de gestión de órdenes de compra.
+ * Crea, guarda y recupera órdenes desde localStorage.
+ *
+ * @example
+ * // Inyectar el servicio
+ * private orderService &#x3D; inject(OrderService);
+ *
+ * // Crear orden
+ * const order &#x3D; this.orderService.createOrder(items, 45000, 0, 5000, 50000);
+ *
+ * @usageNotes
+ * - Genera números de orden únicos formato WW-YYYY-NNNNNN
+ * - Persiste órdenes individuales en localStorage
+ * - Guarda referencia a última orden para recuperación fácil
+ * - Compatible con SSR (verifica plataforma browser)
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class OrderService {
+  /** ID de plataforma para detección SSR */
   private platformId &#x3D; inject(PLATFORM_ID);
+
+  /** Signal de la orden actual en proceso */
   private currentOrder &#x3D; signal&lt;Order | null&gt;(null);
 
+  /**
+   * Obtiene la orden actual en memoria.
+   *
+   * @example
+   * const order &#x3D; this.orderService.getCurrentOrder();
+   *
+   * @returns Orden actual o null si no hay
+   */
   getCurrentOrder() {
     return this.currentOrder();
   }
 
+  /**
+   * Crea una nueva orden de compra.
+   *
+   * @example
+   * const order &#x3D; this.orderService.createOrder(
+   *   cartItems,  // items del carrito
+   *   45000,      // subtotal
+   *   0,          // impuesto
+   *   5000,       // envío
+   *   50000       // total
+   * );
+   *
+   * @param items - Array de items del carrito
+   * @param subtotal - Subtotal de productos
+   * @param tax - Impuesto aplicado
+   * @param shipping - Costo de envío
+   * @param total - Total final
+   * @returns Orden creada con número único
+   *
+   * @usageNotes
+   * - Genera ID único con crypto.randomUUID()
+   * - Guarda en localStorage automáticamente
+   * - Estado inicial: &#x27;confirmed&#x27;
+   */
   createOrder(
     items: CartItem[],
     subtotal: number,
@@ -691,6 +859,15 @@ export class OrderService {
     return order;
   }
 
+  /**
+   * Obtiene una orden por su número.
+   *
+   * @example
+   * const order &#x3D; this.orderService.getOrderByNumber(&#x27;WW-2025-123456&#x27;);
+   *
+   * @param orderNumber - Número de orden a buscar
+   * @returns Orden encontrada o null si no existe
+   */
   getOrderByNumber(orderNumber: string): Order | null {
     if (isPlatformBrowser(this.platformId)) {
       const savedOrder &#x3D; localStorage.getItem(&#x60;order_${orderNumber}&#x60;);
@@ -701,12 +878,29 @@ export class OrderService {
     return null;
   }
 
+  /**
+   * Genera un número de orden único.
+   *
+   * @example
+   * // Retorna: &quot;WW-2025-847293&quot;
+   *
+   * @returns Número de orden formato WW-YYYY-NNNNNN
+   */
   private generateOrderNumber(): string {
     const year &#x3D; new Date().getFullYear();
     const random &#x3D; Math.floor(100000 + Math.random() * 900000);
     return &#x60;WW-${year}-${random}&#x60;;
   }
 
+  /**
+   * Guarda la orden en localStorage.
+   *
+   * @param order - Orden a guardar
+   *
+   * @usageNotes
+   * - Guarda con clave order_{orderNumber}
+   * - Actualiza lastOrder para recuperación fácil
+   */
   private saveOrderToStorage(order: Order): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem(&#x60;order_${order.orderNumber}&#x60;, JSON.stringify(order));
@@ -714,6 +908,17 @@ export class OrderService {
     }
   }
 
+  /**
+   * Obtiene la última orden realizada.
+   *
+   * @example
+   * const lastOrder &#x3D; this.orderService.getLastOrder();
+   *
+   * @returns Última orden o null si no hay
+   *
+   * @usageNotes
+   * Útil para página de confirmación cuando no se tiene el orderNumber
+   */
   getLastOrder(): Order | null {
     if (isPlatformBrowser(this.platformId)) {
       const lastOrderNumber &#x3D; localStorage.getItem(&#x27;lastOrder&#x27;);

@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de página principal (Home) del e-commerce.
+Muestra el hero banner y las categorías de productos.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Ruta en app.routes.ts:
+{ path: &#39;&#39;, component: Home }</code></pre></div><ul>
+<li>Página de inicio por defecto del sitio</li>
+<li>Compone los componentes Hero y Categories</li>
+<li>No requiere autenticación</li>
+</ul>
+
+    </p>
 
 
 
@@ -211,6 +225,19 @@
 import { Hero } from &#x27;../../components/hero/hero&#x27;;
 import { Categories } from &#x27;../../components/categories/categories&#x27;;
 
+/**
+ * Componente de página principal (Home) del e-commerce.
+ * Muestra el hero banner y las categorías de productos.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: &#x27;&#x27;, component: Home }
+ *
+ * @usageNotes
+ * - Página de inicio por defecto del sitio
+ * - Compone los componentes Hero y Categories
+ * - No requiere autenticación
+ */
 @Component({
   selector: &#x27;app-home&#x27;,
   imports: [Hero, Categories],

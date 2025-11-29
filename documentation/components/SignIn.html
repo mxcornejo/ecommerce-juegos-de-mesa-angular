@@ -138,6 +138,21 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de inicio de sesión para usuarios registrados.
+Permite autenticarse con email/usuario y contraseña.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Ruta en app.routes.ts:
+{ path: &#39;sign-in&#39;, component: SignIn }</code></pre></div><ul>
+<li>Redirige a /profile si ya está autenticado</li>
+<li>Soporta &quot;Recordarme&quot; guardando usuario en localStorage</li>
+<li>Compatible con SSR (verifica plataforma browser)</li>
+<li>Enlaza a /sign-up y /recover-password</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -319,19 +334,24 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:82</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el formulario de inicio de sesión.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Campos: emailUsuario, password, recordarme</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -356,14 +376,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="96"
-                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:96</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="171"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:171</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si un campo del formulario es inválido.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;div *ngIf=&quot;isFieldInvalid(&#39;password&#39;)&quot;&gt;Campo requerido&lt;/div&gt;</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -374,6 +396,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -388,6 +411,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Nombre del campo a validar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -397,7 +426,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>true si el campo es inválido y fue tocado/modificado</p>
+
                             </div>
                 </td>
             </tr>
@@ -425,19 +455,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:99</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carga el usuario guardado en localStorage si existe.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Si existe &#39;ww_remembered_user&#39;, precarga el email/usuario</code></pre></div><p>Solo se ejecuta en navegador (no en SSR)</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -462,19 +498,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente verificando autenticación y cargando datos.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Si ya está logueado, redirige a /profile
+// Si hay usuario guardado, lo precarga en el formulario</code></pre></div><p>Se ejecuta automáticamente al cargar el componente</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -499,19 +542,30 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.ts:124</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Procesa el envío del formulario de login.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;form (ngSubmit)=&quot;onSubmit()&quot;&gt;</code></pre></div><ul>
+<li>Valida campos antes de enviar</li>
+<li>Guarda/elimina usuario en localStorage según &quot;recordarme&quot;</li>
+<li>Redirige a /profile en éxito</li>
+<li>Limpia contraseña en error</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -547,10 +601,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de autenticación</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -578,10 +638,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:47</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error a mostrar</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -610,10 +676,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:29</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>FormBuilder para crear formularios reactivos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -642,10 +714,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si se ejecuta en navegador (no SSR)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -673,10 +751,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:50</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado de carga durante autenticación</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -705,10 +789,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ID de la plataforma para detección SSR</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -736,10 +826,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:53</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado del checkbox &quot;recordarme&quot;</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -768,10 +864,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -794,10 +896,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/sign-in/sign-in.ts:44</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo de inicio de sesión</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -813,6 +921,20 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from &#x27;@a
 import { Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../../services/auth&#x27;;
 
+/**
+ * Componente de inicio de sesión para usuarios registrados.
+ * Permite autenticarse con email/usuario y contraseña.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: &#x27;sign-in&#x27;, component: SignIn }
+ *
+ * @usageNotes
+ * - Redirige a /profile si ya está autenticado
+ * - Soporta &quot;Recordarme&quot; guardando usuario en localStorage
+ * - Compatible con SSR (verifica plataforma browser)
+ * - Enlaza a /sign-up y /recover-password
+ */
 @Component({
   selector: &#x27;app-sign-in&#x27;,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
@@ -820,17 +942,43 @@ import { AuthService } from &#x27;../../services/auth&#x27;;
   styleUrl: &#x27;./sign-in.scss&#x27;,
 })
 export class SignIn implements OnInit {
+  /** FormBuilder para crear formularios reactivos */
   private fb &#x3D; inject(FormBuilder);
+
+  /** Servicio de autenticación */
   private authService &#x3D; inject(AuthService);
+
+  /** Router para navegación */
   private router &#x3D; inject(Router);
+
+  /** ID de la plataforma para detección SSR */
   private platformId &#x3D; inject(PLATFORM_ID);
+
+  /** Indica si se ejecuta en navegador (no SSR) */
   private isBrowser &#x3D; isPlatformBrowser(this.platformId);
 
+  /** Formulario reactivo de inicio de sesión */
   signInForm!: FormGroup;
+
+  /** Mensaje de error a mostrar */
   errorMessage &#x3D; &#x27;&#x27;;
+
+  /** Estado de carga durante autenticación */
   isLoading &#x3D; false;
+
+  /** Estado del checkbox &quot;recordarme&quot; */
   rememberMe &#x3D; false;
 
+  /**
+   * Inicializa el componente verificando autenticación y cargando datos.
+   *
+   * @example
+   * // Si ya está logueado, redirige a /profile
+   * // Si hay usuario guardado, lo precarga en el formulario
+   *
+   * @usageNotes
+   * Se ejecuta automáticamente al cargar el componente
+   */
   ngOnInit(): void {
     // Si ya está autenticado, redirigir al perfil
     if (this.authService.isAuthenticated()) {
@@ -842,6 +990,12 @@ export class SignIn implements OnInit {
     this.loadRememberedUser();
   }
 
+  /**
+   * Inicializa el formulario de inicio de sesión.
+   *
+   * @example
+   * // Campos: emailUsuario, password, recordarme
+   */
   private initForm(): void {
     this.signInForm &#x3D; this.fb.group({
       emailUsuario: [&#x27;&#x27;, [Validators.required]],
@@ -850,6 +1004,15 @@ export class SignIn implements OnInit {
     });
   }
 
+  /**
+   * Carga el usuario guardado en localStorage si existe.
+   *
+   * @example
+   * // Si existe &#x27;ww_remembered_user&#x27;, precarga el email/usuario
+   *
+   * @usageNotes
+   * Solo se ejecuta en navegador (no en SSR)
+   */
   private loadRememberedUser(): void {
     if (!this.isBrowser) return;
 
@@ -863,6 +1026,18 @@ export class SignIn implements OnInit {
     }
   }
 
+  /**
+   * Procesa el envío del formulario de login.
+   *
+   * @example
+   * // &lt;form (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+   *
+   * @usageNotes
+   * - Valida campos antes de enviar
+   * - Guarda/elimina usuario en localStorage según &quot;recordarme&quot;
+   * - Redirige a /profile en éxito
+   * - Limpia contraseña en error
+   */
   onSubmit(): void {
     this.errorMessage &#x3D; &#x27;&#x27;;
 
@@ -901,7 +1076,15 @@ export class SignIn implements OnInit {
     }
   }
 
-  // Helpers para el template
+  /**
+   * Verifica si un campo del formulario es inválido.
+   *
+   * @example
+   * // &lt;div *ngIf&#x3D;&quot;isFieldInvalid(&#x27;password&#x27;)&quot;&gt;Campo requerido&lt;/div&gt;
+   *
+   * @param fieldName - Nombre del campo a validar
+   * @returns true si el campo es inválido y fue tocado/modificado
+   */
   isFieldInvalid(fieldName: string): boolean {
     const field &#x3D; this.signInForm.get(fieldName);
     return !!(field &amp;&amp; field.invalid &amp;&amp; (field.dirty || field.touched));

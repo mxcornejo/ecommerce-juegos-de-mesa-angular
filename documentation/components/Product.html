@@ -138,6 +138,23 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de detalle de producto individual.
+Muestra información completa del producto y permite agregarlo al carrito.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Ruta en app.routes.ts:
+{ path: &#39;product/:id&#39;, component: Product }</code></pre></div><p>// Navegar a un producto:
+this.router.navigate([&#39;/product&#39;, 123]);</p>
+<ul>
+<li>Obtiene el ID del producto desde la URL (:id)</li>
+<li>Muestra precio con descuento del 15%</li>
+<li>Cantidad seleccionable de 1 a 10 unidades</li>
+<li>Redirige al carrito después de agregar</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -317,19 +334,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/app/pages/product/product.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/pages/product/product.ts:120</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Agrega el producto al carrito con la cantidad seleccionada.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;addToCart()&quot;&gt;Agregar al carrito&lt;/button&gt;</code></pre></div><p>Navega automáticamente a /cart después de agregar</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -354,19 +377,24 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/pages/product/product.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/pages/product/product.ts:105</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Decrementa la cantidad seleccionada en 1 (mínimo 1).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;decreaseQuantity()&quot;&gt;-&lt;/button&gt;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -391,19 +419,24 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/pages/product/product.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/pages/product/product.ts:93</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Incrementa la cantidad seleccionada en 1 (máximo 10).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;increaseQuantity()&quot;&gt;+&lt;/button&gt;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -428,19 +461,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/pages/product/product.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/pages/product/product.ts:64</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente cargando el producto por ID de la URL.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// URL: /product/5
+// Busca producto con id=5 en PRODUCTS</code></pre></div><p>También carga la categoría asociada al producto</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -475,10 +515,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/product/product.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/product/product.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio del carrito de compras</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -501,10 +547,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/product/product.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/product/product.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Categoría del producto actual</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -533,10 +585,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/product/product.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/product/product.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Porcentaje de descuento aplicado (15%)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -559,10 +617,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/product/product.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/product/product.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Producto actual a mostrar</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -590,10 +654,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/product/product.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/product/product.ts:52</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cantidad seleccionada para agregar al carrito (1-10)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -622,10 +692,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/product/product.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/product/product.ts:34</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de rutas para obtener parámetros de URL</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -654,10 +730,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/product/product.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/product/product.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación programática</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -683,9 +765,28 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/product/product.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/pages/product/product.ts:82</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Calcula el precio original antes del descuento del 15%.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Si product.price = 85, retorna 100 (precio original)
+const original = this.discount;</code></pre></div></div>
+
+                                <div>
+                                        <b>Example :</b>
+                                            <div>
+                                                <pre class="line-numbers"><code class="language-html">&lt;p&gt;// Si product.price = 85, retorna 100 (precio original)
+const original = this.discount;&lt;/p&gt;</code></pre>
+                                            </div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -702,6 +803,23 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
 import { PRODUCTS, CATEGORIES } from &#x27;../../data/mock-data&#x27;;
 import { Cart } from &#x27;../../services/cart&#x27;;
 
+/**
+ * Componente de detalle de producto individual.
+ * Muestra información completa del producto y permite agregarlo al carrito.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: &#x27;product/:id&#x27;, component: Product }
+ *
+ * // Navegar a un producto:
+ * this.router.navigate([&#x27;/product&#x27;, 123]);
+ *
+ * @usageNotes
+ * - Obtiene el ID del producto desde la URL (:id)
+ * - Muestra precio con descuento del 15%
+ * - Cantidad seleccionable de 1 a 10 unidades
+ * - Redirige al carrito después de agregar
+ */
 @Component({
   selector: &#x27;app-product&#x27;,
   imports: [CommonModule, RouterLink],
@@ -709,15 +827,37 @@ import { Cart } from &#x27;../../services/cart&#x27;;
   styleUrl: &#x27;./product.scss&#x27;,
 })
 export class Product implements OnInit {
+  /** Servicio de rutas para obtener parámetros de URL */
   private route &#x3D; inject(ActivatedRoute);
+
+  /** Router para navegación programática */
   private router &#x3D; inject(Router);
+
+  /** Servicio del carrito de compras */
   cartService &#x3D; inject(Cart);
 
+  /** Producto actual a mostrar */
   product: ProductModel | undefined;
+
+  /** Categoría del producto actual */
   category: Category | undefined;
+
+  /** Porcentaje de descuento aplicado (15%) */
   readonly discountPercentage &#x3D; 15;
+
+  /** Cantidad seleccionada para agregar al carrito (1-10) */
   quantity &#x3D; signal(1);
 
+  /**
+   * Inicializa el componente cargando el producto por ID de la URL.
+   *
+   * @example
+   * // URL: /product/5
+   * // Busca producto con id&#x3D;5 en PRODUCTS
+   *
+   * @usageNotes
+   * También carga la categoría asociada al producto
+   */
   ngOnInit(): void {
     const productId &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;));
     this.product &#x3D; PRODUCTS.find((p) &#x3D;&gt; p.id &#x3D;&#x3D;&#x3D; productId);
@@ -727,23 +867,53 @@ export class Product implements OnInit {
     }
   }
 
+  /**
+   * Calcula el precio original antes del descuento del 15%.
+   *
+   * @example
+   * // Si product.price &#x3D; 85, retorna 100 (precio original)
+   * const original &#x3D; this.discount;
+   *
+   * @returns Precio original redondeado o 0 si no hay producto
+   */
   get discount(): number {
     // Calcula un descuento del 15% para mostrar el precio original
     return this.product ? Math.round(this.product.price / 0.85) : 0;
   }
 
+  /**
+   * Incrementa la cantidad seleccionada en 1 (máximo 10).
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;increaseQuantity()&quot;&gt;+&lt;/button&gt;
+   */
   increaseQuantity() {
     if (this.quantity() &lt; 10) {
       this.quantity.update((q) &#x3D;&gt; q + 1);
     }
   }
 
+  /**
+   * Decrementa la cantidad seleccionada en 1 (mínimo 1).
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;decreaseQuantity()&quot;&gt;-&lt;/button&gt;
+   */
   decreaseQuantity() {
     if (this.quantity() &gt; 1) {
       this.quantity.update((q) &#x3D;&gt; q - 1);
     }
   }
 
+  /**
+   * Agrega el producto al carrito con la cantidad seleccionada.
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;addToCart()&quot;&gt;Agregar al carrito&lt;/button&gt;
+   *
+   * @usageNotes
+   * Navega automáticamente a /cart después de agregar
+   */
   addToCart() {
     if (this.product) {
       this.cartService.addToCart(this.product, this.quantity());

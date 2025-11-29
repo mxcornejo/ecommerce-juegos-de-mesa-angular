@@ -138,6 +138,22 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de confirmación de pedido que muestra los detalles
+de una orden completada después del checkout.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Navegar a confirmación con número de orden
+this.router.navigate([&#39;/confirmation&#39;], {
+  queryParams: { orderNumber: &#39;ORD-123456&#39; }
+});</code></pre></div><ul>
+<li>Busca la orden por queryParam &#39;orderNumber&#39; o muestra la última orden</li>
+<li>Redirige al home si no encuentra ninguna orden válida</li>
+<li>Incluye funcionalidad de impresión del comprobante</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -302,19 +318,31 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente buscando la orden correspondiente.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Se ejecuta automáticamente al cargar el componente
+// Busca por orderNumber en queryParams o usa la última orden</code></pre></div><p>Prioridad de búsqueda:</p>
+<ol>
+<li>Por número de orden en queryParams</li>
+<li>Última orden registrada</li>
+<li>Redirige a home si no hay orden</li>
+</ol>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -339,19 +367,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/pages/confirmation/confirmation.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Abre el diálogo de impresión del navegador para imprimir el comprobante.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En el template:
+// &lt;button (click)=&quot;printOrder()&quot;&gt;Imprimir&lt;/button&gt;</code></pre></div><p>Utiliza window.print() nativo del navegador</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -386,10 +421,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:39</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Orden actual a mostrar, null si no se encuentra</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -418,10 +459,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de órdenes para consultar pedidos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -450,10 +497,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de rutas para obtener parámetros de la URL</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -482,10 +535,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación programática</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -511,9 +570,28 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/pages/confirmation/confirmation.ts:79</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene la fecha de la orden formateada en español (Chile).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Retorna: &quot;28 de noviembre de 2025, 14:30&quot;
+const fecha = this.orderDate;</code></pre></div></div>
+
+                                <div>
+                                        <b>Example :</b>
+                                            <div>
+                                                <pre class="line-numbers"><code class="language-html">&lt;p&gt;// Retorna: &amp;quot;28 de noviembre de 2025, 14:30&amp;quot;
+const fecha = this.orderDate;&lt;/p&gt;</code></pre>
+                                            </div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -528,6 +606,21 @@ import { ActivatedRoute, Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { OrderService } from &#x27;../../services/order&#x27;;
 import { Order } from &#x27;../../models/order.interface&#x27;;
 
+/**
+ * Componente de confirmación de pedido que muestra los detalles
+ * de una orden completada después del checkout.
+ *
+ * @example
+ * // Navegar a confirmación con número de orden
+ * this.router.navigate([&#x27;/confirmation&#x27;], {
+ *   queryParams: { orderNumber: &#x27;ORD-123456&#x27; }
+ * });
+ *
+ * @usageNotes
+ * - Busca la orden por queryParam &#x27;orderNumber&#x27; o muestra la última orden
+ * - Redirige al home si no encuentra ninguna orden válida
+ * - Incluye funcionalidad de impresión del comprobante
+ */
 @Component({
   selector: &#x27;app-confirmation&#x27;,
   imports: [CommonModule, RouterLink],
@@ -535,12 +628,31 @@ import { Order } from &#x27;../../models/order.interface&#x27;;
   styleUrl: &#x27;./confirmation.scss&#x27;,
 })
 export class Confirmation implements OnInit {
+  /** Servicio de rutas para obtener parámetros de la URL */
   private route &#x3D; inject(ActivatedRoute);
+
+  /** Router para navegación programática */
   private router &#x3D; inject(Router);
+
+  /** Servicio de órdenes para consultar pedidos */
   private orderService &#x3D; inject(OrderService);
 
+  /** Orden actual a mostrar, null si no se encuentra */
   order: Order | null &#x3D; null;
 
+  /**
+   * Inicializa el componente buscando la orden correspondiente.
+   *
+   * @example
+   * // Se ejecuta automáticamente al cargar el componente
+   * // Busca por orderNumber en queryParams o usa la última orden
+   *
+   * @usageNotes
+   * Prioridad de búsqueda:
+   * 1. Por número de orden en queryParams
+   * 2. Última orden registrada
+   * 3. Redirige a home si no hay orden
+   */
   ngOnInit(): void {
     const orderNumber &#x3D; this.route.snapshot.queryParamMap.get(&#x27;orderNumber&#x27;);
 
@@ -557,6 +669,15 @@ export class Confirmation implements OnInit {
     }
   }
 
+  /**
+   * Obtiene la fecha de la orden formateada en español (Chile).
+   *
+   * @example
+   * // Retorna: &quot;28 de noviembre de 2025, 14:30&quot;
+   * const fecha &#x3D; this.orderDate;
+   *
+   * @returns Fecha formateada o string vacío si no hay orden
+   */
   get orderDate(): string {
     if (!this.order) return &#x27;&#x27;;
     return new Date(this.order.date).toLocaleDateString(&#x27;es-CL&#x27;, {
@@ -568,6 +689,16 @@ export class Confirmation implements OnInit {
     });
   }
 
+  /**
+   * Abre el diálogo de impresión del navegador para imprimir el comprobante.
+   *
+   * @example
+   * // En el template:
+   * // &lt;button (click)&#x3D;&quot;printOrder()&quot;&gt;Imprimir&lt;/button&gt;
+   *
+   * @usageNotes
+   * Utiliza window.print() nativo del navegador
+   */
   printOrder(): void {
     window.print();
   }

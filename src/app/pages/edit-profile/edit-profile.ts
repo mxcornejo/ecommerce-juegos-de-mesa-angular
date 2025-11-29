@@ -11,6 +11,20 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
+/**
+ * Componente para edición del perfil de usuario autenticado.
+ * Permite modificar datos personales y cambiar contraseña.
+ *
+ * @example
+ * // Navegar a edición de perfil
+ * this.router.navigate(['/edit-profile']);
+ *
+ * @usageNotes
+ * - Requiere autenticación, redirige a sign-in si no está logueado
+ * - Validaciones: nombre (min 3), usuario (alfanumérico), email, edad (13+)
+ * - Cambio de contraseña opcional con validación de fortaleza
+ * - Redirige a /profile después de guardar exitosamente
+ */
 @Component({
   selector: 'app-edit-profile',
   imports: [CommonModule, ReactiveFormsModule],
@@ -18,15 +32,37 @@ import { AuthService } from '../../services/auth';
   styleUrl: './edit-profile.scss',
 })
 export class EditProfile implements OnInit {
+  /** FormBuilder para crear formularios reactivos */
   private fb = inject(FormBuilder);
+
+  /** Servicio de autenticación para gestión de usuario */
   private authService = inject(AuthService);
+
+  /** Router para navegación programática */
   private router = inject(Router);
 
+  /** Formulario reactivo de edición de perfil */
   editProfileForm!: FormGroup;
+
+  /** Mensaje de error a mostrar al usuario */
   errorMessage = '';
+
+  /** Mensaje de éxito después de guardar */
   successMessage = '';
+
+  /** Estado de carga durante el envío del formulario */
   isLoading = false;
 
+  /**
+   * Inicializa el componente verificando autenticación y cargando datos.
+   *
+   * @example
+   * // Se ejecuta automáticamente al cargar
+   * // Verifica auth → inicializa form → carga datos usuario
+   *
+   * @usageNotes
+   * Redirige a /sign-in si el usuario no está autenticado
+   */
   ngOnInit(): void {
     // Si no está autenticado, redirigir al sign-in
     if (!this.authService.isAuthenticated()) {
@@ -38,6 +74,17 @@ export class EditProfile implements OnInit {
     this.loadUserData();
   }
 
+  /**
+   * Inicializa el formulario con validadores y estructura de campos.
+   *
+   * @example
+   * // Campos del formulario:
+   * // nombre, usuario, email, fechaNacimiento, comentarios
+   * // passwordActual, passwordNueva, passwordConfirmar (opcionales)
+   *
+   * @usageNotes
+   * Incluye validador de grupo para contraseñas
+   */
   private initForm(): void {
     this.editProfileForm = this.fb.group(
       {
@@ -58,6 +105,16 @@ export class EditProfile implements OnInit {
     );
   }
 
+  /**
+   * Carga los datos del usuario actual en el formulario.
+   *
+   * @example
+   * // Obtiene usuario de AuthService y llena el formulario
+   * this.loadUserData();
+   *
+   * @usageNotes
+   * Se ejecuta después de initForm() en ngOnInit
+   */
   private loadUserData(): void {
     const user = this.authService.currentUser();
     if (user) {
@@ -71,7 +128,16 @@ export class EditProfile implements OnInit {
     }
   }
 
-  // Validador personalizado para edad mínima
+  /**
+   * Validador personalizado para verificar edad mínima de 13 años.
+   *
+   * @example
+   * // Uso en FormControl:
+   * // fechaNacimiento: ['', [Validators.required, this.ageValidator]]
+   *
+   * @param control - Control del formulario con fecha de nacimiento
+   * @returns null si válido, { minAge: true } si es menor de 13
+   */
   private ageValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
 
@@ -87,7 +153,22 @@ export class EditProfile implements OnInit {
     return age >= 13 ? null : { minAge: true };
   }
 
-  // Validador de grupo para contraseñas
+  /**
+   * Validador de grupo para cambio de contraseña.
+   *
+   * @example
+   * // Errores posibles:
+   * // { currentPasswordRequired: true } - Falta contraseña actual
+   * // { passwordStrength: true } - No cumple requisitos
+   * // { passwordMismatch: true } - No coinciden
+   * // { incorrectPassword: true } - Contraseña actual incorrecta
+   *
+   * @param group - Grupo de formulario a validar
+   * @returns null si válido, objeto con error específico si no
+   *
+   * @usageNotes
+   * Requisitos de contraseña: 8-20 chars, mayúscula, número, especial (!@#$%^&*)
+   */
   private passwordGroupValidator(group: AbstractControl): ValidationErrors | null {
     const passwordActual = group.get('passwordActual')?.value;
     const passwordNueva = group.get('passwordNueva')?.value;
@@ -128,6 +209,19 @@ export class EditProfile implements OnInit {
     return null;
   }
 
+  /**
+   * Procesa el envío del formulario de edición.
+   *
+   * @example
+   * // En el template:
+   * // <form (ngSubmit)="onSubmit()">
+   *
+   * @usageNotes
+   * - Valida formulario completo antes de enviar
+   * - Actualiza perfil via AuthService
+   * - Redirige a /profile después de 1.5s en éxito
+   * - Limpia campos de contraseña después de actualizar
+   */
   onSubmit(): void {
     this.errorMessage = '';
     this.successMessage = '';
@@ -184,16 +278,40 @@ export class EditProfile implements OnInit {
     }
   }
 
+  /**
+   * Cancela la edición y regresa al perfil.
+   *
+   * @example
+   * // <button (click)="onCancel()">Cancelar</button>
+   */
   onCancel(): void {
     this.router.navigate(['/profile']);
   }
 
-  // Helpers para el template
+  /**
+   * Verifica si un campo del formulario es inválido.
+   *
+   * @example
+   * // <div *ngIf="isFieldInvalid('email')">Error</div>
+   *
+   * @param fieldName - Nombre del campo a validar
+   * @returns true si el campo es inválido y fue tocado/modificado
+   */
   isFieldInvalid(fieldName: string): boolean {
     const field = this.editProfileForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
+  /**
+   * Obtiene el mensaje de error para un campo específico.
+   *
+   * @example
+   * // <span>{{ getFieldError('nombre') }}</span>
+   * // Retorna: "Mínimo 3 caracteres"
+   *
+   * @param fieldName - Nombre del campo
+   * @returns Mensaje de error traducido o string vacío
+   */
   getFieldError(fieldName: string): string {
     const field = this.editProfileForm.get(fieldName);
     if (!field || !field.errors) return '';
@@ -208,6 +326,14 @@ export class EditProfile implements OnInit {
     return '';
   }
 
+  /**
+   * Verifica si hay errores de validación de contraseña a nivel de grupo.
+   *
+   * @example
+   * // <div *ngIf="hasPasswordErrors()">{{ getPasswordError() }}</div>
+   *
+   * @returns true si hay algún error de contraseña
+   */
   hasPasswordErrors(): boolean {
     return (
       this.editProfileForm.hasError('passwordStrength') ||
@@ -217,6 +343,15 @@ export class EditProfile implements OnInit {
     );
   }
 
+  /**
+   * Obtiene el mensaje de error de validación de contraseña.
+   *
+   * @example
+   * // <span class="error">{{ getPasswordError() }}</span>
+   * // Retorna: "Las contraseñas no coinciden"
+   *
+   * @returns Mensaje de error traducido o string vacío
+   */
   getPasswordError(): string {
     if (this.editProfileForm.hasError('currentPasswordRequired')) {
       return 'Debes ingresar tu contraseña actual para cambiarla';

@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de checkout para finalizar la compra.
+Muestra resumen del pedido y permite confirmar la orden.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Navegar al checkout
+this.router.navigate([&#39;/checkout&#39;]);</code></pre></div><ul>
+<li>Redirige a /cart si el carrito está vacío</li>
+<li>Envío gratis para compras sobre $50.000</li>
+<li>Al confirmar, limpia el carrito y redirige a confirmación</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -311,19 +325,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/pages/checkout/checkout.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/pages/checkout/checkout.ts:109</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Confirma el pedido y finaliza la compra.
+Crea la orden, limpia el carrito y redirige a confirmación.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En el template
+&lt;button (click)=&quot;confirmOrder()&quot;&gt;Confirmar Pedido&lt;/button&gt;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -348,14 +369,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/pages/checkout/checkout.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/pages/checkout/checkout.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente.
+Redirige al carrito si está vacío.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -395,10 +419,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/checkout/checkout.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/checkout/checkout.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio del carrito para obtener productos y totales</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -426,10 +456,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/checkout/checkout.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/checkout/checkout.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de órdenes para crear el pedido</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -457,10 +493,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/checkout/checkout.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/checkout/checkout.ts:34</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -486,9 +528,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/checkout/checkout.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/checkout/checkout.ts:52</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene los items del carrito.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -508,9 +559,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/checkout/checkout.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/pages/checkout/checkout.ts:61</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene el total de unidades en el carrito.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -530,9 +590,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/checkout/checkout.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/pages/checkout/checkout.ts:70</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene el subtotal del carrito.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -552,9 +621,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/checkout/checkout.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/pages/checkout/checkout.ts:79</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene el costo de envío.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -574,9 +652,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/checkout/checkout.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/pages/checkout/checkout.ts:88</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene el total final incluyendo envío.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -596,9 +683,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/checkout/checkout.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/pages/checkout/checkout.ts:97</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Indica si el envío es gratis.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -613,6 +709,19 @@ import { Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { Cart as CartService } from &#x27;../../services/cart&#x27;;
 import { OrderService } from &#x27;../../services/order&#x27;;
 
+/**
+ * Componente de checkout para finalizar la compra.
+ * Muestra resumen del pedido y permite confirmar la orden.
+ *
+ * @example
+ * // Navegar al checkout
+ * this.router.navigate([&#x27;/checkout&#x27;]);
+ *
+ * @usageNotes
+ * - Redirige a /cart si el carrito está vacío
+ * - Envío gratis para compras sobre $50.000
+ * - Al confirmar, limpia el carrito y redirige a confirmación
+ */
 @Component({
   selector: &#x27;app-checkout&#x27;,
   imports: [CommonModule, RouterLink],
@@ -620,10 +729,19 @@ import { OrderService } from &#x27;../../services/order&#x27;;
   styleUrl: &#x27;./checkout.scss&#x27;,
 })
 export class Checkout implements OnInit {
+  /** Servicio del carrito para obtener productos y totales */
   cartService &#x3D; inject(CartService);
+
+  /** Servicio de órdenes para crear el pedido */
   orderService &#x3D; inject(OrderService);
+
+  /** Router para navegación */
   router &#x3D; inject(Router);
 
+  /**
+   * Inicializa el componente.
+   * Redirige al carrito si está vacío.
+   */
   ngOnInit(): void {
     // Redirigir si el carrito está vacío
     if (this.cartService.items().length &#x3D;&#x3D;&#x3D; 0) {
@@ -631,30 +749,68 @@ export class Checkout implements OnInit {
     }
   }
 
+  /**
+   * Obtiene los items del carrito.
+   *
+   * @returns Lista de productos con cantidades
+   */
   get cartItems() {
     return this.cartService.items();
   }
 
+  /**
+   * Obtiene el total de unidades en el carrito.
+   *
+   * @returns Suma de todas las cantidades
+   */
   get totalItems() {
     return this.cartService.totalItems();
   }
 
+  /**
+   * Obtiene el subtotal del carrito.
+   *
+   * @returns Suma de (precio * cantidad) de cada producto
+   */
   get subtotal() {
     return this.cartService.subtotal();
   }
 
+  /**
+   * Obtiene el costo de envío.
+   *
+   * @returns Costo de envío ($0 si es gratis)
+   */
   get shipping() {
     return this.cartService.getShippingCost();
   }
 
+  /**
+   * Obtiene el total final incluyendo envío.
+   *
+   * @returns Total a pagar
+   */
   get total() {
     return this.cartService.getFinalTotal();
   }
 
+  /**
+   * Indica si el envío es gratis.
+   *
+   * @returns true si subtotal &gt;&#x3D; $50.000
+   */
   get shippingFree() {
     return this.subtotal &gt;&#x3D; 50000;
   }
 
+  /**
+   * Confirma el pedido y finaliza la compra.
+   * Crea la orden, limpia el carrito y redirige a confirmación.
+   *
+   * @example
+   * // En el template
+   * &lt;button (click)&#x3D;&quot;confirmOrder()&quot;&gt;Confirmar Pedido&lt;/button&gt;
+   */
   confirmOrder(): void {
     const order &#x3D; this.orderService.createOrder(
       this.cartItems,

@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de perfil de usuario autenticado.
+Muestra información personal y permite cerrar sesión.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Ruta en app.routes.ts:
+{ path: &#39;profile&#39;, component: Profile }</code></pre></div><ul>
+<li>Requiere autenticación, redirige a /sign-in si no está logueado</li>
+<li>Usa signals y computed para datos reactivos</li>
+<li>Enlaza a /edit-profile para modificar datos</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -296,19 +310,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/pages/profile/profile.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/pages/profile/profile.ts:92</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica autenticación al iniciar y redirige si no está logueado.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Si no está autenticado, navega a /sign-in</code></pre></div><p>Se ejecuta automáticamente al cargar el componente</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -333,19 +353,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/pages/profile/profile.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/pages/profile/profile.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Cierra la sesión del usuario con confirmación.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;onLogout()&quot;&gt;Cerrar sesión&lt;/button&gt;</code></pre></div><p>Muestra confirm() antes de ejecutar logout</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -381,10 +407,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/profile/profile.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/profile/profile.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de autenticación para gestión de usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -412,10 +444,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/profile/profile.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/profile/profile.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal del usuario actual desde AuthService</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -452,10 +490,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/profile/profile.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/profile/profile.ts:59</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fecha de nacimiento formateada en español.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Retorna: &quot;15 de marzo de 1990&quot;</code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -486,10 +530,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/profile/profile.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/pages/profile/profile.ts:78</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fecha de registro formateada.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En template: Miembro desde {{ formattedRegistrationDate() }}</code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -517,10 +567,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/profile/profile.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/profile/profile.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal de estado de autenticación</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -549,10 +605,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/profile/profile.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/profile/profile.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación programática</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -583,10 +645,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/profile/profile.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/profile/profile.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Edad calculada del usuario actual.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En template: {{ userAge() }} años</code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -600,8 +668,20 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../../services/auth&#x27;;
-import { User } from &#x27;../../models/user.interface&#x27;;
 
+/**
+ * Componente de perfil de usuario autenticado.
+ * Muestra información personal y permite cerrar sesión.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: &#x27;profile&#x27;, component: Profile }
+ *
+ * @usageNotes
+ * - Requiere autenticación, redirige a /sign-in si no está logueado
+ * - Usa signals y computed para datos reactivos
+ * - Enlaza a /edit-profile para modificar datos
+ */
 @Component({
   selector: &#x27;app-profile&#x27;,
   imports: [CommonModule, RouterLink],
@@ -609,18 +689,39 @@ import { User } from &#x27;../../models/user.interface&#x27;;
   styleUrl: &#x27;./profile.scss&#x27;,
 })
 export class Profile implements OnInit {
+  /** Servicio de autenticación para gestión de usuario */
   private authService &#x3D; inject(AuthService);
+
+  /** Router para navegación programática */
   private router &#x3D; inject(Router);
 
+  /** Signal del usuario actual desde AuthService */
   currentUser &#x3D; this.authService.currentUser;
+
+  /** Signal de estado de autenticación */
   isAuthenticated &#x3D; this.authService.isAuthenticated;
 
-  // Computed values
+  /**
+   * Edad calculada del usuario actual.
+   *
+   * @example
+   * // En template: {{ userAge() }} años
+   *
+   * @returns Edad en años o 0 si no hay usuario
+   */
   userAge &#x3D; computed(() &#x3D;&gt; {
     const user &#x3D; this.currentUser();
     return user ? this.authService.calculateAge(user.fechaNacimiento) : 0;
   });
 
+  /**
+   * Fecha de nacimiento formateada en español.
+   *
+   * @example
+   * // Retorna: &quot;15 de marzo de 1990&quot;
+   *
+   * @returns Fecha formateada o string vacío si no hay usuario
+   */
   formattedBirthDate &#x3D; computed(() &#x3D;&gt; {
     const user &#x3D; this.currentUser();
     if (!user) return &#x27;&#x27;;
@@ -632,17 +733,43 @@ export class Profile implements OnInit {
     });
   });
 
+  /**
+   * Fecha de registro formateada.
+   *
+   * @example
+   * // En template: Miembro desde {{ formattedRegistrationDate() }}
+   *
+   * @returns Fecha de registro formateada o string vacío
+   */
   formattedRegistrationDate &#x3D; computed(() &#x3D;&gt; {
     const user &#x3D; this.currentUser();
     return user ? this.authService.formatDate(user.fechaRegistro) : &#x27;&#x27;;
   });
 
+  /**
+   * Verifica autenticación al iniciar y redirige si no está logueado.
+   *
+   * @example
+   * // Si no está autenticado, navega a /sign-in
+   *
+   * @usageNotes
+   * Se ejecuta automáticamente al cargar el componente
+   */
   ngOnInit(): void {
     if (!this.isAuthenticated()) {
       this.router.navigate([&#x27;/sign-in&#x27;]);
     }
   }
 
+  /**
+   * Cierra la sesión del usuario con confirmación.
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;onLogout()&quot;&gt;Cerrar sesión&lt;/button&gt;
+   *
+   * @usageNotes
+   * Muestra confirm() antes de ejecutar logout
+   */
   onLogout(): void {
     if (confirm(&#x27;¿Estás seguro de que deseas cerrar sesión?&#x27;)) {
       this.authService.logout();

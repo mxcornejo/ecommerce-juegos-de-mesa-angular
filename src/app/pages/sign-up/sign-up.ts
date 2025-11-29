@@ -11,6 +11,20 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
+/**
+ * Componente de registro de nuevos usuarios.
+ * Permite crear una cuenta con validaciones de datos personales y contraseña.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: 'sign-up', component: SignUp }
+ *
+ * @usageNotes
+ * - Redirige a /profile si ya está autenticado
+ * - Validaciones: nombre (min 3), usuario (alfanumérico), email, edad (13+)
+ * - Contraseña: 6-18 chars, mayúscula, número
+ * - Campos opcionales: direccionDespacho, comentarios
+ */
 @Component({
   selector: 'app-sign-up',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
@@ -18,15 +32,36 @@ import { AuthService } from '../../services/auth';
   styleUrl: './sign-up.scss',
 })
 export class SignUp implements OnInit {
+  /** FormBuilder para crear formularios reactivos */
   private fb = inject(FormBuilder);
+
+  /** Servicio de autenticación */
   private authService = inject(AuthService);
+
+  /** Router para navegación */
   private router = inject(Router);
 
+  /** Formulario reactivo de registro */
   signUpForm!: FormGroup;
+
+  /** Mensaje de error a mostrar */
   errorMessage = '';
+
+  /** Mensaje de éxito después de registrar */
   successMessage = '';
+
+  /** Estado de carga durante el registro */
   isLoading = false;
 
+  /**
+   * Inicializa el componente verificando autenticación.
+   *
+   * @example
+   * // Si ya está logueado, redirige a /profile
+   *
+   * @usageNotes
+   * Se ejecuta automáticamente al cargar el componente
+   */
   ngOnInit(): void {
     // Si ya está autenticado, redirigir al perfil
     if (this.authService.isAuthenticated()) {
@@ -37,6 +72,16 @@ export class SignUp implements OnInit {
     this.initForm();
   }
 
+  /**
+   * Inicializa el formulario de registro con validadores.
+   *
+   * @example
+   * // Campos requeridos: nombre, usuario, email, fechaNacimiento, password
+   * // Campos opcionales: direccionDespacho, comentarios
+   *
+   * @usageNotes
+   * Incluye validador de grupo para coincidencia de contraseñas
+   */
   private initForm(): void {
     this.signUpForm = this.fb.group(
       {
@@ -56,7 +101,16 @@ export class SignUp implements OnInit {
     );
   }
 
-  // Validador personalizado para contraseña
+  /**
+   * Validador de fortaleza de contraseña.
+   *
+   * @example
+   * // Válida: "Pass123" (6-18 chars, mayúscula, número)
+   * // Inválida: "password" (falta mayúscula y número)
+   *
+   * @param control - Control del formulario a validar
+   * @returns null si válido, { passwordStrength: true } si no cumple
+   */
   private passwordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
@@ -70,7 +124,15 @@ export class SignUp implements OnInit {
     return passwordValid ? null : { passwordStrength: true };
   }
 
-  // Validador personalizado para edad mínima
+  /**
+   * Validador de edad mínima (13 años).
+   *
+   * @example
+   * // Calcula edad a partir de fecha de nacimiento
+   *
+   * @param control - Control con fecha de nacimiento
+   * @returns null si tiene 13+, { minAge: true } si es menor
+   */
   private ageValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
 
@@ -86,7 +148,12 @@ export class SignUp implements OnInit {
     return age >= 13 ? null : { minAge: true };
   }
 
-  // Validador para que las contraseñas coincidan
+  /**
+   * Validador de coincidencia de contraseñas.
+   *
+   * @param group - Grupo de formulario con password y confirmarPassword
+   * @returns null si coinciden, { passwordMismatch: true } si no
+   */
   private passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
     const password = group.get('password')?.value;
     const confirmarPassword = group.get('confirmarPassword')?.value;
@@ -94,6 +161,17 @@ export class SignUp implements OnInit {
     return password === confirmarPassword ? null : { passwordMismatch: true };
   }
 
+  /**
+   * Procesa el envío del formulario de registro.
+   *
+   * @example
+   * // <form (ngSubmit)="onSubmit()">
+   *
+   * @usageNotes
+   * - Valida formulario antes de enviar
+   * - Registra usuario via AuthService
+   * - Redirige a /profile después de 1 segundo en éxito
+   */
   onSubmit(): void {
     this.errorMessage = '';
     this.successMessage = '';
@@ -130,18 +208,41 @@ export class SignUp implements OnInit {
     }
   }
 
+  /**
+   * Reinicia el formulario y limpia mensajes.
+   *
+   * @example
+   * // <button type="button" (click)="onReset()">Limpiar</button>
+   */
   onReset(): void {
     this.signUpForm.reset();
     this.errorMessage = '';
     this.successMessage = '';
   }
 
-  // Helpers para el template
+  /**
+   * Verifica si un campo del formulario es inválido.
+   *
+   * @example
+   * // <div *ngIf="isFieldInvalid('email')">Error</div>
+   *
+   * @param fieldName - Nombre del campo a validar
+   * @returns true si el campo es inválido y fue tocado/modificado
+   */
   isFieldInvalid(fieldName: string): boolean {
     const field = this.signUpForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
+  /**
+   * Obtiene el mensaje de error para un campo específico.
+   *
+   * @example
+   * // <span>{{ getFieldError('password') }}</span>
+   *
+   * @param fieldName - Nombre del campo
+   * @returns Mensaje de error traducido o string vacío
+   */
   getFieldError(fieldName: string): string {
     const field = this.signUpForm.get(fieldName);
     if (!field || !field.errors) return '';
@@ -158,6 +259,14 @@ export class SignUp implements OnInit {
     return '';
   }
 
+  /**
+   * Verifica si hay error de contraseñas no coincidentes.
+   *
+   * @example
+   * // <div *ngIf="isPasswordMismatch()">Las contraseñas no coinciden</div>
+   *
+   * @returns true si las contraseñas no coinciden y confirmación fue tocada
+   */
   isPasswordMismatch(): boolean {
     return (
       (this.signUpForm.hasError('passwordMismatch') &&

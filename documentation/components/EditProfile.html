@@ -138,6 +138,21 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para edición del perfil de usuario autenticado.
+Permite modificar datos personales y cambiar contraseña.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Navegar a edición de perfil
+this.router.navigate([&#39;/edit-profile&#39;]);</code></pre></div><ul>
+<li>Requiere autenticación, redirige a sign-in si no está logueado</li>
+<li>Validaciones: nombre (min 3), usuario (alfanumérico), email, edad (13+)</li>
+<li>Cambio de contraseña opcional con validación de fortaleza</li>
+<li>Redirige a /profile después de guardar exitosamente</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -330,14 +345,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:75</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:141</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validador personalizado para verificar edad mínima de 13 años.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Uso en FormControl:
+// fechaNacimiento: [&#39;&#39;, [Validators.required, this.ageValidator]]</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -348,6 +366,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -362,6 +381,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Control del formulario con fecha de nacimiento</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -371,7 +396,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>null si válido, { minAge: true } si es menor de 13</p>
+
                             </div>
                 </td>
             </tr>
@@ -397,14 +423,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="197"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:197</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="315"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:315</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene el mensaje de error para un campo específico.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;span&gt;{{ getFieldError(&#39;nombre&#39;) }}&lt;/span&gt;
+// Retorna: &quot;Mínimo 3 caracteres&quot;</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -415,6 +444,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -429,6 +459,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Nombre del campo</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -438,7 +474,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Mensaje de error traducido o string vacío</p>
+
                             </div>
                 </td>
             </tr>
@@ -464,19 +501,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="220"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:220</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="355"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:355</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene el mensaje de error de validación de contraseña.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;span class=&quot;error&quot;&gt;{{ getPasswordError() }}&lt;/span&gt;
+// Retorna: &quot;Las contraseñas no coinciden&quot;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Mensaje de error traducido o string vacío</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -501,19 +545,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="211"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:211</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="337"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:337</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si hay errores de validación de contraseña a nivel de grupo.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;div *ngIf=&quot;hasPasswordErrors()&quot;&gt;{{ getPasswordError() }}&lt;/div&gt;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>true si hay algún error de contraseña</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -540,19 +590,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:88</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el formulario con validadores y estructura de campos.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Campos del formulario:
+// nombre, usuario, email, fechaNacimiento, comentarios
+// passwordActual, passwordNueva, passwordConfirmar (opcionales)</code></pre></div><p>Incluye validador de grupo para contraseñas</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -577,14 +635,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="192"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:192</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="300"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:300</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si un campo del formulario es inválido.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;div *ngIf=&quot;isFieldInvalid(&#39;email&#39;)&quot;&gt;Error&lt;/div&gt;</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -595,6 +655,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -609,6 +670,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Nombre del campo a validar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -618,7 +685,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>true si el campo es inválido y fue tocado/modificado</p>
+
                             </div>
                 </td>
             </tr>
@@ -646,19 +714,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:118</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carga los datos del usuario actual en el formulario.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Obtiene usuario de AuthService y llena el formulario
+this.loadUserData();</code></pre></div><p>Se ejecuta después de initForm() en ngOnInit</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -683,19 +758,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:66</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente verificando autenticación y cargando datos.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Se ejecuta automáticamente al cargar
+// Verifica auth → inicializa form → carga datos usuario</code></pre></div><p>Redirige a /sign-in si el usuario no está autenticado</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -720,19 +802,24 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="187"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:187</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="287"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:287</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Cancela la edición y regresa al perfil.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;onCancel()&quot;&gt;Cancelar&lt;/button&gt;</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -757,19 +844,31 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="131"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:131</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:225</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Procesa el envío del formulario de edición.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En el template:
+// &lt;form (ngSubmit)=&quot;onSubmit()&quot;&gt;</code></pre></div><ul>
+<li>Valida formulario completo antes de enviar</li>
+<li>Actualiza perfil via AuthService</li>
+<li>Redirige a /profile después de 1.5s en éxito</li>
+<li>Limpia campos de contraseña después de actualizar</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -796,14 +895,21 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:172</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validador de grupo para cambio de contraseña.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Errores posibles:
+// { currentPasswordRequired: true } - Falta contraseña actual
+// { passwordStrength: true } - No cumple requisitos
+// { passwordMismatch: true } - No coinciden
+// { incorrectPassword: true } - Contraseña actual incorrecta</code></pre></div><p>Requisitos de contraseña: 8-20 chars, mayúscula, número, especial (!@#$%^&amp;*)</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -814,6 +920,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -828,6 +935,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Grupo de formulario a validar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -837,7 +950,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>null si válido, objeto con error específico si no</p>
+
                             </div>
                 </td>
             </tr>
@@ -874,10 +988,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:39</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de autenticación para gestión de usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -900,10 +1020,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo de edición de perfil</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -931,10 +1057,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:48</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error a mostrar al usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -963,10 +1095,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>FormBuilder para crear formularios reactivos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -994,10 +1132,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:54</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado de carga durante el envío del formulario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1026,10 +1170,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:42</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Router para navegación programática</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1057,10 +1207,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/pages/edit-profile/edit-profile.ts:51</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de éxito después de guardar</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1083,6 +1239,20 @@ import {
 import { Router } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../../services/auth&#x27;;
 
+/**
+ * Componente para edición del perfil de usuario autenticado.
+ * Permite modificar datos personales y cambiar contraseña.
+ *
+ * @example
+ * // Navegar a edición de perfil
+ * this.router.navigate([&#x27;/edit-profile&#x27;]);
+ *
+ * @usageNotes
+ * - Requiere autenticación, redirige a sign-in si no está logueado
+ * - Validaciones: nombre (min 3), usuario (alfanumérico), email, edad (13+)
+ * - Cambio de contraseña opcional con validación de fortaleza
+ * - Redirige a /profile después de guardar exitosamente
+ */
 @Component({
   selector: &#x27;app-edit-profile&#x27;,
   imports: [CommonModule, ReactiveFormsModule],
@@ -1090,15 +1260,37 @@ import { AuthService } from &#x27;../../services/auth&#x27;;
   styleUrl: &#x27;./edit-profile.scss&#x27;,
 })
 export class EditProfile implements OnInit {
+  /** FormBuilder para crear formularios reactivos */
   private fb &#x3D; inject(FormBuilder);
+
+  /** Servicio de autenticación para gestión de usuario */
   private authService &#x3D; inject(AuthService);
+
+  /** Router para navegación programática */
   private router &#x3D; inject(Router);
 
+  /** Formulario reactivo de edición de perfil */
   editProfileForm!: FormGroup;
+
+  /** Mensaje de error a mostrar al usuario */
   errorMessage &#x3D; &#x27;&#x27;;
+
+  /** Mensaje de éxito después de guardar */
   successMessage &#x3D; &#x27;&#x27;;
+
+  /** Estado de carga durante el envío del formulario */
   isLoading &#x3D; false;
 
+  /**
+   * Inicializa el componente verificando autenticación y cargando datos.
+   *
+   * @example
+   * // Se ejecuta automáticamente al cargar
+   * // Verifica auth → inicializa form → carga datos usuario
+   *
+   * @usageNotes
+   * Redirige a /sign-in si el usuario no está autenticado
+   */
   ngOnInit(): void {
     // Si no está autenticado, redirigir al sign-in
     if (!this.authService.isAuthenticated()) {
@@ -1110,6 +1302,17 @@ export class EditProfile implements OnInit {
     this.loadUserData();
   }
 
+  /**
+   * Inicializa el formulario con validadores y estructura de campos.
+   *
+   * @example
+   * // Campos del formulario:
+   * // nombre, usuario, email, fechaNacimiento, comentarios
+   * // passwordActual, passwordNueva, passwordConfirmar (opcionales)
+   *
+   * @usageNotes
+   * Incluye validador de grupo para contraseñas
+   */
   private initForm(): void {
     this.editProfileForm &#x3D; this.fb.group(
       {
@@ -1130,6 +1333,16 @@ export class EditProfile implements OnInit {
     );
   }
 
+  /**
+   * Carga los datos del usuario actual en el formulario.
+   *
+   * @example
+   * // Obtiene usuario de AuthService y llena el formulario
+   * this.loadUserData();
+   *
+   * @usageNotes
+   * Se ejecuta después de initForm() en ngOnInit
+   */
   private loadUserData(): void {
     const user &#x3D; this.authService.currentUser();
     if (user) {
@@ -1143,7 +1356,16 @@ export class EditProfile implements OnInit {
     }
   }
 
-  // Validador personalizado para edad mínima
+  /**
+   * Validador personalizado para verificar edad mínima de 13 años.
+   *
+   * @example
+   * // Uso en FormControl:
+   * // fechaNacimiento: [&#x27;&#x27;, [Validators.required, this.ageValidator]]
+   *
+   * @param control - Control del formulario con fecha de nacimiento
+   * @returns null si válido, { minAge: true } si es menor de 13
+   */
   private ageValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
 
@@ -1159,7 +1381,22 @@ export class EditProfile implements OnInit {
     return age &gt;&#x3D; 13 ? null : { minAge: true };
   }
 
-  // Validador de grupo para contraseñas
+  /**
+   * Validador de grupo para cambio de contraseña.
+   *
+   * @example
+   * // Errores posibles:
+   * // { currentPasswordRequired: true } - Falta contraseña actual
+   * // { passwordStrength: true } - No cumple requisitos
+   * // { passwordMismatch: true } - No coinciden
+   * // { incorrectPassword: true } - Contraseña actual incorrecta
+   *
+   * @param group - Grupo de formulario a validar
+   * @returns null si válido, objeto con error específico si no
+   *
+   * @usageNotes
+   * Requisitos de contraseña: 8-20 chars, mayúscula, número, especial (!@#$%^&amp;*)
+   */
   private passwordGroupValidator(group: AbstractControl): ValidationErrors | null {
     const passwordActual &#x3D; group.get(&#x27;passwordActual&#x27;)?.value;
     const passwordNueva &#x3D; group.get(&#x27;passwordNueva&#x27;)?.value;
@@ -1200,6 +1437,19 @@ export class EditProfile implements OnInit {
     return null;
   }
 
+  /**
+   * Procesa el envío del formulario de edición.
+   *
+   * @example
+   * // En el template:
+   * // &lt;form (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+   *
+   * @usageNotes
+   * - Valida formulario completo antes de enviar
+   * - Actualiza perfil via AuthService
+   * - Redirige a /profile después de 1.5s en éxito
+   * - Limpia campos de contraseña después de actualizar
+   */
   onSubmit(): void {
     this.errorMessage &#x3D; &#x27;&#x27;;
     this.successMessage &#x3D; &#x27;&#x27;;
@@ -1256,16 +1506,40 @@ export class EditProfile implements OnInit {
     }
   }
 
+  /**
+   * Cancela la edición y regresa al perfil.
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;onCancel()&quot;&gt;Cancelar&lt;/button&gt;
+   */
   onCancel(): void {
     this.router.navigate([&#x27;/profile&#x27;]);
   }
 
-  // Helpers para el template
+  /**
+   * Verifica si un campo del formulario es inválido.
+   *
+   * @example
+   * // &lt;div *ngIf&#x3D;&quot;isFieldInvalid(&#x27;email&#x27;)&quot;&gt;Error&lt;/div&gt;
+   *
+   * @param fieldName - Nombre del campo a validar
+   * @returns true si el campo es inválido y fue tocado/modificado
+   */
   isFieldInvalid(fieldName: string): boolean {
     const field &#x3D; this.editProfileForm.get(fieldName);
     return !!(field &amp;&amp; field.invalid &amp;&amp; (field.dirty || field.touched));
   }
 
+  /**
+   * Obtiene el mensaje de error para un campo específico.
+   *
+   * @example
+   * // &lt;span&gt;{{ getFieldError(&#x27;nombre&#x27;) }}&lt;/span&gt;
+   * // Retorna: &quot;Mínimo 3 caracteres&quot;
+   *
+   * @param fieldName - Nombre del campo
+   * @returns Mensaje de error traducido o string vacío
+   */
   getFieldError(fieldName: string): string {
     const field &#x3D; this.editProfileForm.get(fieldName);
     if (!field || !field.errors) return &#x27;&#x27;;
@@ -1280,6 +1554,14 @@ export class EditProfile implements OnInit {
     return &#x27;&#x27;;
   }
 
+  /**
+   * Verifica si hay errores de validación de contraseña a nivel de grupo.
+   *
+   * @example
+   * // &lt;div *ngIf&#x3D;&quot;hasPasswordErrors()&quot;&gt;{{ getPasswordError() }}&lt;/div&gt;
+   *
+   * @returns true si hay algún error de contraseña
+   */
   hasPasswordErrors(): boolean {
     return (
       this.editProfileForm.hasError(&#x27;passwordStrength&#x27;) ||
@@ -1289,6 +1571,15 @@ export class EditProfile implements OnInit {
     );
   }
 
+  /**
+   * Obtiene el mensaje de error de validación de contraseña.
+   *
+   * @example
+   * // &lt;span class&#x3D;&quot;error&quot;&gt;{{ getPasswordError() }}&lt;/span&gt;
+   * // Retorna: &quot;Las contraseñas no coinciden&quot;
+   *
+   * @returns Mensaje de error traducido o string vacío
+   */
   getPasswordError(): string {
     if (this.editProfileForm.hasError(&#x27;currentPasswordRequired&#x27;)) {
       return &#x27;Debes ingresar tu contraseña actual para cambiarla&#x27;;

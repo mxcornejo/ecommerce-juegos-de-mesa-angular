@@ -11,6 +11,19 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
+/**
+ * Componente de recuperación de contraseña en dos pasos.
+ * Permite solicitar código de verificación y restablecer contraseña.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: 'recover-password', component: RecoverPassword }
+ *
+ * @usageNotes
+ * Flujo de 2 pasos:
+ * 1. Ingresa email → recibe código de 6 dígitos (válido 10 min)
+ * 2. Ingresa código + nueva contraseña → restablece y redirige a sign-in
+ */
 @Component({
   selector: 'app-recover-password',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
@@ -18,29 +31,59 @@ import { AuthService } from '../../services/auth';
   styleUrl: './recover-password.scss',
 })
 export class RecoverPassword implements OnInit {
+  /** FormBuilder para crear formularios reactivos */
   private fb = inject(FormBuilder);
+
+  /** Servicio de autenticación */
   private authService = inject(AuthService);
+
+  /** Router para navegación */
   private router = inject(Router);
 
-  // Formularios
+  /** Formulario para solicitar código por email */
   emailForm!: FormGroup;
+
+  /** Formulario para cambiar contraseña con código */
   passwordForm!: FormGroup;
 
-  // Estados
+  /** Paso actual del proceso: 'email' o 'code' */
   currentStep: 'email' | 'code' = 'email';
+
+  /** Mensaje de error a mostrar */
   errorMessage = '';
+
+  /** Mensaje de éxito a mostrar */
   successMessage = '';
+
+  /** Mensaje informativo (código en dev) */
   infoMessage = '';
+
+  /** Estado de carga durante operaciones */
   isLoading = false;
 
-  // Datos temporales
+  /** Email del usuario para recuperación */
   userEmail = '';
+
+  /** Código de verificación generado */
   generatedCode = '';
 
+  /**
+   * Inicializa los formularios al cargar el componente.
+   */
   ngOnInit(): void {
     this.initForms();
   }
 
+  /**
+   * Crea los formularios reactivos con sus validadores.
+   *
+   * @example
+   * // emailForm: solo requiere email válido
+   * // passwordForm: código 6 dígitos, contraseña fuerte, confirmación
+   *
+   * @usageNotes
+   * Requisitos de contraseña: 8-20 chars, mayúscula, número, especial
+   */
   private initForms(): void {
     // Formulario para solicitar código
     this.emailForm = this.fb.group({
@@ -58,7 +101,16 @@ export class RecoverPassword implements OnInit {
     );
   }
 
-  // Validador de contraseña fuerte
+  /**
+   * Validador de fortaleza de contraseña.
+   *
+   * @example
+   * // Contraseña válida: "Password1!"
+   * // Inválida: "password" (falta mayúscula, número, especial)
+   *
+   * @param control - Control del formulario a validar
+   * @returns null si válido, { passwordStrength: true } si no cumple requisitos
+   */
   private passwordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
@@ -73,7 +125,12 @@ export class RecoverPassword implements OnInit {
     return passwordValid ? null : { passwordStrength: true };
   }
 
-  // Validador para que las contraseñas coincidan
+  /**
+   * Validador de coincidencia de contraseñas.
+   *
+   * @param group - Grupo de formulario con newPassword y confirmPassword
+   * @returns null si coinciden, { passwordMismatch: true } si no
+   */
   private passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
     const password = group.get('newPassword')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -81,7 +138,17 @@ export class RecoverPassword implements OnInit {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  // Paso 1: Solicitar código de verificación
+  /**
+   * Paso 1: Solicita código de verificación por email.
+   *
+   * @example
+   * // <form (ngSubmit)="onRequestCode()">
+   *
+   * @usageNotes
+   * - Valida email antes de enviar
+   * - En desarrollo muestra el código en pantalla
+   * - El código es válido por 10 minutos
+   */
   onRequestCode(): void {
     this.errorMessage = '';
     this.successMessage = '';
@@ -112,7 +179,16 @@ export class RecoverPassword implements OnInit {
     }
   }
 
-  // Paso 2: Cambiar contraseña
+  /**
+   * Paso 2: Cambia la contraseña con el código de verificación.
+   *
+   * @example
+   * // <form (ngSubmit)="onChangePassword()">
+   *
+   * @usageNotes
+   * - Valida código y contraseñas antes de enviar
+   * - Redirige a /sign-in después de 2 segundos en éxito
+   */
   onChangePassword(): void {
     this.errorMessage = '';
     this.successMessage = '';
@@ -145,7 +221,15 @@ export class RecoverPassword implements OnInit {
     }
   }
 
-  // Reiniciar el proceso
+  /**
+   * Reinicia todo el proceso de recuperación.
+   *
+   * @example
+   * // <button (click)="onReset()">Volver a intentar</button>
+   *
+   * @usageNotes
+   * Limpia formularios, mensajes y vuelve al paso 1
+   */
   onReset(): void {
     this.currentStep = 'email';
     this.emailForm.reset();
@@ -157,12 +241,31 @@ export class RecoverPassword implements OnInit {
     this.generatedCode = '';
   }
 
-  // Helpers para el template
+  /**
+   * Verifica si un campo del formulario es inválido.
+   *
+   * @example
+   * // <div *ngIf="isFieldInvalid(emailForm, 'email')">
+   *
+   * @param form - Formulario que contiene el campo
+   * @param fieldName - Nombre del campo a validar
+   * @returns true si el campo es inválido y fue tocado/modificado
+   */
   isFieldInvalid(form: FormGroup, fieldName: string): boolean {
     const field = form.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
+  /**
+   * Obtiene el mensaje de error para un campo específico.
+   *
+   * @example
+   * // <span>{{ getFieldError(passwordForm, 'code') }}</span>
+   *
+   * @param form - Formulario que contiene el campo
+   * @param fieldName - Nombre del campo
+   * @returns Mensaje de error traducido o string vacío
+   */
   getFieldError(form: FormGroup, fieldName: string): string {
     const field = form.get(fieldName);
     if (!field || !field.errors) return '';
@@ -176,6 +279,14 @@ export class RecoverPassword implements OnInit {
     return '';
   }
 
+  /**
+   * Verifica si hay error de contraseñas no coincidentes.
+   *
+   * @example
+   * // <div *ngIf="isPasswordMismatch()">Las contraseñas no coinciden</div>
+   *
+   * @returns true si las contraseñas no coinciden y confirmPassword fue tocado
+   */
   isPasswordMismatch(): boolean {
     return (
       (this.passwordForm.hasError('passwordMismatch') &&

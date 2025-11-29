@@ -3,32 +3,86 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { User, LoginCredentials, RegisterData } from '../models/user.interface';
 
+/**
+ * Servicio de autenticación y gestión de usuarios.
+ * Maneja registro, login, recuperación de contraseña y administración.
+ *
+ * @example
+ * // Inyectar el servicio
+ * private authService = inject(AuthService);
+ *
+ * // Verificar autenticación
+ * if (this.authService.isAuthenticated()) { ... }
+ *
+ * @usageNotes
+ * - Usa signals para reactividad (currentUser, isAuthenticated)
+ * - Almacena datos en localStorage (solo en browser, compatible SSR)
+ * - Incluye funcionalidades de admin con credenciales separadas
+ * - Claves localStorage: ww_users, ww_current_user, ww_admin_session
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  /** Clave localStorage para lista de usuarios */
   private readonly USERS_KEY = 'ww_users';
+
+  /** Clave localStorage para usuario actual */
   private readonly CURRENT_USER_KEY = 'ww_current_user';
+
+  /** Clave localStorage para sesión admin */
   private readonly ADMIN_KEY = 'ww_admin_session';
+
+  /** Credenciales de administrador (hardcoded para demo) */
   private readonly ADMIN_CREDENTIALS = { usuario: 'admin', password: '1234' };
 
+  /** Router para navegación */
   private router = inject(Router);
+
+  /** ID de plataforma para detección SSR */
   private platformId = inject(PLATFORM_ID);
+
+  /** Indica si se ejecuta en navegador */
   private isBrowser = isPlatformBrowser(this.platformId);
 
-  // Signals para reactividad
+  /** Signal interno del usuario actual */
   private currentUserSignal = signal<User | null>(null);
+
+  /** Signal interno del estado de admin */
   private adminAuthenticatedSignal = signal<boolean>(false);
 
-  // Computed para saber si está autenticado
+  /**
+   * Computed que indica si hay usuario autenticado.
+   *
+   * @example
+   * if (this.authService.isAuthenticated()) {
+   *   // Usuario logueado
+   * }
+   */
   isAuthenticated = computed(() => this.currentUserSignal() !== null);
 
-  // Getter público del usuario actual
+  /**
+   * Signal de solo lectura del usuario actual.
+   *
+   * @example
+   * const user = this.authService.currentUser();
+   */
   currentUser = this.currentUserSignal.asReadonly();
 
-  // Getter público del estado de admin
+  /**
+   * Signal de solo lectura del estado de admin.
+   *
+   * @example
+   * const isAdmin = this.authService.isAdminAuth();
+   */
   isAdminAuth = this.adminAuthenticatedSignal.asReadonly();
 
+  /**
+   * Constructor que carga sesiones desde localStorage.
+   *
+   * @usageNotes
+   * Solo carga datos si está en navegador (no SSR)
+   */
   constructor() {
     // Cargar usuario actual al iniciar (solo en el navegador)
     if (this.isBrowser) {
@@ -38,7 +92,10 @@ export class AuthService {
   }
 
   /**
-   * Carga el usuario actual desde localStorage
+   * Carga el usuario actual desde localStorage.
+   *
+   * @usageNotes
+   * Se ejecuta en constructor si está en browser
    */
   private loadCurrentUser(): void {
     if (!this.isBrowser) return;
@@ -56,7 +113,9 @@ export class AuthService {
   }
 
   /**
-   * Obtiene todos los usuarios registrados
+   * Obtiene todos los usuarios registrados desde localStorage.
+   *
+   * @returns Array de usuarios o array vacío si no hay/error
    */
   private getAllUsers(): User[] {
     if (!this.isBrowser) return [];
@@ -73,7 +132,9 @@ export class AuthService {
   }
 
   /**
-   * Guarda todos los usuarios en localStorage
+   * Guarda la lista de usuarios en localStorage.
+   *
+   * @param users - Array de usuarios a guardar
    */
   private saveAllUsers(users: User[]): void {
     if (!this.isBrowser) return;
@@ -81,7 +142,23 @@ export class AuthService {
   }
 
   /**
-   * Registra un nuevo usuario
+   * Registra un nuevo usuario en el sistema.
+   *
+   * @example
+   * const result = this.authService.register({
+   *   nombre: 'Juan',
+   *   usuario: 'juan123',
+   *   email: 'juan@email.com',
+   *   password: 'Pass123',
+   *   fechaNacimiento: '1990-01-15'
+   * });
+   *
+   * @param data - Datos de registro del usuario
+   * @returns Objeto con success, message y user opcional
+   *
+   * @usageNotes
+   * - Valida email y usuario únicos
+   * - Auto-login después del registro exitoso
    */
   register(data: RegisterData): { success: boolean; message: string; user?: User } {
     const users = this.getAllUsers();
@@ -119,7 +196,16 @@ export class AuthService {
   }
 
   /**
-   * Inicia sesión
+   * Inicia sesión con email/usuario y contraseña.
+   *
+   * @example
+   * const result = this.authService.login({
+   *   emailOrUsername: 'juan@email.com',
+   *   password: 'Pass123'
+   * });
+   *
+   * @param credentials - Credenciales de login
+   * @returns Objeto con success, message y user opcional
    */
   login(credentials: LoginCredentials): { success: boolean; message: string; user?: User } {
     const users = this.getAllUsers();
@@ -142,7 +228,14 @@ export class AuthService {
   }
 
   /**
-   * Cierra sesión
+   * Cierra la sesión del usuario actual.
+   *
+   * @example
+   * this.authService.logout();
+   * // Redirige a /sign-in
+   *
+   * @usageNotes
+   * Limpia localStorage y redirige a sign-in
    */
   logout(): void {
     if (this.isBrowser) {
@@ -153,7 +246,20 @@ export class AuthService {
   }
 
   /**
-   * Actualiza el perfil del usuario actual
+   * Actualiza el perfil del usuario actual.
+   *
+   * @example
+   * const result = this.authService.updateProfile({
+   *   nombre: 'Juan Pérez',
+   *   email: 'nuevo@email.com'
+   * });
+   *
+   * @param updatedData - Datos parciales a actualizar
+   * @returns Objeto con success y message
+   *
+   * @usageNotes
+   * - Valida unicidad de email y usuario si cambian
+   * - Mantiene id y fechaRegistro originales
    */
   updateProfile(updatedData: Partial<User>): { success: boolean; message: string } {
     const currentUser = this.currentUserSignal();
@@ -201,7 +307,9 @@ export class AuthService {
   }
 
   /**
-   * Establece el usuario actual
+   * Establece el usuario actual en signal y localStorage.
+   *
+   * @param user - Usuario a establecer como actual
    */
   private setCurrentUser(user: User): void {
     // Actualizar el signal siempre (tanto en browser como en SSR)
@@ -214,14 +322,26 @@ export class AuthService {
   }
 
   /**
-   * Genera un ID único para el usuario
+   * Genera un ID único para el usuario.
+   *
+   * @example
+   * // Retorna: "user_1732800000000_abc123xyz"
+   *
+   * @returns ID único con timestamp y string aleatorio
    */
   private generateUserId(): string {
     return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   /**
-   * Calcula la edad basándose en la fecha de nacimiento
+   * Calcula la edad a partir de fecha de nacimiento.
+   *
+   * @example
+   * const edad = this.authService.calculateAge('1990-05-15');
+   * // Retorna: 35
+   *
+   * @param fechaNacimiento - Fecha en formato ISO
+   * @returns Edad en años
    */
   calculateAge(fechaNacimiento: string): number {
     const today = new Date();
@@ -237,7 +357,14 @@ export class AuthService {
   }
 
   /**
-   * Formatea una fecha ISO a formato legible
+   * Formatea una fecha ISO a formato legible en español.
+   *
+   * @example
+   * const fecha = this.authService.formatDate('2024-01-15T10:30:00');
+   * // Retorna: "15 de enero de 2024"
+   *
+   * @param isoDate - Fecha en formato ISO
+   * @returns Fecha formateada en español
    */
   formatDate(isoDate: string): string {
     const date = new Date(isoDate);
@@ -249,7 +376,10 @@ export class AuthService {
   }
 
   /**
-   * Verifica si existe un usuario con el email proporcionado
+   * Verifica si existe un usuario con el email proporcionado.
+   *
+   * @param email - Email a verificar
+   * @returns Objeto con exists y message
    */
   checkEmailExists(email: string): { exists: boolean; message: string } {
     const users = this.getAllUsers();
@@ -262,14 +392,31 @@ export class AuthService {
   }
 
   /**
-   * Genera un código de verificación de 6 dígitos
+   * Genera un código de verificación de 6 dígitos.
+   *
+   * @example
+   * const code = this.authService.generateVerificationCode();
+   * // Retorna: "847293"
+   *
+   * @returns Código numérico de 6 dígitos como string
    */
   generateVerificationCode(): string {
     return Math.floor(100000 + Math.random() * 900000).toString();
   }
 
   /**
-   * Simula el envío de un código de verificación (en producción enviaría un email real)
+   * Simula envío de código de verificación para recuperación.
+   *
+   * @example
+   * const result = this.authService.sendVerificationCode('user@email.com');
+   * // En dev retorna el código para testing
+   *
+   * @param email - Email del usuario
+   * @returns Objeto con success, message y code (solo en dev)
+   *
+   * @usageNotes
+   * - Guarda código en localStorage con expiración de 10 minutos
+   * - En producción NO debería retornar el código
    */
   sendVerificationCode(email: string): { success: boolean; message: string; code?: string } {
     const result = this.checkEmailExists(email);
@@ -300,7 +447,18 @@ export class AuthService {
   }
 
   /**
-   * Verifica el código de recuperación
+   * Verifica el código de recuperación de contraseña.
+   *
+   * @example
+   * const result = this.authService.verifyRecoveryCode('user@email.com', '123456');
+   *
+   * @param email - Email del usuario
+   * @param code - Código de 6 dígitos a verificar
+   * @returns Objeto con success y message
+   *
+   * @usageNotes
+   * - Verifica expiración del código (10 minutos)
+   * - Limpia código expirado automáticamente
    */
   verifyRecoveryCode(email: string, code: string): { success: boolean; message: string } {
     if (!this.isBrowser) {
@@ -333,7 +491,22 @@ export class AuthService {
   }
 
   /**
-   * Restablece la contraseña del usuario
+   * Restablece la contraseña del usuario.
+   *
+   * @example
+   * const result = this.authService.resetPassword(
+   *   'user@email.com',
+   *   '123456',
+   *   'NuevaPass123!'
+   * );
+   *
+   * @param email - Email del usuario
+   * @param code - Código de verificación
+   * @param newPassword - Nueva contraseña
+   * @returns Objeto con success y message
+   *
+   * @usageNotes
+   * Verifica código antes de actualizar y limpia código usado
    */
   resetPassword(
     email: string,
@@ -368,7 +541,10 @@ export class AuthService {
   // ============ MÉTODOS DE ADMINISTRADOR ============
 
   /**
-   * Carga la sesión de admin desde localStorage
+   * Carga la sesión de admin desde localStorage.
+   *
+   * @usageNotes
+   * Se ejecuta en constructor si está en browser
    */
   private loadAdminSession(): void {
     if (!this.isBrowser) return;
@@ -380,7 +556,14 @@ export class AuthService {
   }
 
   /**
-   * Inicia sesión como administrador
+   * Inicia sesión como administrador.
+   *
+   * @example
+   * const result = this.authService.adminLogin('admin', '1234');
+   *
+   * @param usuario - Nombre de usuario admin
+   * @param password - Contraseña admin
+   * @returns Objeto con success y message
    */
   adminLogin(usuario: string, password: string): { success: boolean; message: string } {
     if (
@@ -397,7 +580,11 @@ export class AuthService {
   }
 
   /**
-   * Cierra sesión de administrador
+   * Cierra sesión de administrador.
+   *
+   * @example
+   * this.authService.adminLogout();
+   * // Redirige a /admin-login
    */
   adminLogout(): void {
     this.adminAuthenticatedSignal.set(false);
@@ -408,14 +595,21 @@ export class AuthService {
   }
 
   /**
-   * Verifica si el admin está autenticado
+   * Verifica si el admin está autenticado.
+   *
+   * @returns true si hay sesión admin activa
    */
   isAdminAuthenticated(): boolean {
     return this.adminAuthenticatedSignal();
   }
 
   /**
-   * Obtiene todos los usuarios registrados (solo para admin)
+   * Obtiene todos los usuarios registrados (solo admin).
+   *
+   * @example
+   * const users = this.authService.getRegisteredUsers();
+   *
+   * @returns Array de usuarios o vacío si no es admin
    */
   getRegisteredUsers(): User[] {
     if (!this.isAdminAuthenticated()) {
@@ -425,7 +619,13 @@ export class AuthService {
   }
 
   /**
-   * Elimina un usuario por ID (solo para admin)
+   * Elimina un usuario por ID (solo admin).
+   *
+   * @example
+   * const result = this.authService.deleteUser('user_123456_abc');
+   *
+   * @param userId - ID del usuario a eliminar
+   * @returns Objeto con success y message
    */
   deleteUser(userId: string): { success: boolean; message: string } {
     if (!this.isAdminAuthenticated()) {
@@ -447,7 +647,13 @@ export class AuthService {
   }
 
   /**
-   * Obtiene estadísticas de usuarios (solo para admin)
+   * Obtiene estadísticas de usuarios (solo admin).
+   *
+   * @example
+   * const stats = this.authService.getUserStats();
+   * // { total: 10, todayRegistrations: 2 }
+   *
+   * @returns Objeto con total de usuarios y registros de hoy
    */
   getUserStats(): { total: number; todayRegistrations: number } {
     if (!this.isAdminAuthenticated()) {

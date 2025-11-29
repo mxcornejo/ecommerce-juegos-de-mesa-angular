@@ -138,6 +138,22 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de listado de productos por categoría.
+Muestra productos agrupados y permite filtrar por categoría.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Ruta en app.routes.ts:
+{ path: &#39;products&#39;, component: Products }</code></pre></div><p>// Filtrar por categoría:
+// /products?category=estrategia</p>
+<ul>
+<li>Sin queryParam muestra todas las categorías</li>
+<li>Con ?category=slug filtra por esa categoría específica</li>
+<li>Se suscribe a cambios de queryParams para filtrado reactivo</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -292,19 +308,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/products/products.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/pages/products/products.ts:74</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Filtra las categorías según el slug seleccionado.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Con selectedCategorySlug = &#39;estrategia&#39;
+// filteredCategories contendrá solo esa categoría</code></pre></div><p>Si no hay slug seleccionado, muestra todas las categorías</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -329,14 +352,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/pages/products/products.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/pages/products/products.ts:94</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene los productos de una categoría específica.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En el template:
+// *ngFor=&quot;let product of getProductsByCategory(category.id)&quot;</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -347,6 +373,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -361,6 +388,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID de la categoría a filtrar</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -370,7 +403,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Array de productos pertenecientes a esa categoría</p>
+
                             </div>
                 </td>
             </tr>
@@ -396,19 +430,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/pages/products/products.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/pages/products/products.ts:57</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente suscribiéndose a cambios de queryParams.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Al navegar a /products?category=familiar
+// Se actualiza selectedCategorySlug y filtra categorías</code></pre></div><p>Usa subscribe para reaccionar a cambios de navegación sin recargar</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -443,10 +484,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/products/products.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/products/products.ts:39</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de categorías del mock</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -474,10 +521,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/products/products.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/products/products.ts:42</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Categorías filtradas a mostrar</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -505,10 +558,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/products/products.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/products/products.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de productos del mock</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -537,10 +596,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/products/products.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/products/products.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de rutas para obtener queryParams</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -568,10 +633,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/products/products.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/products/products.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Slug de la categoría seleccionada desde queryParams</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -589,6 +660,22 @@ import { PRODUCTS, CATEGORIES } from &#x27;../../data/mock-data&#x27;;
 import { Product } from &#x27;../../models/product.interface&#x27;;
 import { Category } from &#x27;../../models/category.interface&#x27;;
 
+/**
+ * Componente de listado de productos por categoría.
+ * Muestra productos agrupados y permite filtrar por categoría.
+ *
+ * @example
+ * // Ruta en app.routes.ts:
+ * { path: &#x27;products&#x27;, component: Products }
+ *
+ * // Filtrar por categoría:
+ * // /products?category&#x3D;estrategia
+ *
+ * @usageNotes
+ * - Sin queryParam muestra todas las categorías
+ * - Con ?category&#x3D;slug filtra por esa categoría específica
+ * - Se suscribe a cambios de queryParams para filtrado reactivo
+ */
 @Component({
   selector: &#x27;app-products&#x27;,
   imports: [Banner, CardProduct],
@@ -596,13 +683,31 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
   styleUrl: &#x27;./products.scss&#x27;,
 })
 export class Products implements OnInit {
+  /** Servicio de rutas para obtener queryParams */
   private route &#x3D; inject(ActivatedRoute);
 
+  /** Lista completa de productos del mock */
   products: Product[] &#x3D; PRODUCTS;
+
+  /** Lista completa de categorías del mock */
   categories: Category[] &#x3D; CATEGORIES;
+
+  /** Categorías filtradas a mostrar */
   filteredCategories: Category[] &#x3D; CATEGORIES;
+
+  /** Slug de la categoría seleccionada desde queryParams */
   selectedCategorySlug: string | null &#x3D; null;
 
+  /**
+   * Inicializa el componente suscribiéndose a cambios de queryParams.
+   *
+   * @example
+   * // Al navegar a /products?category&#x3D;familiar
+   * // Se actualiza selectedCategorySlug y filtra categorías
+   *
+   * @usageNotes
+   * Usa subscribe para reaccionar a cambios de navegación sin recargar
+   */
   ngOnInit() {
     this.route.queryParamMap.subscribe((params) &#x3D;&gt; {
       this.selectedCategorySlug &#x3D; params.get(&#x27;category&#x27;);
@@ -610,6 +715,16 @@ export class Products implements OnInit {
     });
   }
 
+  /**
+   * Filtra las categorías según el slug seleccionado.
+   *
+   * @example
+   * // Con selectedCategorySlug &#x3D; &#x27;estrategia&#x27;
+   * // filteredCategories contendrá solo esa categoría
+   *
+   * @usageNotes
+   * Si no hay slug seleccionado, muestra todas las categorías
+   */
   filterCategories() {
     if (this.selectedCategorySlug) {
       this.filteredCategories &#x3D; this.categories.filter(
@@ -620,6 +735,16 @@ export class Products implements OnInit {
     }
   }
 
+  /**
+   * Obtiene los productos de una categoría específica.
+   *
+   * @example
+   * // En el template:
+   * // *ngFor&#x3D;&quot;let product of getProductsByCategory(category.id)&quot;
+   *
+   * @param categoryId - ID de la categoría a filtrar
+   * @returns Array de productos pertenecientes a esa categoría
+   */
   getProductsByCategory(categoryId: number): Product[] {
     return this.products.filter((product) &#x3D;&gt; product.categoryId &#x3D;&#x3D;&#x3D; categoryId);
   }
