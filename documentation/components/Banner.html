@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de banner decorativo para páginas de productos.
+Muestra un encabezado visual en la sección de catálogo.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En un template:
+&lt;app-banner&gt;&lt;/app-banner&gt;</code></pre></div><ul>
+<li>Componente presentacional sin lógica</li>
+<li>Usado en la página de Products</li>
+<li>Estilos definidos en banner.scss</li>
+</ul>
+
+    </p>
 
 
 
@@ -202,15 +216,26 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente de banner decorativo para páginas de productos.
+ * Muestra un encabezado visual en la sección de catálogo.
+ *
+ * @example
+ * // En un template:
+ * &lt;app-banner&gt;&lt;/app-banner&gt;
+ *
+ * @usageNotes
+ * - Componente presentacional sin lógica
+ * - Usado en la página de Products
+ * - Estilos definidos en banner.scss
+ */
 @Component({
   selector: &#x27;app-banner&#x27;,
   imports: [],
   templateUrl: &#x27;./banner.html&#x27;,
   styleUrl: &#x27;./banner.scss&#x27;,
 })
-export class Banner {
-
-}
+export class Banner {}
 </code></pre>
     </div>
 

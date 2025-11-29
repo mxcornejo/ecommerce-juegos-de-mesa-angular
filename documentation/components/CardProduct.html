@@ -138,6 +138,21 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de tarjeta de producto para listados.
+Muestra imagen, nombre, precio y botón de agregar al carrito.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En un template:
+&lt;app-card-product [product]=&quot;producto&quot;&gt;&lt;/app-card-product&gt;</code></pre></div><ul>
+<li>Requiere input obligatorio de Product</li>
+<li>Enlaza a /product/{id} para ver detalle</li>
+<li>Permite agregar al carrito directamente desde la tarjeta</li>
+<li>Usado en Products y Categories</li>
+</ul>
+
+    </p>
 
 
 
@@ -269,9 +284,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/card-product/card-product.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/card-product/card-product.ts:33</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Datos del producto a mostrar.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// product = { id: 1, name: &#39;Catan&#39;, price: 35000, image: &#39;...&#39; }</code></pre></div></div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -303,14 +324,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/components/card-product/card-product.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/components/card-product/card-product.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Agrega el producto al carrito (cantidad 1).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// &lt;button (click)=&quot;addToCart($event)&quot;&gt;Agregar&lt;/button&gt;</code></pre></div><p>Usa stopPropagation para evitar que el click navegue al detalle</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -321,6 +345,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -335,6 +360,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Evento del click para prevenir navegación</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -380,10 +411,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/card-product/card-product.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/card-product/card-product.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio del carrito de compras</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -398,6 +435,20 @@ import { RouterLink } from &#x27;@angular/router&#x27;;
 import { Product } from &#x27;../../models/product.interface&#x27;;
 import { Cart } from &#x27;../../services/cart&#x27;;
 
+/**
+ * Componente de tarjeta de producto para listados.
+ * Muestra imagen, nombre, precio y botón de agregar al carrito.
+ *
+ * @example
+ * // En un template:
+ * &lt;app-card-product [product]&#x3D;&quot;producto&quot;&gt;&lt;/app-card-product&gt;
+ *
+ * @usageNotes
+ * - Requiere input obligatorio de Product
+ * - Enlaza a /product/{id} para ver detalle
+ * - Permite agregar al carrito directamente desde la tarjeta
+ * - Usado en Products y Categories
+ */
 @Component({
   selector: &#x27;app-card-product&#x27;,
   imports: [RouterLink],
@@ -405,9 +456,28 @@ import { Cart } from &#x27;../../services/cart&#x27;;
   styleUrl: &#x27;./card-product.scss&#x27;,
 })
 export class CardProduct {
+  /**
+   * Datos del producto a mostrar.
+   *
+   * @example
+   * // product &#x3D; { id: 1, name: &#x27;Catan&#x27;, price: 35000, image: &#x27;...&#x27; }
+   */
   @Input() product!: Product;
+
+  /** Servicio del carrito de compras */
   cartService &#x3D; inject(Cart);
 
+  /**
+   * Agrega el producto al carrito (cantidad 1).
+   *
+   * @example
+   * // &lt;button (click)&#x3D;&quot;addToCart($event)&quot;&gt;Agregar&lt;/button&gt;
+   *
+   * @param event - Evento del click para prevenir navegación
+   *
+   * @usageNotes
+   * Usa stopPropagation para evitar que el click navegue al detalle
+   */
   addToCart(event: Event) {
     event.preventDefault();
     event.stopPropagation();

@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente contenedor que muestra el grid de categorías.
+Renderiza una CardCategory por cada categoría disponible.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En un template:
+&lt;app-categories&gt;&lt;/app-categories&gt;</code></pre></div><ul>
+<li>Carga categorías desde mock-data</li>
+<li>Usado en la página Home</li>
+<li>Itera sobre categories para mostrar CardCategory</li>
+</ul>
+
+    </p>
 
 
 
@@ -257,10 +271,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/categories/categories.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/categories/categories.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de categorías a mostrar desde mock-data.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Se usa en template con *ngFor
+// *ngFor=&quot;let category of categories&quot;</code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -275,6 +296,19 @@ import { CardCategory } from &#x27;../card-category/card-category&#x27;;
 import { CATEGORIES } from &#x27;../../data/mock-data&#x27;;
 import { Category } from &#x27;../../models/category.interface&#x27;;
 
+/**
+ * Componente contenedor que muestra el grid de categorías.
+ * Renderiza una CardCategory por cada categoría disponible.
+ *
+ * @example
+ * // En un template:
+ * &lt;app-categories&gt;&lt;/app-categories&gt;
+ *
+ * @usageNotes
+ * - Carga categorías desde mock-data
+ * - Usado en la página Home
+ * - Itera sobre categories para mostrar CardCategory
+ */
 @Component({
   selector: &#x27;app-categories&#x27;,
   imports: [CardCategory],
@@ -282,6 +316,13 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
   styleUrl: &#x27;./categories.scss&#x27;,
 })
 export class Categories {
+  /**
+   * Lista de categorías a mostrar desde mock-data.
+   *
+   * @example
+   * // Se usa en template con *ngFor
+   * // *ngFor&#x3D;&quot;let category of categories&quot;
+   */
   categories: Category[] &#x3D; CATEGORIES;
 }
 </code></pre>

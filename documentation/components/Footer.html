@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de pie de página del sitio.
+Muestra enlaces de navegación, información de contacto y copyright.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En app.html:
+&lt;app-footer&gt;&lt;/app-footer&gt;</code></pre></div><ul>
+<li>Componente presentacional sin lógica</li>
+<li>Incluido en el layout principal (app.html)</li>
+<li>Contiene enlaces de navegación con RouterLink</li>
+</ul>
+
+    </p>
 
 
 
@@ -209,6 +223,19 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
 
+/**
+ * Componente de pie de página del sitio.
+ * Muestra enlaces de navegación, información de contacto y copyright.
+ *
+ * @example
+ * // En app.html:
+ * &lt;app-footer&gt;&lt;/app-footer&gt;
+ *
+ * @usageNotes
+ * - Componente presentacional sin lógica
+ * - Incluido en el layout principal (app.html)
+ * - Contiene enlaces de navegación con RouterLink
+ */
 @Component({
   selector: &#x27;app-footer&#x27;,
   imports: [RouterLink],

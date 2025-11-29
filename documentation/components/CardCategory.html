@@ -138,6 +138,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de tarjeta de categoría para mostrar en el home.
+Muestra imagen, nombre y enlace a productos filtrados.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En un template:
+&lt;app-card-category [category]=&quot;categoria&quot;&gt;&lt;/app-card-category&gt;</code></pre></div><ul>
+<li>Requiere input obligatorio de Category</li>
+<li>Enlaza a /products?category={slug}</li>
+<li>Usado en el componente Categories</li>
+</ul>
+
+    </p>
 
 
 
@@ -241,9 +255,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/card-category/card-category.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/card-category/card-category.ts:31</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Datos de la categoría a mostrar.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// category = { id: 1, name: &#39;Estrategia&#39;, slug: &#39;estrategia&#39;, image: &#39;...&#39; }</code></pre></div></div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -260,6 +280,19 @@
 import { RouterLink } from &#x27;@angular/router&#x27;;
 import { Category } from &#x27;../../models/category.interface&#x27;;
 
+/**
+ * Componente de tarjeta de categoría para mostrar en el home.
+ * Muestra imagen, nombre y enlace a productos filtrados.
+ *
+ * @example
+ * // En un template:
+ * &lt;app-card-category [category]&#x3D;&quot;categoria&quot;&gt;&lt;/app-card-category&gt;
+ *
+ * @usageNotes
+ * - Requiere input obligatorio de Category
+ * - Enlaza a /products?category&#x3D;{slug}
+ * - Usado en el componente Categories
+ */
 @Component({
   selector: &#x27;app-card-category&#x27;,
   imports: [RouterLink],
@@ -267,6 +300,12 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
   styleUrl: &#x27;./card-category.scss&#x27;,
 })
 export class CardCategory {
+  /**
+   * Datos de la categoría a mostrar.
+   *
+   * @example
+   * // category &#x3D; { id: 1, name: &#x27;Estrategia&#x27;, slug: &#x27;estrategia&#x27;, image: &#x27;...&#x27; }
+   */
   @Input() category!: Category;
 }
 </code></pre>
