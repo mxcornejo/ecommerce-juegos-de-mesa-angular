@@ -3,8 +3,9 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product as ProductModel } from '../../models/product.interface';
 import { Category } from '../../models/category.interface';
-import { PRODUCTS, CATEGORIES } from '../../data/mock-data';
+import { ApiService } from '../../services/api.service';
 import { Cart } from '../../services/cart';
+import { forkJoin } from 'rxjs';
 
 /**
  * Componente de detalle de producto individual.
@@ -39,6 +40,9 @@ export class Product implements OnInit {
   /** Servicio del carrito de compras */
   cartService = inject(Cart);
 
+  /** Servicio de API */
+  private apiService = inject(ApiService);
+
   /** Producto actual a mostrar */
   product: ProductModel | undefined;
 
@@ -63,11 +67,17 @@ export class Product implements OnInit {
    */
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
-    this.product = PRODUCTS.find((p) => p.id === productId);
 
-    if (this.product) {
-      this.category = CATEGORIES.find((c) => c.id === this.product!.categoryId);
-    }
+    forkJoin({
+      products: this.apiService.getProducts(),
+      categories: this.apiService.getCategories(),
+    }).subscribe(({ products, categories }) => {
+      this.product = products.find((p) => p.id === productId);
+
+      if (this.product) {
+        this.category = categories.find((c) => c.id === this.product!.categoryId);
+      }
+    });
   }
 
   /**

@@ -2,9 +2,10 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Banner } from '../../components/banner/banner';
 import { CardProduct } from '../../components/card-product/card-product';
-import { PRODUCTS, CATEGORIES } from '../../data/mock-data';
+import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product.interface';
 import { Category } from '../../models/category.interface';
+import { forkJoin } from 'rxjs';
 
 /**
  * Componente de listado de productos por categoría.
@@ -31,15 +32,16 @@ import { Category } from '../../models/category.interface';
 export class Products implements OnInit {
   /** Servicio de rutas para obtener queryParams */
   private route = inject(ActivatedRoute);
+  private apiService = inject(ApiService);
 
-  /** Lista completa de productos del mock */
-  products: Product[] = PRODUCTS;
+  /** Lista completa de productos */
+  products: Product[] = [];
 
-  /** Lista completa de categorías del mock */
-  categories: Category[] = CATEGORIES;
+  /** Lista completa de categorías */
+  categories: Category[] = [];
 
   /** Categorías filtradas a mostrar */
-  filteredCategories: Category[] = CATEGORIES;
+  filteredCategories: Category[] = [];
 
   /** Slug de la categoría seleccionada desde queryParams */
   selectedCategorySlug: string | null = null;
@@ -55,9 +57,17 @@ export class Products implements OnInit {
    * Usa subscribe para reaccionar a cambios de navegación sin recargar
    */
   ngOnInit() {
-    this.route.queryParamMap.subscribe((params) => {
-      this.selectedCategorySlug = params.get('category');
-      this.filterCategories();
+    forkJoin({
+      products: this.apiService.getProducts(),
+      categories: this.apiService.getCategories(),
+    }).subscribe(({ products, categories }) => {
+      this.products = products;
+      this.categories = categories;
+
+      this.route.queryParamMap.subscribe((params) => {
+        this.selectedCategorySlug = params.get('category');
+        this.filterCategories();
+      });
     });
   }
 

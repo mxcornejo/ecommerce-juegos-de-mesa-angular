@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardCategory } from '../card-category/card-category';
-import { CATEGORIES } from '../../data/mock-data';
+import { ApiService } from '../../services/api.service';
 import { Category } from '../../models/category.interface';
 
 /**
@@ -12,7 +12,7 @@ import { Category } from '../../models/category.interface';
  * <app-categories></app-categories>
  *
  * @usageNotes
- * - Carga categorías desde mock-data
+ * - Carga categorías desde ApiService
  * - Usado en la página Home
  * - Itera sobre categories para mostrar CardCategory
  */
@@ -22,13 +22,21 @@ import { Category } from '../../models/category.interface';
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
-export class Categories {
+export class Categories implements OnInit {
   /**
-   * Lista de categorías a mostrar desde mock-data.
+   * Lista de categorías a mostrar.
    *
    * @example
    * // Se usa en template con *ngFor
    * // *ngFor="let category of categories"
    */
-  categories: Category[] = CATEGORIES;
+  categories: Category[] = [];
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    this.apiService.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
+  }
 }

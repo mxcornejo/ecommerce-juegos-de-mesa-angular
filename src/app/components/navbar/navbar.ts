@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CATEGORIES } from '../../data/mock-data';
+import { ApiService } from '../../services/api.service';
 import { Category } from '../../models/category.interface';
 import { Cart } from '../../services/cart';
 import { AuthService } from '../../services/auth';
@@ -26,7 +26,7 @@ import { AuthService } from '../../services/auth';
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
-export class Navbar {
+export class Navbar implements OnInit {
   /** Router para navegación programática */
   private router = inject(Router);
 
@@ -36,8 +36,17 @@ export class Navbar {
   /** Servicio de autenticación */
   authService = inject(AuthService);
 
+  /** Servicio de API */
+  private apiService = inject(ApiService);
+
   /** Lista de categorías para el menú de navegación */
-  categories: Category[] = CATEGORIES;
+  categories: Category[] = [];
+
+  ngOnInit() {
+    this.apiService.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
+  }
 
   /**
    * Obtiene el número total de items en el carrito.
