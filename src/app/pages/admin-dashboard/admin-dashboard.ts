@@ -2,7 +2,9 @@ import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
+import { ApiService } from '../../services/api.service';
 import { User } from '../../models/user.interface';
+import { Product } from '../../models/product.interface';
 import { FormsModule } from '@angular/forms';
 
 /**
@@ -29,11 +31,17 @@ export class AdminDashboard implements OnInit {
   /** Servicio de autenticación para gestión de usuarios */
   private authService = inject(AuthService);
 
+  /** Servicio de API para obtener productos */
+  private apiService = inject(ApiService);
+
   /** Router para navegación */
   private router = inject(Router);
 
   /** Lista de todos los usuarios registrados */
   allUsers = signal<User[]>([]);
+
+  /** Lista de todos los productos */
+  allProducts = signal<Product[]>([]);
 
   /** Término de búsqueda actual */
   searchTerm = signal<string>('');
@@ -66,10 +74,11 @@ export class AdminDashboard implements OnInit {
   });
 
   /**
-   * Inicializa el componente cargando la lista de usuarios.
+   * Inicializa el componente cargando la lista de usuarios y productos.
    */
   ngOnInit(): void {
     this.loadUsers();
+    this.loadProducts();
   }
 
   /**
@@ -80,6 +89,15 @@ export class AdminDashboard implements OnInit {
     this.allUsers.set(this.authService.getRegisteredUsers());
     this.stats.set(this.authService.getUserStats());
     this.updateLastUpdateTime();
+  }
+
+  /**
+   * Carga la lista de productos desde el servicio API.
+   */
+  loadProducts(): void {
+    this.apiService.getProducts().subscribe((products) => {
+      this.allProducts.set(products);
+    });
   }
 
   /**
