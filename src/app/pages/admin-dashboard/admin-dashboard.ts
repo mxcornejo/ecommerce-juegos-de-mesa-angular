@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth';
 import { ApiService } from '../../services/api.service';
 import { User } from '../../models/user.interface';
 import { Product } from '../../models/product.interface';
+import { Category } from '../../models/category.interface';
 import { FormsModule } from '@angular/forms';
 
 /**
@@ -43,6 +44,18 @@ export class AdminDashboard implements OnInit {
   /** Lista de todos los productos */
   allProducts = signal<Product[]>([]);
 
+  /** Lista de categorías para el formulario */
+  categories = signal<Category[]>([]);
+
+  /** Producto seleccionado para edición o nuevo producto */
+  selectedProduct: Partial<Product> = {};
+
+  /** Indica si el modal de producto está visible */
+  showProductModal = false;
+
+  /** Indica si se está editando un producto existente */
+  isEditing = false;
+
   /** Término de búsqueda actual */
   searchTerm = signal<string>('');
 
@@ -79,6 +92,7 @@ export class AdminDashboard implements OnInit {
   ngOnInit(): void {
     this.loadUsers();
     this.loadProducts();
+    this.loadCategories();
   }
 
   /**
@@ -98,6 +112,73 @@ export class AdminDashboard implements OnInit {
     this.apiService.getProducts().subscribe((products) => {
       this.allProducts.set(products);
     });
+  }
+
+  /**
+   * Carga la lista de categorías desde el servicio API.
+   */
+  loadCategories(): void {
+    this.apiService.getCategories().subscribe((categories) => {
+      this.categories.set(categories);
+    });
+  }
+
+  /**
+   * Abre el modal para crear o editar un producto.
+   * @param product Producto a editar (opcional)
+   */
+  openProductModal(product?: Product) {
+    if (product) {
+      this.selectedProduct = { ...product };
+      this.isEditing = true;
+    } else {
+      this.selectedProduct = {
+        name: '',
+        description: '',
+        price: 0,
+        image: '',
+        categoryId: 0,
+      };
+      this.isEditing = false;
+    }
+    this.showProductModal = true;
+  }
+
+  /**
+   * Cierra el modal de producto.
+   */
+  closeProductModal() {
+    this.showProductModal = false;
+    this.selectedProduct = {};
+  }
+
+  /**
+   * Guarda el producto (crear o actualizar).
+   */
+  saveProduct() {
+    if (this.isEditing && this.selectedProduct.id) {
+      this.apiService.updateProduct(this.selectedProduct as Product).subscribe(() => {
+        this.loadProducts();
+        this.closeProductModal();
+      });
+    } else {
+      this.apiService.addProduct(this.selectedProduct as Omit<Product, 'id'>).subscribe(() => {
+        this.loadProducts();
+        this.closeProductModal();
+      });
+    }
+  }
+
+  /**
+   * Elimina un producto.
+   * @param id ID del producto a eliminar
+   */
+  deleteProduct(id: number) {
+    if (confirm('¿Estás seguro de eliminar este producto?')) {
+      this.apiService.deleteProduct(id).subscribe(() => {
+        this.loadProducts();
+      });
+    }
   }
 
   /**
