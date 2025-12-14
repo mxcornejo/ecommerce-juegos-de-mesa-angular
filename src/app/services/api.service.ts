@@ -44,7 +44,7 @@ export class ApiService {
     );
   }
 
-  // Simulation methods
+  // Simulacion de metodos
   addProduct(product: Omit<Product, 'id'>): Observable<Product> {
     const currentProducts = this.products();
     const newId =
