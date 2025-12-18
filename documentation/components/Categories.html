@@ -146,7 +146,7 @@
 Renderiza una CardCategory por cada categoría disponible.</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">// En un template:
 &lt;app-categories&gt;&lt;/app-categories&gt;</code></pre></div><ul>
-<li>Carga categorías desde mock-data</li>
+<li>Carga categorías desde ApiService</li>
 <li>Usado en la página Home</li>
 <li>Itera sobre categories para mostrar CardCategory</li>
 </ul>
@@ -154,6 +154,12 @@ Renderiza una CardCategory por cada categoría disponible.</p>
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -227,6 +233,20 @@ Renderiza una CardCategory por cada categoría disponible.</p>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -236,12 +256,102 @@ Renderiza una CardCategory por cada categoría disponible.</p>
     </table>
 </section>
 
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(apiService: <a href="../injectables/ApiService.html" target="_self">ApiService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/categories/categories.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>apiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiService.html" target="_self" >ApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
 
 
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/components/categories/categories.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section data-compodoc="block-properties">
     
     <h3 id="inputs">
@@ -266,7 +376,7 @@ Renderiza una CardCategory por cada categoría disponible.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>CATEGORIES</code>
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                     <tr>
@@ -277,7 +387,7 @@ Renderiza una CardCategory por cada categoría disponible.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Lista de categorías a mostrar desde mock-data.</p>
+                    <div class="io-description"><p>Lista de categorías a mostrar.</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Se usa en template con *ngFor
 // *ngFor=&quot;let category of categories&quot;</code></pre></div></div>
                 </td>
@@ -291,9 +401,9 @@ Renderiza una CardCategory por cada categoría disponible.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { CardCategory } from &#x27;../card-category/card-category&#x27;;
-import { CATEGORIES } from &#x27;../../data/mock-data&#x27;;
+import { ApiService } from &#x27;../../services/api.service&#x27;;
 import { Category } from &#x27;../../models/category.interface&#x27;;
 
 /**
@@ -305,7 +415,7 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
  * &lt;app-categories&gt;&lt;/app-categories&gt;
  *
  * @usageNotes
- * - Carga categorías desde mock-data
+ * - Carga categorías desde ApiService
  * - Usado en la página Home
  * - Itera sobre categories para mostrar CardCategory
  */
@@ -315,15 +425,23 @@ import { Category } from &#x27;../../models/category.interface&#x27;;
   templateUrl: &#x27;./categories.html&#x27;,
   styleUrl: &#x27;./categories.scss&#x27;,
 })
-export class Categories {
+export class Categories implements OnInit {
   /**
-   * Lista de categorías a mostrar desde mock-data.
+   * Lista de categorías a mostrar.
    *
    * @example
    * // Se usa en template con *ngFor
    * // *ngFor&#x3D;&quot;let category of categories&quot;
    */
-  categories: Category[] &#x3D; CATEGORIES;
+  categories: Category[] &#x3D; [];
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    this.apiService.getCategories().subscribe((data) &#x3D;&gt; {
+      this.categories &#x3D; data;
+    });
+  }
 }
 </code></pre>
     </div>

@@ -155,6 +155,12 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -223,6 +229,10 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#apiService" >apiService</a>
+                            </li>
+                            <li>
                                 <a href="#authService" >authService</a>
                             </li>
                             <li>
@@ -258,6 +268,9 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
                         <ul class="index-list">
                             <li>
                                 <a href="#navigateToProducts" >navigateToProducts</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
                                 <a href="#onAdminLogout" >onAdminLogout</a>
@@ -321,8 +334,8 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/components/navbar/navbar.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/components/navbar/navbar.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -331,6 +344,43 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
                 <td class="col-md-4">
                         <div class="io-description"><p>Navega a la página de productos.</p>
 </div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/components/navbar/navbar.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -360,8 +410,8 @@ Muestra el logo, enlaces de navegación, categorías, carrito y opciones de usua
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="80"
-                                    class="link-to-prism">src/app/components/navbar/navbar.ts:80</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/components/navbar/navbar.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -400,8 +450,8 @@ Muestra confirmación antes de cerrar sesión.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/components/navbar/navbar.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/components/navbar/navbar.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -426,6 +476,44 @@ Muestra confirmación antes de cerrar sesión.</p>
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>apiService</b></span>
+                        <a href="#apiService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ApiService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/navbar/navbar.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio de API</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -519,12 +607,12 @@ Muestra confirmación antes de cerrar sesión.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>CATEGORIES</code>
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/navbar/navbar.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/navbar/navbar.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -561,7 +649,7 @@ Muestra confirmación antes de cerrar sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/navbar/navbar.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/navbar/navbar.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -598,7 +686,7 @@ Muestra confirmación antes de cerrar sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/navbar/navbar.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/components/navbar/navbar.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -635,7 +723,7 @@ Muestra confirmación antes de cerrar sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/navbar/navbar.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/navbar/navbar.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -708,7 +796,7 @@ Muestra confirmación antes de cerrar sesión.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/components/navbar/navbar.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/navbar/navbar.ts:55</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -728,10 +816,10 @@ Muestra confirmación antes de cerrar sesión.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit } from &#x27;@angular/core&#x27;;
 import { RouterLink, Router } from &#x27;@angular/router&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
-import { CATEGORIES } from &#x27;../../data/mock-data&#x27;;
+import { ApiService } from &#x27;../../services/api.service&#x27;;
 import { Category } from &#x27;../../models/category.interface&#x27;;
 import { Cart } from &#x27;../../services/cart&#x27;;
 import { AuthService } from &#x27;../../services/auth&#x27;;
@@ -756,7 +844,7 @@ import { AuthService } from &#x27;../../services/auth&#x27;;
   templateUrl: &#x27;./navbar.html&#x27;,
   styleUrl: &#x27;./navbar.scss&#x27;,
 })
-export class Navbar {
+export class Navbar implements OnInit {
   /** Router para navegación programática */
   private router &#x3D; inject(Router);
 
@@ -766,8 +854,17 @@ export class Navbar {
   /** Servicio de autenticación */
   authService &#x3D; inject(AuthService);
 
+  /** Servicio de API */
+  private apiService &#x3D; inject(ApiService);
+
   /** Lista de categorías para el menú de navegación */
-  categories: Category[] &#x3D; CATEGORIES;
+  categories: Category[] &#x3D; [];
+
+  ngOnInit() {
+    this.apiService.getCategories().subscribe((data) &#x3D;&gt; {
+      this.categories &#x3D; data;
+    });
+  }
 
   /**
    * Obtiene el número total de items en el carrito.

@@ -154,9 +154,6 @@
                             <a href="#browserDistFolder" title="src/server.ts" ><b>browserDistFolder</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
                         </li>
                         <li>
-                            <a href="#CATEGORIES" title="src/app/data/mock-data.ts" ><b>CATEGORIES</b>&nbsp;&nbsp;&nbsp;(src/.../mock-data.ts)</a>
-                        </li>
-                        <li>
                             <a href="#config" title="src/app/app.config.server.ts" ><b>config</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.server.ts)</a>
                         </li>
                         <li>
@@ -170,9 +167,6 @@
                         </li>
                         <li>
                             <a href="#monaco" title="documentation/template-playground/template-editor.service.ts" ><b>monaco</b>&nbsp;&nbsp;&nbsp;(documentation/.../template-editor.service.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#PRODUCTS" title="src/app/data/mock-data.ts" ><b>PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-data.ts)</a>
                         </li>
                         <li>
                             <a href="#reqHandler" title="src/server.ts" ><b>reqHandler</b>&nbsp;&nbsp;&nbsp;(src/.../server.ts)</a>
@@ -512,8 +506,10 @@
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideClientHydration(withEventReplay())
-  ]
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch()),
+  ],
 }</code>
                     </td>
                 </tr>
@@ -545,198 +541,6 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>(context: BootstrapContext) &#x3D;&gt;
     bootstrapApplication(App, config, context)</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/app/data/mock-data.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="CATEGORIES"></a>
-                    <span class="name">
-                        <span ><b>CATEGORIES</b></span>
-                        <a href="#CATEGORIES"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Category.html" target="_self" >Category[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[
-  {
-    id: 1,
-    name: &#x27;Juegos de Estrategia&#x27;,
-    image: &#x27;assets/categories/strategy.jpg&#x27;,
-    slug: &#x27;estrategia&#x27;,
-  },
-  {
-    id: 2,
-    name: &#x27;Juegos Familiares&#x27;,
-    image: &#x27;assets/categories/family.jpg&#x27;,
-    slug: &#x27;familiares&#x27;,
-  },
-  {
-    id: 3,
-    name: &#x27;Juegos de Cartas&#x27;,
-    image: &#x27;assets/categories/cards.jpg&#x27;,
-    slug: &#x27;cartas&#x27;,
-  },
-  {
-    id: 4,
-    name: &#x27;Juegos de Rol&#x27;,
-    image: &#x27;assets/categories/roleplay.jpg&#x27;,
-    slug: &#x27;rol&#x27;,
-  },
-]</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="PRODUCTS"></a>
-                    <span class="name">
-                        <span ><b>PRODUCTS</b></span>
-                        <a href="#PRODUCTS"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >Product[]</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[
-  // Categoría 1: Juegos de Estrategia (3 productos)
-  {
-    id: 1,
-    name: &#x27;Catan&#x27;,
-    description:
-      &#x27;Construye asentamientos, ciudades y caminos mientras compites por los recursos de la isla de Catán.&#x27;,
-    price: 34990,
-    image: &#x27;assets/juegos/catan.jpg&#x27;,
-    categoryId: 1,
-  },
-  {
-    id: 2,
-    name: &#x27;Carcassonne&#x27;,
-    description:
-      &#x27;Construye un paisaje medieval colocando fichas y reclamando territorios con tus seguidores.&#x27;,
-    price: 29990,
-    image: &#x27;assets/juegos/carcassonne.jpg&#x27;,
-    categoryId: 1,
-  },
-  {
-    id: 3,
-    name: &#x27;Pandemic&#x27;,
-    description:
-      &#x27;Trabaja en equipo para salvar a la humanidad de cuatro enfermedades mortales que amenazan el mundo.&#x27;,
-    price: 39990,
-    image: &#x27;assets/juegos/pandemic.jpg&#x27;,
-    categoryId: 1,
-  },
-
-  // Categoría 2: Juegos Familiares (3 productos)
-  {
-    id: 4,
-    name: &#x27;Ticket to Ride&#x27;,
-    description:
-      &#x27;Construye rutas de tren a través de distintos países y ciudades en esta emocionante aventura ferroviaria.&#x27;,
-    price: 44990,
-    image: &#x27;assets/juegos/tickettoride.jpg&#x27;,
-    categoryId: 2,
-  },
-  {
-    id: 5,
-    name: &#x27;Azul&#x27;,
-    description: &#x27;Decora las paredes del Palacio Real de Évora con hermosos azulejos portugueses.&#x27;,
-    price: 32990,
-    image: &#x27;assets/juegos/azul.jpg&#x27;,
-    categoryId: 2,
-  },
-  {
-    id: 6,
-    name: &#x27;Dixit&#x27;,
-    description:
-      &#x27;Un juego de creatividad e imaginación donde las imágenes cobran vida con tus historias.&#x27;,
-    price: 36990,
-    image: &#x27;assets/juegos/dixit.jpg&#x27;,
-    categoryId: 2,
-  },
-
-  // Categoría 3: Juegos de Cartas (3 productos)
-  {
-    id: 7,
-    name: &#x27;UNO&#x27;,
-    description: &#x27;El clásico juego de cartas que todos conocen y aman. ¡No olvides gritar UNO!&#x27;,
-    price: 9990,
-    image: &#x27;assets/juegos/uno.jpg&#x27;,
-    categoryId: 3,
-  },
-  {
-    id: 8,
-    name: &#x27;Exploding Kittens&#x27;,
-    description: &#x27;Un juego de cartas estratégico lleno de gatitos, explosiones y locura absoluta.&#x27;,
-    price: 19990,
-    image: &#x27;assets/juegos/ExplodingKittens.jpg&#x27;,
-    categoryId: 3,
-  },
-  {
-    id: 9,
-    name: &#x27;Sushi Go!&#x27;,
-    description: &#x27;Selecciona y pasa cartas de delicioso sushi en este rápido juego de drafting.&#x27;,
-    price: 14990,
-    image: &#x27;assets/juegos/SushiGo.jpg&#x27;,
-    categoryId: 3,
-  },
-
-  // Categoría 4: Juegos de Rol (3 productos)
-  {
-    id: 10,
-    name: &#x27;Dungeons &amp; Dragons&#x27;,
-    description:
-      &#x27;El legendario juego de rol donde tu imaginación es el límite. Crea tu héroe y vive aventuras épicas.&#x27;,
-    price: 54990,
-    image: &#x27;assets/juegos/Dungeons.jpg&#x27;,
-    categoryId: 4,
-  },
-  {
-    id: 11,
-    name: &#x27;Pathfinder&#x27;,
-    description:
-      &#x27;Un completo sistema de juego de rol de fantasía con infinitas posibilidades de aventura.&#x27;,
-    price: 49990,
-    image: &#x27;assets/juegos/Pathfinder.jpg&#x27;,
-    categoryId: 4,
-  },
-  {
-    id: 12,
-    name: &#x27;Tales from the Loop&#x27;,
-    description:
-      &#x27;Vive aventuras en los años 80 en un mundo donde la tecnología retro-futurista es real.&#x27;,
-    price: 44990,
-    image: &#x27;assets/juegos/Tales.jpg&#x27;,
-    categoryId: 4,
-  },
-]</code>
                     </td>
                 </tr>
 
@@ -995,9 +799,17 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
   {
+    path: &#x27;products/:category&#x27;,
+    renderMode: RenderMode.Client,
+  },
+  {
+    path: &#x27;product/:id&#x27;,
+    renderMode: RenderMode.Client,
+  },
+  {
     path: &#x27;**&#x27;,
-    renderMode: RenderMode.Prerender
-  }
+    renderMode: RenderMode.Prerender,
+  },
 ]</code>
                     </td>
                 </tr>

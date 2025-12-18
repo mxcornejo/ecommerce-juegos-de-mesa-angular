@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Router, ActivatedRoute, UrlTree } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { App } from './app';
 
@@ -23,6 +24,7 @@ describe('App', () => {
       providers: [
         { provide: Router, useValue: routerSpy },
         { provide: ActivatedRoute, useValue: activatedRouteMock },
+        provideHttpClient(),
       ],
     }).compileComponents();
   });
